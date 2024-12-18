@@ -152,6 +152,37 @@ Transform:
   - {fileID: 1306669532}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &102537972
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 102537973}
+  m_Layer: 0
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &102537973
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 102537972}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.76, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1618778962}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &612632422
 GameObject:
   m_ObjectHideFlags: 0
@@ -1796,7 +1827,7 @@ GameObject:
   - component: {fileID: 1093469123}
   m_Layer: 0
   m_Name: StartPoint
-  m_TagString: Untagged
+  m_TagString: MovingObstacleWaypoint
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6693,6 +6724,7 @@ MonoBehaviour:
   m_startWayPoint: {fileID: 1093469122}
   m_endWayPoint: {fileID: 1903817224}
   m_speed: 5
+  PlayerHealth: {fileID: 0}
 --- !u!50 &1306669534
 Rigidbody2D:
   serializedVersion: 5
@@ -15828,6 +15860,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1618778962}
   - component: {fileID: 1618778967}
+  - component: {fileID: 1618778968}
   - component: {fileID: 1618778966}
   - component: {fileID: 1618778965}
   - component: {fileID: 1618778964}
@@ -15853,6 +15886,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1409543577}
+  - {fileID: 102537973}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1618778963
@@ -16019,6 +16053,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_playerSpeed: 200
   m_playerMaxSpeed: 1000
+  m_projectilePrefab: {fileID: 2859995017432351464, guid: 7825d6f5445df1f4b8397b58ac09c36e, type: 3}
+  m_firePoint: {fileID: 102537973}
+  m_projectileSpeed: 10
+  m_fireRate: 0.1
+--- !u!114 &1618778968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1618778961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85b91a167e4aaa746883d16e4bf49278, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_playerMaxHealth: 100
+  m_playerCurrentHealth: 100
 --- !u!1 &1803052487
 GameObject:
   m_ObjectHideFlags: 0

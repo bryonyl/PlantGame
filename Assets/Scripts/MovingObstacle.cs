@@ -9,9 +9,11 @@ public class MovingObstacle : MonoBehaviour
 
     private Transform m_target; // Holds the start/end point, so the object knows where to go to
 
+    public PlayerHealth PlayerHealth;
+
     void ChangeTarget()
     {
-        if (m_target = m_startWayPoint)
+        if (m_target == m_startWayPoint)
         {
             m_target = m_endWayPoint;
         }
@@ -24,6 +26,7 @@ public class MovingObstacle : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        PlayerHealth = GameObject.FindWithTag("Player").GetComponent<PlayerHealth>();         
         m_target = m_startWayPoint;
     }
 
@@ -46,6 +49,8 @@ public class MovingObstacle : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             Debug.Log("Player is attacked!");
+            PlayerHealth.m_playerCurrentHealth = PlayerHealth.m_playerCurrentHealth - 10;
+            Debug.Log($"Player health = {PlayerHealth.m_playerCurrentHealth}");
         }
     }
 
