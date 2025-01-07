@@ -43,8 +43,7 @@ public class TopDownCharacterController : MonoBehaviour
     [SerializeField] Transform m_firePoint;
     [SerializeField] float m_projectileSpeed;
     [SerializeField] float m_fireRate;
-    static Vector2 mousePosition = Input.mousePosition;
-    Vector3 mousePointOnScreen = Camera.main.ScreenToWorldPoint(mousePosition);
+    
     //Vector2 https://docs.unity3d.com/2018.3/Documentation/Manual/DirectionDistanceFromOneObjectToAnother.html
 
     /// <summary>
@@ -90,6 +89,9 @@ public class TopDownCharacterController : MonoBehaviour
     /// </summary>
     void Update()
     {
+        Vector2 mousePosition = Input.mousePosition;
+        Vector2 mousePointOnScreen = Camera.main.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, 8)); // Finds mouse position on the screen
+
         // store any movement inputs into m_playerDirection - this will be used in FixedUpdate to move the player.
         m_playerDirection = m_moveAction.ReadValue<Vector2>();
         Debug.Log(m_playerDirection);
@@ -112,10 +114,6 @@ public class TopDownCharacterController : MonoBehaviour
         // check if an attack has been triggered.
         if (m_attackAction.IsPressed() && Time.time > m_fireTimeout)
         {
-            // just log that an attack has been registered for now
-            // we will look at how to do this in future sessions.
-            Debug.Log("Attack!");
-
             // Firing is possible if enough time has passed from the previous firing of the weapon
             m_fireTimeout = Time.time + m_fireRate; // Time.time returns the amount of time that has passed in seconds. When the amount of time that has passed exceeds m_fireRate, we can call our Fire() function
             Fire();

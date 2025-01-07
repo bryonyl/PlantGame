@@ -35,8 +35,30 @@ public class MovingObstacle : MonoBehaviour
     {
         // Moves an object towards a target destination, never overshooting
         transform.position = Vector2.MoveTowards(transform.position, m_target.position, m_speed * Time.deltaTime); // Time.deltaTime is the time in seconds between the last frame and the current frame.
-                                                                                                                       // When using * Time.deltaTime, you can carry out actions over time - this is useful
-                                                                                                                       // when it comes to timers and fire rates, for example.
+                                                                                                                   // When using * Time.deltaTime, you can carry out actions over time - this is useful
+                                                                                                                   // when it comes to timers and fire rates, for example.
+
+        // Makes fireball spin
+        transform.Rotate(0,0,3.0f);
+        
+        //// Lerp attempt
+        
+        //bool switchDirection = false;
+        //float timeElapsed = 1f;
+        //Vector3 somewhereBetween;
+        
+        //if (switchDirection == false)
+        //{
+        //    somewhereBetween = Vector3.Lerp(m_startWayPoint.position, m_endWayPoint.position, timeElapsed);
+        //    transform.position = somewhereBetween;
+        //    switchDirection = true;
+        //}
+        //else if (switchDirection == true)
+        //{
+        //    somewhereBetween = Vector3.Lerp(m_endWayPoint.position, m_startWayPoint.position, timeElapsed);
+        //    transform.position = somewhereBetween;
+        //    switchDirection = true;
+        //}
     }
     private void OnTriggerEnter2D(Collider2D collision) // Trigger/overlap check to see if we touch anything
                                                         // The collision parameter can be used to get info about what we hit, e.g. whether it's a tag, a layer, components, a script...
