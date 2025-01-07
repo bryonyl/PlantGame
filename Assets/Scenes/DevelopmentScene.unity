@@ -15860,6 +15860,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1618778962}
   - component: {fileID: 1618778967}
+  - component: {fileID: 1618778969}
   - component: {fileID: 1618778968}
   - component: {fileID: 1618778966}
   - component: {fileID: 1618778965}
@@ -16051,12 +16052,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 515d100b1bcb61c47aef554e3cb5bd74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_attackAction:
+    m_Name: Attack
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 931eda17-6ea7-4885-a1e6-79efb419f993
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  m_lastDirection: {x: 0, y: 0}
   m_playerSpeed: 200
   m_playerMaxSpeed: 1000
-  m_projectilePrefab: {fileID: 2859995017432351464, guid: 7825d6f5445df1f4b8397b58ac09c36e, type: 3}
-  m_firePoint: {fileID: 102537973}
-  m_projectileSpeed: 10
-  m_fireRate: 0.1
 --- !u!114 &1618778968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16071,6 +16078,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_playerMaxHealth: 100
   m_playerCurrentHealth: 100
+--- !u!114 &1618778969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1618778961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b02fcaa63e5a2a44f97686786ea98378, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TopDownCharacterController: {fileID: 0}
+  m_projectilePrefab: {fileID: 2859995017432351464, guid: 7825d6f5445df1f4b8397b58ac09c36e, type: 3}
+  m_firePoint: {fileID: 102537973}
+  m_projectileSpeed: 10
+  m_fireRate: 0.25
 --- !u!1 &1803052487
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,7 +14,7 @@ public class TopDownCharacterController : MonoBehaviour
 
     //The inputs that we need to retrieve from the input system.
     private InputAction m_moveAction;
-    private InputAction m_attackAction;
+    public InputAction m_attackAction;
 
     //The components that we need to edit to make the player move smoothly.
     private Animator m_animator;
@@ -24,11 +24,7 @@ public class TopDownCharacterController : MonoBehaviour
     private Vector2 m_playerDirection;
 
     //The last direction the player was pointing in.
-    private Vector2 m_lastDirection;
-
-    //Projectiles firing timeout.
-    private float m_fireTimeout = 0;
-   
+    public Vector2 m_lastDirection;   
 
     [Header("Movement parameters")]
     //The speed at which the player moves
@@ -37,12 +33,6 @@ public class TopDownCharacterController : MonoBehaviour
     [SerializeField] private float m_playerMaxSpeed = 1000f;
 
     #endregion
-
-    [Header("Projectile Parameters")]
-    [SerializeField] GameObject m_projectilePrefab;
-    [SerializeField] Transform m_firePoint;
-    [SerializeField] float m_projectileSpeed;
-    [SerializeField] float m_fireRate;
     
     //Vector2 https://docs.unity3d.com/2018.3/Documentation/Manual/DirectionDistanceFromOneObjectToAnother.html
 
@@ -54,7 +44,6 @@ public class TopDownCharacterController : MonoBehaviour
     {
         //bind movement inputs to variables
         m_moveAction = InputSystem.actions.FindAction("Move");
-        m_attackAction = InputSystem.actions.FindAction("Attack");
         
         //get components from Character game object so that we can use them later.
         m_animator = GetComponent<Animator>();
@@ -89,9 +78,6 @@ public class TopDownCharacterController : MonoBehaviour
     /// </summary>
     void Update()
     {
-        Vector2 mousePosition = Input.mousePosition;
-        Vector2 mousePointOnScreen = Camera.main.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, 8)); // Finds mouse position on the screen
-
         // store any movement inputs into m_playerDirection - this will be used in FixedUpdate to move the player.
         m_playerDirection = m_moveAction.ReadValue<Vector2>();
         Debug.Log(m_playerDirection);
@@ -109,38 +95,6 @@ public class TopDownCharacterController : MonoBehaviour
             // Set last facing direction for shooting later
             // Makes sure m_lastDirection will always be a Vector2D value greater than (0, 0) and therefore an actual direction
             m_lastDirection = m_playerDirection;
-        }
-
-        // check if an attack has been triggered.
-        if (m_attackAction.IsPressed() && Time.time > m_fireTimeout)
-        {
-            // Firing is possible if enough time has passed from the previous firing of the weapon
-            m_fireTimeout = Time.time + m_fireRate; // Time.time returns the amount of time that has passed in seconds. When the amount of time that has passed exceeds m_fireRate, we can call our Fire() function
-            Fire();
-        }
-    }
-
-    private void Fire()
-    {
-        // New Vector2D variable to be the last known direction of travel or at the very least, the default Vector2.down direction
-        Vector2 fireDirection = m_lastDirection;
-
-        if (fireDirection == Vector2.zero)
-        {
-            fireDirection = Vector2.down;
-        }
-
-        // Instantiate creates objects at runtime - perfect for spawning projectiles
-        // m_projectilePrefab is the reference to the object we want to spawn
-        // m_firePoint.position is the location where the object will be spawned
-        // Quaternion.identity is the rotation at which the object will be spawned. As "identity" is used, there is no rotation to consider.
-        GameObject projectileToSpawn = Instantiate(m_projectilePrefab, m_firePoint.position, Quaternion.identity);
-
-        if (projectileToSpawn.GetComponent<Rigidbody2D>() != null) // Defensive programming example - checks the component is actually present before undertaking any actions on it
-        {
-            // Makes projectile move
-            // m_playerDirection is normalized so that the projectile's magnitude remains as 1 and doesn't change to 0.71 when the player starts moving diagonally (which would make the projectile go slower) So the direction no longer matters when it comes to speed. 
-            projectileToSpawn.GetComponent<Rigidbody2D>().AddForce(fireDirection.normalized * m_projectileSpeed, ForceMode2D.Impulse); // ForceMode2D.Impulse is a single instant application of force, compared to a continuous force
         }
     }
 }
