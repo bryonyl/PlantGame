@@ -5,11 +5,12 @@ TagManager:
   serializedVersion: 3
   tags:
   - MovingObstacleWaypoint
+  - ShippingBox
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Interactables
   - Water
   - UI
   - 

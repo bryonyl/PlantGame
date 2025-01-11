@@ -48,7 +48,7 @@ public class ShootingProjectiles : MonoBehaviour
     {
         Vector2 mousePosition = Input.mousePosition;
         Vector2 mousePointOnScreen = Camera.main.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, 8)); // Finds mouse position on the screen
-        Debug.Log(mousePointOnScreen);
+        //Debug.Log(mousePointOnScreen);
 
         // check if an attack has been triggered.
         if (TopDownCharacterController.m_attackAction.IsPressed() && Time.time > m_fireTimeout)

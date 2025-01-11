@@ -5,8 +5,12 @@ using System.Collections;
 
 public class MoneyUI : MonoBehaviour
 {
-    protected MoneySystem m_moneySystem; // Reference to the money system
+    private MoneySystem m_moneySystem; // Reference to the money system
     public TMPro.TextMeshProUGUI m_uiLabel; // Reference to the label
+    public void UpdateUI()
+    {
+        m_uiLabel.text = "Money: $" + m_moneySystem.m_playerCurrentMoney;
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -24,6 +28,9 @@ public class MoneyUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        m_uiLabel.text = "Money: $" + m_moneySystem.m_playerCurrentMoney;
+        UpdateUI();
+        Debug.Log("UI updated");
     }
+
+    
 }

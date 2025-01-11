@@ -80,7 +80,7 @@ public class TopDownCharacterController : MonoBehaviour
     {
         // store any movement inputs into m_playerDirection - this will be used in FixedUpdate to move the player.
         m_playerDirection = m_moveAction.ReadValue<Vector2>();
-        Debug.Log(m_playerDirection);
+        //Debug.Log(m_playerDirection);
 
         // ~~ handle animator ~~
         // Update the animator speed to ensure that we revert to idle if the player doesn't move.
