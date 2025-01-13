@@ -5,7 +5,7 @@ using System.Collections;
 
 public class MoneyUI : MonoBehaviour
 {
-    private MoneySystem m_moneySystem; // Reference to the money system
+    [SerializeField] private MoneySystem m_moneySystem; // Reference to the money system
     public TMPro.TextMeshProUGUI m_uiLabel; // Reference to the label
     public void UpdateUI()
     {
@@ -17,7 +17,7 @@ public class MoneyUI : MonoBehaviour
     {
         try
         {
-            m_moneySystem = GetComponent<MoneySystem>();
+            //m_moneySystem = GetComponent<MoneySystem>();
         }
         catch (Exception e)
         {

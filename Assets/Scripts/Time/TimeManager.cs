@@ -1,0 +1,44 @@
+using UnityEngine;
+using System; // Need this namespace to access Action type
+
+public class TimeManager : MonoBehaviour
+{
+    public static Action OnMinuteChanged;
+    public static Action OnHourChanged;
+
+    // Keep a reference to what time it is. Uses properties so we can't edit the time outside of this script
+    public static int m_minute { get; private set; } // Can only change this value within this class
+    public static int m_hour { get; private set; }
+
+    private float m_minuteToRealTime = 0.5f; // 0.5 seconds in real time represents 1 minute in game
+    private float m_timer; // Localised timer
+
+    void Start()
+    {
+        m_minute = 0;
+        m_hour = 10; // Starts at 10:00am
+        m_timer = m_minuteToRealTime;
+    }
+
+    void Update()
+    {
+        // Creates timer
+        m_timer -= Time.deltaTime;
+
+        // Adds 1 to Minute every half a second
+        if (m_timer <= 0)
+        {
+            m_minute++; // Minute is incremented by 1
+            OnMinuteChanged?.Invoke(); // Invokes OnMinuteChanged event so that other scripts can respond to this event. ? is the null check
+
+            if(m_minute >= 60) // Minute is reset here as there are 60 mins in an hour
+            {
+                m_hour++; // Hour is incremented by 1
+                m_minute = 0; // Minute is reset back to 0
+                OnHourChanged?.Invoke(); // Invokes OnHourChanged event so that other scripts can respond to this event
+            }
+
+            m_timer = m_minuteToRealTime; // Timer is reset to minuteToRealTime
+        }
+    }
+}
