@@ -3,24 +3,21 @@ using UnityEngine;
 
 public class DayUI : MonoBehaviour
 {
-    public TextMeshProUGUI timeText;
+    public TextMeshProUGUI m_dayText;
 
-    private void OnEnable() // Where we subscribe to the actions found in TimeManager.cs
+    private void OnEnable() // Subscribe UpdateTime to OnDayChanged event
     {
-        // Time is updated when the minute or hour changes
-        TimeManager.OnMinuteChanged += UpdateTime;
-        TimeManager.OnHourChanged += UpdateTime;
+        // Time is updated when the day changes
+        DayProgression.OnDayChanged += UpdateTime;
     }
 
-    private void OnDisable() // Where we unsubscribe to the actions to avoid memory leaks. This happens automatically if the time game object is disabled
+    private void OnDisable() // Unsubscribe UpdateTime from OnDayChanged event
     {
-        // Unsubscribes the UpdateTime method from the actions OnMinuteChanged and OnHourChanged
-        TimeManager.OnMinuteChanged -= UpdateTime;
-        TimeManager.OnHourChanged -= UpdateTime;
+        DayProgression.OnDayChanged -= UpdateTime;
     }
 
     private void UpdateTime()
     {
-        timeText.text = $"{TimeManager.m_hour}:{TimeManager.m_minute:00}"; // :00 masks the hours and the minutes with "00:" so that there are 0s present when nothing occupies either the tens or units of either the minutes or hours
+        m_dayText.text = $"Day: {TimeManager.m_day}";
     }
 }

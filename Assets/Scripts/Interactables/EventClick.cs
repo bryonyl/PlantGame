@@ -4,7 +4,6 @@ using UnityEngine.Events;
 
 public class EventClick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
-    // Creating the remote control
     public delegate void ObjectClicked(GameObject clickedObject);
     public static event ObjectClicked OnObjectClicked;
 

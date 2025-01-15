@@ -7,6 +7,7 @@ public class MoneyUI : MonoBehaviour
 {
     [SerializeField] private MoneySystem m_moneySystem; // Reference to the money system
     public TMPro.TextMeshProUGUI m_uiLabel; // Reference to the label
+
     public void UpdateUI()
     {
         m_uiLabel.text = "Money: $" + m_moneySystem.m_playerCurrentMoney;
@@ -29,8 +30,5 @@ public class MoneyUI : MonoBehaviour
     void Update()
     {
         UpdateUI();
-        Debug.Log("UI updated");
     }
-
-    
 }
