@@ -1,9 +1,8 @@
-using TMPro;
 using UnityEngine;
 
 public class DayUI : MonoBehaviour
 {
-    public TextMeshProUGUI m_dayText;
+    public TMPro.TextMeshProUGUI m_dayText;
 
     private void OnEnable() // Subscribe UpdateTime to OnDayChanged event
     {

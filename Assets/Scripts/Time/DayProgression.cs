@@ -21,10 +21,10 @@ public class DayProgression : MonoBehaviour
         TimeManager.OnMinuteChanged -= TimeCheck;
     }
 
-    // Checks the time. If it has it 10PM, then progress to the next day
+    // Checks the time. If it has it is the end of the day, then progress to the next day
     private void TimeCheck()
     {
-        if (TimeManager.m_hour == 11 && TimeManager.m_minute == 00)
+        if (TimeManager.m_hour == TimeManager.m_dayEndTime && TimeManager.m_minute == 00)
         {
             OnDayChanged?.Invoke();
         }

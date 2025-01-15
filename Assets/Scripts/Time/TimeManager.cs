@@ -15,6 +15,9 @@ public class TimeManager : MonoBehaviour
     private float m_minuteToRealTime = 0.25f; // 0.5 seconds in real time represents 1 minute in game
     private float m_timer; // Localised timer
 
+    [SerializeField] public static int m_dayStartTime = 8; // 8AM
+    [SerializeField] public static int m_dayEndTime = 22; // 10PM
+
     private void OnEnable()
     {
         DayProgression.OnDayChanged += ChangeDay;
@@ -28,13 +31,14 @@ public class TimeManager : MonoBehaviour
     private void ChangeDay()
     {
         m_day++;
-        Debug.Log("Day has changed");
+        m_hour = m_dayStartTime;
+        m_minute = 0;
     }
 
     void Start()
     {
         m_minute = 0;
-        m_hour = 10; // Starts at 10:00am
+        m_hour = m_dayStartTime; // Starts at 8AM
         m_day = 1;
         m_timer = m_minuteToRealTime;
     }
