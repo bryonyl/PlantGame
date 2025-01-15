@@ -828,7 +828,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Quota: ?/?'
+  m_text: 'Quota: $0/$0'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c8263869355f02140970b760662028c3, type: 2}
   m_sharedMaterial: {fileID: 2358008143010929059, guid: c8263869355f02140970b760662028c3, type: 2}
@@ -9253,7 +9253,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 2.525
+  orthographic size: 5.4
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
