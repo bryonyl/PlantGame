@@ -5943,7 +5943,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed517e048541d90439ea2a59806847e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dayText: {fileID: 117723328}
+  m_dayText: {fileID: 117723328}
 --- !u!1 &1408364698
 GameObject:
   m_ObjectHideFlags: 0
@@ -70723,6 +70723,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_playerCurrentMoney: 100
+  m_playerCurrentQuotaGoal: 0
 --- !u!4 &2000239413
 Transform:
   m_ObjectHideFlags: 0
@@ -71011,6 +71012,10 @@ PrefabInstance:
     - target: {fileID: 890731581663757891, guid: 7d455574a0185164c9e1511ddb208edd, type: 3}
       propertyPath: m_Name
       value: Plant
+      objectReference: {fileID: 0}
+    - target: {fileID: 890731581663757891, guid: 7d455574a0185164c9e1511ddb208edd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2369693984466821645, guid: 7d455574a0185164c9e1511ddb208edd, type: 3}
       propertyPath: m_LocalPosition.x

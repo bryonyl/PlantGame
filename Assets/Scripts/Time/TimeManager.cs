@@ -4,15 +4,15 @@ using System; // Need this namespace to access Action type
 public class TimeManager : MonoBehaviour
 {
     // Apparently Actions are slightly faster than Unity Events for this?
-    public static Action OnMinuteChanged;
-    public static Action OnHourChanged;
+    public static event Action OnMinuteChanged;
+    public static event Action OnHourChanged;
 
     // Keep a reference to what time it is. Uses properties so we can't edit the time outside of this script
     public static int m_minute { get; private set; } // Can only change this value within this class
     public static int m_hour { get; private set; }
     public static int m_day { get; private set; }
 
-    private float m_minuteToRealTime = 0.00001f; // 0.5 seconds in real time represents 1 minute in game
+    private float m_minuteToRealTime = 0.25f; // 0.5 seconds in real time represents 1 minute in game
     private float m_timer; // Localised timer
 
     private void OnEnable()

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Rendering;
 using static EventClick;
 
@@ -10,11 +11,13 @@ public class DayProgression : MonoBehaviour
 
     private void OnEnable()
     {
+        TimeManager.OnHourChanged += TimeCheck;
         TimeManager.OnMinuteChanged += TimeCheck; // Subscribes TimeCheck to OnMinuteChanged, so TimeCheck is listening for the OnMinuteChanged signal
     }
 
     private void OnDisable()
     {
+        TimeManager.OnHourChanged -= TimeCheck;
         TimeManager.OnMinuteChanged -= TimeCheck;
     }
 
