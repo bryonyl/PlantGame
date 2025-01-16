@@ -15,7 +15,7 @@ public class MainMenuButtonHandler : MonoBehaviour
 
     }
 
-    public void QuitButton()
+    public void QuitGame()
     {
         Application.Quit();
     }
@@ -25,11 +25,11 @@ public class MainMenuButtonHandler : MonoBehaviour
         try
         {
             m_menuManager.m_currentPanelOpen.SetActive(false);
+            m_menuManager.m_exitPanelButton.SetActive(false);
         }
         catch (System.Exception exNotFound)
         {
-            Debug.Log($"{m_menuManager.m_currentPanelOpen}");
-            Debug.LogError("[ERROR] m_currentPanelOpen of m_menuManager not found!");
+            Debug.LogError("m_currentPanelOpen of m_menuManager not found!");
         }
     }
 }
