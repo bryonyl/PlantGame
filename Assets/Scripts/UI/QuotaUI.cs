@@ -15,6 +15,11 @@ public class QuotaUI : MonoBehaviour
         MoneySystem.OnMoneyChanged += UpdateUI;
     }
 
+    private void OnDisable()
+    {
+        MoneySystem.OnMoneyChanged -= UpdateUI;
+    }
+
     private void UpdateUI()
     {
         m_quotaText.text = $"Quota: ${m_moneySystem.m_playerCurrentMoney}/${m_moneySystem.m_playerCurrentQuotaGoal}";
