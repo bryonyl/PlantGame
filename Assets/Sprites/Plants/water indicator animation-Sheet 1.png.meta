@@ -1,22 +1,10 @@
 fileFormatVersion: 2
-guid: 5f4d3aa57eeabaa48b1064c0f99ab0ba
+guid: a71ee77f56f95ec4b81694652738fef4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1468870141427232870
-    second: water indicator animation-Sheet_0
-  - first:
-      213: 2250821006314429826
-    second: water indicator animation-Sheet_1
-  - first:
-      213: -656974145407442814
-    second: water indicator animation-Sheet_2
-  - first:
-      213: -7625990934966895269
-    second: water indicator animation-Sheet_3
-  - first:
-      213: -4412976436463735567
-    second: water indicator animation-Sheet_4
+      213: -7579224207454266238
+    second: water indicator animation-Sheet 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,32 +84,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: Win64
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -135,7 +97,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: WebGL
+    buildTarget: WindowsStoreApps
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -151,7 +113,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: water indicator animation-Sheet_0
+      name: water indicator animation-Sheet 1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -166,14 +128,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 660b2f87c99726410800000000000000
-      internalID: 1468870141427232870
+      spriteID: 28c95a16dbf21d690800000000000000
+      internalID: -7579224207454266238
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: water indicator animation-Sheet_1
+      name: water indicator animation-Sheet 1_1
       rect:
         serializedVersion: 2
         x: 16
@@ -186,16 +148,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 28ddb56a7c58c3f10800000000000000
-      internalID: 2250821006314429826
+      spriteID: 15031183b7af23640a6eeb0754e7ab3d
+      internalID: 1089148147
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: water indicator animation-Sheet_2
+      name: water indicator animation-Sheet 1_2
       rect:
         serializedVersion: 2
         x: 32
@@ -208,16 +170,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 280af5cde75f1e6f0800000000000000
-      internalID: -656974145407442814
+      spriteID: 3566f4b0c46552a448b9b5f92bcef6a4
+      internalID: -1573518515
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: water indicator animation-Sheet_3
+      name: water indicator animation-Sheet 1_3
       rect:
         serializedVersion: 2
         x: 48
@@ -230,16 +192,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: b5df2fc16a90b2690800000000000000
-      internalID: -7625990934966895269
+      spriteID: 566e9dde552f579428583e8cd49ea135
+      internalID: 1051240163
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: water indicator animation-Sheet_4
+      name: water indicator animation-Sheet 1_4
       rect:
         serializedVersion: 2
         x: 64
@@ -252,10 +214,10 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 1fce86edf45f1c2c0800000000000000
-      internalID: -4412976436463735567
+      spriteID: 917ffb89726d5d24eb4fc8f28eb298ef
+      internalID: -687271140
       vertices: []
       indices: 
       edges: []
@@ -264,7 +226,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: dd4434250784c1940805c43abf7a27f6
+    spriteID: b25fc1f966a98b549bb62da4058254a0
     internalID: 0
     vertices: []
     indices: 
@@ -274,11 +236,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      water indicator animation-Sheet_0: 1468870141427232870
-      water indicator animation-Sheet_1: 2250821006314429826
-      water indicator animation-Sheet_2: -656974145407442814
-      water indicator animation-Sheet_3: -7625990934966895269
-      water indicator animation-Sheet_4: -4412976436463735567
+      water indicator animation-Sheet 1_0: -7579224207454266238
+      water indicator animation-Sheet 1_1: 1089148147
+      water indicator animation-Sheet 1_2: -1573518515
+      water indicator animation-Sheet 1_3: 1051240163
+      water indicator animation-Sheet 1_4: -687271140
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

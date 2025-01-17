@@ -20,6 +20,6 @@ public class PlantData : MonoBehaviour
         Wheat = 1,
         Beetroot = 2
     }
-    private int m_plantGrowthStage = 1;
 
+    private int m_plantGrowthStage = 1;
 }

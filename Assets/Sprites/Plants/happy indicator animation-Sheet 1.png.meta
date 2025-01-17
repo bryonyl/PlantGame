@@ -1,22 +1,10 @@
 fileFormatVersion: 2
-guid: 9eb0478387ca1ec42b9ae61698872b6c
+guid: 9768d9154aa3c9c439f5ce36fc803152
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1354357493732034528
-    second: happy indicator animation-Sheet_0
-  - first:
-      213: 1909770802642568444
-    second: happy indicator animation-Sheet_1
-  - first:
-      213: 3838386502629037830
-    second: happy indicator animation-Sheet_2
-  - first:
-      213: -8853634105974511969
-    second: happy indicator animation-Sheet_3
-  - first:
-      213: 6823722254357779892
-    second: happy indicator animation-Sheet_4
+      213: 6217876175240861641
+    second: happy indicator animation-Sheet 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,32 +84,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: Win64
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -135,7 +97,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: WebGL
+    buildTarget: WindowsStoreApps
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -151,7 +113,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: happy indicator animation-Sheet_0
+      name: happy indicator animation-Sheet 1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -166,14 +128,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 028b63ff80b543de0800000000000000
-      internalID: -1354357493732034528
+      spriteID: 9c7989a00755a4650800000000000000
+      internalID: 6217876175240861641
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: happy indicator animation-Sheet_1
+      name: happy indicator animation-Sheet 1_1
       rect:
         serializedVersion: 2
         x: 16
@@ -186,16 +148,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: cf44ce53d6ed08a10800000000000000
-      internalID: 1909770802642568444
+      spriteID: d592bc7e760b7c74ebdbbad876b7f4ef
+      internalID: 499889791
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: happy indicator animation-Sheet_2
+      name: happy indicator animation-Sheet 1_2
       rect:
         serializedVersion: 2
         x: 32
@@ -208,16 +170,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 6079bdfff20b44530800000000000000
-      internalID: 3838386502629037830
+      spriteID: af7faefbb804e5b4ab625acc7714b100
+      internalID: -2006687580
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: happy indicator animation-Sheet_3
+      name: happy indicator animation-Sheet 1_3
       rect:
         serializedVersion: 2
         x: 48
@@ -230,16 +192,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: f962b1e60b2912580800000000000000
-      internalID: -8853634105974511969
+      spriteID: 4022a9e517df5be4986ab10cad52fe55
+      internalID: -1586878158
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: happy indicator animation-Sheet_4
+      name: happy indicator animation-Sheet 1_4
       rect:
         serializedVersion: 2
         x: 64
@@ -252,10 +214,10 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 4b55ce89c3bb2be50800000000000000
-      internalID: 6823722254357779892
+      spriteID: 0e58103dbde3f1d489ffa8023330ff24
+      internalID: 1563226248
       vertices: []
       indices: 
       edges: []
@@ -264,7 +226,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: cd6d035d797d8db4da24f079169d9dc0
+    spriteID: a963157bbb938134bafa07b06f5e1985
     internalID: 0
     vertices: []
     indices: 
@@ -274,11 +236,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      happy indicator animation-Sheet_0: -1354357493732034528
-      happy indicator animation-Sheet_1: 1909770802642568444
-      happy indicator animation-Sheet_2: 3838386502629037830
-      happy indicator animation-Sheet_3: -8853634105974511969
-      happy indicator animation-Sheet_4: 6823722254357779892
+      happy indicator animation-Sheet 1_0: 6217876175240861641
+      happy indicator animation-Sheet 1_1: 499889791
+      happy indicator animation-Sheet 1_2: -2006687580
+      happy indicator animation-Sheet 1_3: -1586878158
+      happy indicator animation-Sheet 1_4: 1563226248
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

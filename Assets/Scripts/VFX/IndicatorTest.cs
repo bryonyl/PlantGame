@@ -17,7 +17,6 @@ public class IndicatorTest : MonoBehaviour
 
             // Finds the position to spawn the indicator at
             Vector3 indicatorPos = (transform.position + (new Vector3 (0f, 1f, 0f)));
-            //indicatorPos += GameObject.this.transform;
 
             // Spawns indicator
             VFXManager.CreateIndicator(indicatorPos);
