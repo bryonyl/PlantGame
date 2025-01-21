@@ -1,65 +1,50 @@
 using System.Collections;
-using Unity.VisualScripting;
-using UnityEditor.ShaderGraph.Internal;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlantGrowthManager : MonoBehaviour
 {
-    public static PlantGrowthManager s_plantGrowthManagerInstance;
-
-    GameObject[] plants;
     PlantData plantData;
-
-    int waterLevel = 30;
-    int plantGrowthStage = 1;
-
-    bool needsWater = false;
-    bool isDying = false;
-    bool canGrow = true;
+    GameObject[] m_plantsInSceneArr;
+    //List<GameObject> plantsInSceneList = new List<GameObject>();
+    List<PlantData> plantsInScenePlantDataList = new List<PlantData>();
 
     void Start()
     {
-        plants = GameObject.FindGameObjectsWithTag("Plant");
+        plantsInSceneList.Add(GameObject.FindGameObjectWithTag("Plant"));
 
-        for (int i = 0; i < plants.Length; i++)
+        for (int i = 0; i < plantsInSceneList.Count; i++)
         {
-            plantData = plants[i].GetComponent<PlantData>();
+            m_plantsInSceneArr = GameObject.FindGameObjectWithTag("Plant");
+            plantData = plantsInScene[i].GetComponent<PlantData>();
+            plantsInScenePlantData[i] = plantsInScene[i].GetComponent<PlantData>();
 
-            plantData.m_plantId = i;
+            Debug.Log($"Plant created with the values:\nPlant ID: {id}\nWater Level: {plantData.m_waterLevel}\nPlant Growth Stage: {plantData.m_growthStage}\nNeeds Water?: {plantData.m_needsWater}\nIs Dying?: {plantData.m_isDying}\nCan Grow?: {plantData.m_canGrow}");
 
-            waterLevel = plantData.m_waterLevel;
-            plantGrowthStage = plantData.m_growthStage;
-
-            needsWater = plantData.m_needsWater;
-            isDying = plantData.m_isDying;
-            canGrow = plantData.m_canGrow;
-
-            Debug.Log($"Plant created with the values:\nPlant ID: {plantData.m_plantId}\nWater Level: {waterLevel}\nPlant Growth Stage: {plantGrowthStage}\nNeeds Water?: {needsWater}\nIs Dying?: {isDying}\nCan Grow?: {canGrow}");
-
-            StartCoroutine(nameof(WaterLevelDecayTimer)); // Uses nameof to be type safe
-            StartCoroutine(nameof(PlantGrowthTimer));
+            StartCoroutine(WaterLevelDecayTimer(plantsInScenePlantData[id]));
+            StartCoroutine(PlantGrowthTimer(plantsInScenePlantData[id]));
         } 
     }
 
     // Plant Health Check
-    private bool PlantHealthCheck()
+    private bool PlantHealthCheck(PlantData data)
     {
-        if (waterLevel <= 0)
+        if (plantData.m_waterLevel <= 0)
         {
-            needsWater = true;
+            plantData.m_needsWater = true;
             // Change plant status indicator animation to needs watering
-            if (waterLevel < -10)
+            if (plantData.m_waterLevel < -10)
             {
-                isDying = true;
+                plantData.m_isDying = true;
             }
-            Debug.Log($"PLANT STATUS\nWater Level = {waterLevel}\nNeeds Water = {needsWater}\nIs Dying = {isDying}");
+            Debug.Log($"PLANT STATUS\nWater Level = {plantData.m_waterLevel}\nNeeds Water = {plantData.m_needsWater}\nIs Dying = {plantData.m_isDying}");
             return false; // Plant is dying and needs care
         }
-        else// if (waterLevel > 0)
+        else
         {
-            needsWater = false;
-            isDying = false;
-            Debug.Log($"PLANT STATUS\nWater Level = {waterLevel}\nNeeds Water = {needsWater}\nIs Dying = {isDying}");
+            plantData.m_needsWater = false;
+            plantData.m_isDying = false;
+            Debug.Log($"PLANT STATUS\nWater Level = {plantData.m_waterLevel}\nNeeds Water = {plantData.m_needsWater}\nIs Dying = {plantData.m_isDying}");
             return true; // Plant is healthy
         }
     }
@@ -70,44 +55,43 @@ public class PlantGrowthManager : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(30);
-            if (PlantHealthCheck() == true) // If plant health check is true, so the plant meets the conditions for growing
+            if (PlantHealthCheck(data) == true) // If plant health check is true, so the plant meets the conditions for growing
             {
                 //remove can grow?
                 data.m_canGrow = true;
-                canGrow = true;
-                Debug.Log($"canGrow = {canGrow}");
-                PlantGrows();
+                Debug.Log($"canGrow = {data.m_canGrow}");
+                PlantGrows(data);
             }
-            else if (PlantHealthCheck() == false) // If plant health check is false, so the plant does not meet the conditions for growing
+            else if (PlantHealthCheck(data) == false) // If plant health check is false, so the plant does not meet the conditions for growing
             {
-                canGrow = false;
-                Debug.Log($"canGrow = {canGrow}");
+                data.m_canGrow = false;
+                Debug.Log($"canGrow = {data.m_canGrow}");
             }
         }
     }
 
-    private void PlantGrows()
+    private void PlantGrows(PlantData data)
     {
-        canGrow = false; // Resets canGrow after plant as grown
+        plantData.m_canGrow = false; // Resets canGrow after plant as grown
         Debug.Log("Plant can grow!");
-        plantGrowthStage++;
+        plantData.m_growthStage++;
     }
 
     // Water Level Decay
-    private int WaterLevelDecay()
+    private int WaterLevelDecay(PlantData data)
     {
-        waterLevel--;
-        return waterLevel;
+        plantData.m_waterLevel--;
+        Debug.Log($"ID: {plantData.m_plantId} Water Level: {plantData.m_waterLevel}");
+        return plantData.m_waterLevel;
     }
 
-    private IEnumerator WaterLevelDecayTimer()
+    private IEnumerator WaterLevelDecayTimer(PlantData data)
     {
         while (true)
         {
             //maybe decrease time between loops
-            yield return new WaitForSeconds(5);
-            Debug.Log("Water level decaying...");
-            WaterLevelDecay();
+            yield return new WaitForSeconds(plantData.m_wateringTimer);
+            WaterLevelDecay(data);
         }
     }
 }

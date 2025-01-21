@@ -11,8 +11,13 @@ public class PlantData : MonoBehaviour
 
     // Care related variables
     [SerializeField] public int m_waterLevel = 0;
-    [SerializeField] public float m_growthTimer = 0;
     [SerializeField] public int m_growthStage = 0;
+
+    // Timers
+    [SerializeField] public float m_growthTimer = 0;
+    [SerializeField] public float m_wateringTimer = 0;
+
+    // Conditions
     public bool m_needsWater = false;
     public bool m_canGrow = false;
     public bool m_isDying = false;
