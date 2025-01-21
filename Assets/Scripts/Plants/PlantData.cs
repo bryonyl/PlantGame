@@ -4,22 +4,22 @@ public class PlantData : MonoBehaviour
 {
     // Identification variables
     private string m_plantName = "";
-    [SerializeField] private int m_plantId = 0;
+    [SerializeField] public int m_plantId = 0;
 
     // Money related variables
-    private float m_plantSellingValue = 5f;
+    private float m_plantSellingValue = 0f;
 
     // Care related variables
-    private int m_plantWateringRequirement = 1;
-    private float m_growthProgressionTimer = 10;
-    private bool m_plantGrowing = true;
-    private bool m_plantDying = false;
+    [SerializeField] public int m_waterLevel = 0;
+    [SerializeField] public float m_growthTimer = 0;
+    [SerializeField] public int m_growthStage = 0;
+    public bool m_needsWater = false;
+    public bool m_canGrow = false;
+    public bool m_isDying = false;
 
     enum PlantDatabase
     {
         Wheat = 1,
         Beetroot = 2
     }
-
-    private int m_plantGrowthStage = 1;
 }

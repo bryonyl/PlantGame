@@ -10,12 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 2369693984466821645}
   - component: {fileID: 8900969814660686321}
+  - component: {fileID: 1390635428386989275}
   - component: {fileID: 4769185842524496665}
   - component: {fileID: 6731382025886186467}
   - component: {fileID: 8260152579632037204}
   m_Layer: 0
   m_Name: Plant
-  m_TagString: Untagged
+  m_TagString: Plant
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48,6 +49,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ad5750bb25c4da46ac47fb4011da0e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1390635428386989275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 890731581663757891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 855b878a04c6c754aad0a57363b4d55a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_plantId: 0
 --- !u!212 &4769185842524496665
 SpriteRenderer:
   m_ObjectHideFlags: 0
