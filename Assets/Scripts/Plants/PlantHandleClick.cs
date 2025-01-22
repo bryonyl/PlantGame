@@ -30,5 +30,6 @@ public class PlantHandleClick : MonoBehaviour
 
         // Plant is watered when clicked
         OnPlantWatered?.Invoke(m_thisPlantData);
+        Debug.Log("OnPlantWatered invoked");
     }
 }

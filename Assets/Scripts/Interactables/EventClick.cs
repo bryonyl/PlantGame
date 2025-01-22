@@ -4,6 +4,7 @@ using UnityEngine.Events;
 
 public class EventClick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
+    [SerializeField] private GameObject thisGameObject;
     // Object clicked event
     public delegate void ObjectClicked(GameObject clickedObject);
     public static event ObjectClicked OnObjectClicked;
@@ -28,17 +29,18 @@ public class EventClick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
     public void OnPointerClick(PointerEventData eventData)
     {
         Debug.Log("clicked " + gameObject.name);
-        OnObjectClicked?.Invoke(this.gameObject);
+        OnObjectClicked?.Invoke(thisGameObject);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
         Debug.Log("entered " + gameObject.name);
-        OnObjectEntered?.Invoke(this.gameObject);
+        OnObjectEntered?.Invoke(thisGameObject);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         Debug.Log("exited " + gameObject.name);
+        OnObjectExited?.Invoke(thisGameObject);
     }
 }

@@ -943,6 +943,11 @@ Transform:
   - {fileID: 1818287156}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &528077089 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5665892625785497146, guid: f9bbbb4aa341c5545878e3f1fd4ce12c, type: 3}
+  m_PrefabInstance: {fileID: 3123385508883874552}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &576089015
 GameObject:
   m_ObjectHideFlags: 0
@@ -2475,6 +2480,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7991964369084910385, guid: 7d455574a0185164c9e1511ddb208edd, type: 3}
+      propertyPath: thisGameObject
+      value: 
+      objectReference: {fileID: 1940275889}
     - target: {fileID: 8900969814660686321, guid: 7d455574a0185164c9e1511ddb208edd, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -80444,7 +80453,7 @@ MonoBehaviour:
   m_LightType: 4
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.3882353, g: 0.3882353, b: 0.3882353, a: 1}
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
@@ -80650,6 +80659,11 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
+--- !u!1 &1940275889 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 890731581663757891, guid: 7d455574a0185164c9e1511ddb208edd, type: 3}
+  m_PrefabInstance: {fileID: 657681087}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2000239410
 GameObject:
   m_ObjectHideFlags: 0
@@ -80696,6 +80710,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2092386299 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 890731581663757891, guid: 7d455574a0185164c9e1511ddb208edd, type: 3}
+  m_PrefabInstance: {fileID: 6134424238677598302}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2111262508
 GameObject:
   m_ObjectHideFlags: 0
@@ -80953,6 +80972,18 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 7108396254699876919, guid: f9bbbb4aa341c5545878e3f1fd4ce12c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7108396254699876919, guid: f9bbbb4aa341c5545878e3f1fd4ce12c, type: 3}
+      propertyPath: thisGameObject
+      value: 
+      objectReference: {fileID: 528077089}
+    - target: {fileID: 7718111526304223083, guid: f9bbbb4aa341c5545878e3f1fd4ce12c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7718111526304223083, guid: f9bbbb4aa341c5545878e3f1fd4ce12c, type: 3}
       propertyPath: m_moneySystem
       value: 
@@ -81042,6 +81073,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7991964369084910385, guid: 7d455574a0185164c9e1511ddb208edd, type: 3}
+      propertyPath: thisGameObject
+      value: 
+      objectReference: {fileID: 2092386299}
     - target: {fileID: 8900969814660686321, guid: 7d455574a0185164c9e1511ddb208edd, type: 3}
       propertyPath: m_Enabled
       value: 0
