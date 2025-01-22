@@ -1,10 +1,11 @@
+using System;
 using UnityEngine;
 
 public class PlantData : MonoBehaviour
 {
     // Identification variables
     private string m_plantName = "";
-    [SerializeField] public int m_plantId = 0;
+    public Guid m_uniquePlantId { get; } = Guid.NewGuid(); // Public property that holds a unique identifier for each instance of this class. Can only be read, not set anywhere else
 
     // Money related variables
     private float m_plantSellingValue = 0f;

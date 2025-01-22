@@ -44,5 +44,17 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Decorations
+    uniqueID: 3381031973
+    locked: 0
+  - name: Effects
+    uniqueID: 3674604993
+    locked: 0
+  - name: NoEffects
+    uniqueID: 2911344991
+    locked: 0
+  - name: UI
+    uniqueID: 4286604787
+    locked: 0
   m_RenderingLayers:
   - Default
