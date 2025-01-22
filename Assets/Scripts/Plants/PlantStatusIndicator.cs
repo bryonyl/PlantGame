@@ -1,34 +1,61 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class PlantStatusIndicator : MonoBehaviour
 {
-    public static event Action OnPlantHappy;
-    public static event Action OnPlantDying;
-    public static event Action OnPlantNeedsWater;
-    public static event Action OnPlantIsDead;
+    private Animator m_plantStatusIndicatorAnimator;
 
-    private bool PlantIsHappy()
+    private void Start()
     {
-        // Code determining if the plant is happy
-        return true;
+        m_plantStatusIndicatorAnimator = GetComponent<Animator>();
+    }
+    private void OnEnable()
+    {
+        PlantGrowthManager.OnPlantNeedsWater += PlantNeedsWaterIndicator;
+        PlantGrowthManager.OnPlantDying += PlantDyingIndicator;
+        PlantGrowthManager.OnPlantHappy += PlantHappyIndicator;
+    }
+    private void OnDisable()
+    {
+        PlantGrowthManager.OnPlantNeedsWater -= PlantNeedsWaterIndicator;
+        PlantGrowthManager.OnPlantDying -= PlantDyingIndicator;
+        PlantGrowthManager.OnPlantHappy -= PlantHappyIndicator;
+    }
+    private IEnumerator IndicatorSpawner()
+    {
+        // Waits for a moment
+        yield return new WaitForSeconds(0.1f);
+
+        // Finds the position to spawn the indicator at
+        Vector3 indicatorPos = (transform.position + (new Vector3(0f, 1f, 0f)));
+
+        // Spawns indicator via VFXManager.cs
+        VFXManager.CreateIndicator(indicatorPos);
     }
 
-    private bool PlantIsDying()
+    private void PlantNeedsWaterIndicator()
     {
-        // Code determining if the plant is dying
-        return true;
-    }
+        m_plantStatusIndicatorAnimator.SetBool("needsWater", true);
+        m_plantStatusIndicatorAnimator.SetBool("isDying", false);
+        m_plantStatusIndicatorAnimator.SetBool("isHappy", false);
 
-    private bool PlantNeedsWater()
-    {
-        // Code determining if the plant is dying
-        return true;
+        IndicatorSpawner();
     }
-
-    private bool PlantIsDead()
+    private void PlantDyingIndicator()
     {
-        // Code determining if the plant is dead
-        return true;
+        m_plantStatusIndicatorAnimator.SetBool("isDying", true);
+        m_plantStatusIndicatorAnimator.SetBool("needsWater", true);
+        m_plantStatusIndicatorAnimator.SetBool("isHappy", false);
+
+        IndicatorSpawner();
+    }
+    private void PlantHappyIndicator()
+    {
+        m_plantStatusIndicatorAnimator.SetBool("isHappy", true);
+        m_plantStatusIndicatorAnimator.SetBool("needsWater", false);
+        m_plantStatusIndicatorAnimator.SetBool("isDying", false);
+
+        IndicatorSpawner();
     }
 }

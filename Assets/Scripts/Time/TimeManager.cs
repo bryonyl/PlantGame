@@ -12,7 +12,7 @@ public class TimeManager : MonoBehaviour
     public static int m_hour { get; private set; }
     public static int m_day { get; private set; }
 
-    private float m_minuteToRealTime = 0.25f; // 0.25 seconds in real time represents 1 minute in game
+    private float m_minuteToRealTime = 0.5f; // 0.5 seconds in real time represents 1 minute in game
     private float m_timer; // Localised timer
 
     [SerializeField] public static int m_dayStartTime = 8; // 8AM

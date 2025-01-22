@@ -19,7 +19,6 @@ public class ShippingBox : MonoBehaviour
 
     private void HandleClick(GameObject clickedObject)
     {
-        Debug.Log("Shipping box clicked. Adding money.");
         m_moneySystem.AddMoney(15);
     }
 }

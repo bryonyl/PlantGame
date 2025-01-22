@@ -4,8 +4,16 @@ using UnityEngine.Events;
 
 public class EventClick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
+    // Object clicked event
     public delegate void ObjectClicked(GameObject clickedObject);
     public static event ObjectClicked OnObjectClicked;
+
+    // Object hovered over (entered/exited) events
+    public delegate void ObjectEntered(GameObject enteredObject);
+    public static event ObjectEntered OnObjectEntered;
+
+    public delegate void ObjectExited(GameObject exitedObject);
+    public static event ObjectExited OnObjectExited;
 
     public void OnPointerDown(PointerEventData eventData)
     {
@@ -20,15 +28,13 @@ public class EventClick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
     public void OnPointerClick(PointerEventData eventData)
     {
         Debug.Log("clicked " + gameObject.name);
-        Debug.Log("This game object's tag is " + gameObject.tag);
-
         OnObjectClicked?.Invoke(this.gameObject);
-        Debug.Log("OnObjectClicked invoked");
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
         Debug.Log("entered " + gameObject.name);
+        OnObjectEntered?.Invoke(this.gameObject);
     }
 
     public void OnPointerExit(PointerEventData eventData)
