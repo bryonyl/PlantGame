@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4769185842524496665}
   - component: {fileID: 6731382025886186467}
   - component: {fileID: 8260152579632037204}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Plant
   m_TagString: Plant
   m_Icon: {fileID: 0}
@@ -72,6 +72,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07211146c8b0f2648a78530bea3647e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  thisGameObject: {fileID: 0}
 --- !u!114 &6094060328971260212
 MonoBehaviour:
   m_ObjectHideFlags: 0

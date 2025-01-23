@@ -25,6 +25,8 @@ public class PlantHandleClick : MonoBehaviour
 
     private void HandleClick(GameObject clickedObject)
     {
+        if (clickedObject != gameObject) return;
+
         // Prints plant debug info
         m_thisPlantData.QueryPlant();
 

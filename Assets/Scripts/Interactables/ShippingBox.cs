@@ -19,6 +19,8 @@ public class ShippingBox : MonoBehaviour
 
     private void HandleClick(GameObject clickedObject)
     {
+        if (clickedObject != gameObject) return;
+
         m_moneySystem.AddMoney(15);
     }
 }
