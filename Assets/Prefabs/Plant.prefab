@@ -52,10 +52,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_waterLevel: 0
+  m_growthPoints: 0
   m_growthStage: 0
-  m_growthTimer: 0
+  m_growthCheckTimer: 0
+  m_growthPointTimer: 0
   m_wateringDecayTimer: 0
-  m_timePassedSinceWatered: 0
+  m_requiredGrowthPoints: 25
   m_needsWater: 0
   m_canGrow: 0
   m_isDying: 0

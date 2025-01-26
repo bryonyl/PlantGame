@@ -6,57 +6,147 @@ using UnityEngine;
 
 public class PlantGrowthManager : MonoBehaviour
 {
+    // Events
     public static event Action OnPlantNeedsWater;
     public static event Action OnPlantDying;
     public static event Action OnPlantIsDead;
     public static event Action OnPlantHappy;
 
-    PlantData plantData;
-    List<PlantData> plantsInScenePlantDataList = new List<PlantData>();
+    // Script references
+    PlantData m_plantData;
+    ChangePlantSprite m_changePlantSprite;
 
+    // An expandable list of all plants' plantData in the scene
+    List<PlantData> plantDatasInSceneList = new List<PlantData>();
+    List<ChangePlantSprite> changePlantSpritesInSceneList = new List<ChangePlantSprite>();
+
+    bool m_plantGrowthPointsTimerActive = true;
+
+    // Subscribing to the OnPlantWatered event so that this script can react to the plant being watered
     private void OnEnable()
     {
         PlantHandleClick.OnPlantWatered += WaterPlant;
     }
 
+    // Unsubscribing from OnPlantWatered when PlantGrowthManager GameObject is disabled
     private void OnDisable()
     {
         PlantHandleClick.OnPlantWatered -= WaterPlant;
     }
 
-    void Start() // Identifies number of plants in scene and grabs PlantData component from each of them
+    void Start() 
     {
+        // Identifies number of plants in scene
         GameObject[] plantsInSceneArr = GameObject.FindGameObjectsWithTag("Plant");
 
+        // For all plants in scene, grab PlantData and ChangePlantSprite component from each of them
         for (int i = 0; i < plantsInSceneArr.Count(); i++)
         {
-            plantData = plantsInSceneArr[i].GetComponent<PlantData>();
-            plantsInScenePlantDataList.Add(plantData);           
+            // Grab PlantData and ChangePlantSprite component from each individual plant
+            m_plantData = plantsInSceneArr[i].GetComponent<PlantData>();
+            m_changePlantSprite = plantsInSceneArr[i].GetComponent<ChangePlantSprite>();
 
-            Debug.Log($"Plant created with the values:\nPlant ID: {plantsInScenePlantDataList[i].m_uniquePlantId}\nWater Level: {plantsInScenePlantDataList[i].m_waterLevel}\nPlant Growth Stage: {plantsInScenePlantDataList[i].m_growthStage}\nNeeds Water?: {plantsInScenePlantDataList[i].m_needsWater}\nIs Dying?: {plantsInScenePlantDataList[i].m_isDying}\nCan Grow?: {plantsInScenePlantDataList[i].m_canGrow}");
+            // Add the individual components to two lists
+            plantDatasInSceneList.Add(m_plantData);
+            changePlantSpritesInSceneList.Add(m_changePlantSprite);
+
+            // Properties of plant are printed to console
+            Debug.Log($"Plant created with the values:\nPlant ID: {plantDatasInSceneList[i].m_uniquePlantId}\nWater Level: {plantDatasInSceneList[i].m_waterLevel}\nPlant Growth Stage: {plantDatasInSceneList[i].m_growthStage}\nNeeds Water?: {plantDatasInSceneList[i].m_needsWater}\nIs Dying?: {plantDatasInSceneList[i].m_isDying}\nCan Grow?: {plantDatasInSceneList[i].m_canGrow}");
         }
-
-        for (int j = 0; j < plantsInScenePlantDataList.Count; j++) // Coroutines for individual plants are started
+        
+        // For all plants in scene, start each plants' coroutines
+        for (int j = 0; j < plantDatasInSceneList.Count; j++)
         {
-            Debug.Log($"Starting coroutines for {plantsInScenePlantDataList[j].m_uniquePlantId}");
-            StartCoroutine(WaterLevelDecayTimer(plantsInScenePlantDataList[j]));
-            StartCoroutine(PlantGrowthTimer(plantsInScenePlantDataList[j]));
+            Debug.Log($"Starting coroutines for {plantDatasInSceneList[j].m_uniquePlantId}");
+            
+            // Checking if lists are within bounds of index (j)
+            if (j < plantDatasInSceneList.Count && j < changePlantSpritesInSceneList.Count)
+            {
+                // Checking if an individual plants' script components are not null, so that coroutines can run
+                if (plantDatasInSceneList[j] != null && changePlantSpritesInSceneList[j] != null)
+                {
+                    // Water level of individual plant starts decaying
+                    StartCoroutine(WaterLevelDecayTimer(plantDatasInSceneList[j]));
+
+                    // Individual plant's growth starts to be monitored
+                    StartCoroutine(PlantGrowthTimer(plantDatasInSceneList[j], changePlantSpritesInSceneList[j]));
+
+                    // Growth points start being added to specific plant
+                    StartCoroutine(AddPlantGrowthPointsTimer(plantDatasInSceneList[j]));
+                }
+                else
+                {
+                    Debug.LogError("One of the script components is null!");
+                }
+            }
+            else
+            {
+                Debug.LogError("Index out of bounds!");
+            }
         }
     }
 
-    // Coroutines
-    private IEnumerator PlantGrowthTimer(PlantData data) // Checks if the conditions have been met for the plant to be able to grow
+    #region Plant Health Check Method
+
+    // Checks if the plant needs water and whether it is dying
+    private bool PlantHealthCheck(PlantData data)
+    {
+        if (data.m_waterLevel <= 0)
+        {
+            data.m_needsWater = true;
+
+            // Event is invoked so that needs water status indicator can react and display itself
+            OnPlantNeedsWater?.Invoke();
+
+            // Plant is also set to dying if water level is too far into the negatives
+            if (data.m_waterLevel < -10)
+            {
+                data.m_isDying = true;
+                OnPlantDying?.Invoke();
+            }
+
+            return false; // Plant is dying and needs care
+        }
+        else
+        {
+            data.m_needsWater = false;
+            data.m_isDying = false;
+
+            // Event is invoked so that happy status indicator can react and display itself
+            OnPlantHappy?.Invoke();
+
+            return true; // Plant is healthy
+        }
+    }
+
+    #endregion
+
+    #region Plant Growth Methods
+
+    // Plant grows, so its m_growthStage increments by 1 and its sprite changes
+
+    // Checks if the conditions have been met for the plant to be able to grow
+    private IEnumerator PlantGrowthTimer(PlantData data, ChangePlantSprite sprite)
     {
         while (true)
         {
-            yield return new WaitForSeconds(data.m_growthTimer);
-            if (PlantHealthCheck(data) == true) // If plant health check is true, so the plant meets the conditions for growing
+            // Starts specific plant's growth timer
+            yield return new WaitForSeconds(data.m_growthCheckTimer);
+
+            // If plant health check is true AND the plant has the required growth points, so the plant meets the conditions for growing
+            if (PlantHealthCheck(data) == true && data.m_growthPoints >= data.m_requiredGrowthPoints) 
             {
                 data.m_canGrow = true;
                 Debug.Log($"canGrow = {data.m_canGrow}");
-                PlantGrows(data);
+
+                // Resets growth points
+                data.m_requiredGrowthPoints = 0;
+
+                // This method actually allows the plant to grow
+                PlantGrows(data, sprite);
             }
-            else if (PlantHealthCheck(data) == false) // If plant health check is false, so the plant does not meet the conditions for growing
+            // If plant health check is false, so the plant does not meet the conditions for growing
+            else if (PlantHealthCheck(data) == false) 
             {
                 data.m_canGrow = false;
                 Debug.Log($"canGrow = {data.m_canGrow}");
@@ -64,61 +154,69 @@ public class PlantGrowthManager : MonoBehaviour
         }
     }
 
-    private IEnumerator WaterLevelDecayTimer(PlantData data)
+    private IEnumerator AddPlantGrowthPointsTimer(PlantData data)
     {
-        while (true)
+        while (m_plantGrowthPointsTimerActive == true)
         {
-            //maybe decrease time between loops
-            yield return new WaitForSeconds(data.m_wateringDecayTimer);
-            WaterLevelDecay(data);
-        }
-    }
-
-    private IEnumerator TimePassedSinceWatered(PlantData data)
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(data.m_timePassedSinceWatered++);
-            if (data.m_recentlyWatered == true)
+            // If plant does not need water
+            if (data.m_needsWater != true)
             {
-                data.m_recentlyWatered = false;
+                // Allow growth points to be added to plant's growth points
+                yield return new WaitForSeconds(data.m_growthPointTimer);
+                AddPlantGrowthPoints(data);
+            }
+            else
+            {
+                // Timer stops
+                m_plantGrowthPointsTimerActive = false;
                 yield break;
             }
         }
     }
 
-    // Checks
-    private bool PlantHealthCheck(PlantData data)
+    private void PlantGrows(PlantData data, ChangePlantSprite sprite)
     {
-        if (data.m_waterLevel <= 0)
+        // Resets canGrow after plant has grown
+        data.m_canGrow = false;
+
+        // If plant isn't fully grown, then add a growth stage and change the sprite
+        if (data.m_growthStage <= 3)
         {
-            data.m_needsWater = true;
-            OnPlantNeedsWater?.Invoke();
-            if (data.m_waterLevel < -10)
-            {
-                data.m_isDying = true;
-                OnPlantDying?.Invoke();
-            }
-            Debug.Log($"PLANT STATUS\nWater Level = {data.m_waterLevel}\nNeeds Water = {data.m_needsWater}\nIs Dying = {data.m_isDying}");
-            return false; // Plant is dying and needs care
+            data.m_growthStage++;
+            sprite.ChangeSprite(data.m_growthStage);
         }
+        // If this criteria isn't met, do nothing
         else
         {
-            data.m_needsWater = false;
-            data.m_isDying = false;
-            OnPlantHappy?.Invoke();
-            Debug.Log($"PLANT STATUS\nWater Level = {data.m_waterLevel}\nNeeds Water = {data.m_needsWater}\nIs Dying = {data.m_isDying}");
-            return true; // Plant is healthy
+
         }
     }
 
-    // Consequences
-    private void PlantGrows(PlantData data)
+    // Adds plant growth point to specific plant
+    private void AddPlantGrowthPoints(PlantData data)
     {
-        data.m_canGrow = false; // Resets canGrow after plant has grown
-        data.m_growthStage++;
+        Debug.Log($"New growth points: {data.m_growthPoints}");
+        data.m_growthPoints++;
     }
 
+    #endregion
+
+    #region Water Level Decay Methods
+
+    // Decays specific plant's water level over time
+    private IEnumerator WaterLevelDecayTimer(PlantData data)
+    {
+        while (true)
+        {
+            // Starts specific plant's water decay timer
+            yield return new WaitForSeconds(data.m_wateringDecayTimer);
+
+            // This method actually decays the water level
+            WaterLevelDecay(data);
+        }
+    }
+
+    // Actually decays plant's water level
     private int WaterLevelDecay(PlantData data)
     {
         data.m_waterLevel--;
@@ -126,10 +224,24 @@ public class PlantGrowthManager : MonoBehaviour
         return data.m_waterLevel;
     }
 
+    #endregion
+
+    #region Player Waters Plant Response Method
+
+    // Waters plant (the player actually physically watering the plant is handled in the plant prefab's EventClick script)
     private void WaterPlant(PlantData data)
     {
-        data.m_recentlyWatered = true;
         data.m_waterLevel = data.m_waterLevel + 50;
         Debug.Log($"Plant watered! New water level: {data.m_waterLevel}");
+
+        if (m_plantGrowthPointsTimerActive == false)
+        {
+            m_plantGrowthPointsTimerActive = true;
+            PlantHealthCheck(data);
+            StartCoroutine(AddPlantGrowthPointsTimer(data));
+            Debug.Log("Restarted AddPlantGrowthPointsTimer coroutine");
+        }
     }
+
+    #endregion
 }
