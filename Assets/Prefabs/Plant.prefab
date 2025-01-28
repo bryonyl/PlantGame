@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 2960203917471184783}
   - component: {fileID: 5136688382920307349}
   - component: {fileID: 4769185842524496665}
-  - component: {fileID: 6731382025886186467}
   - component: {fileID: 8260152579632037204}
   m_Layer: 3
   m_Name: Plant
@@ -172,28 +171,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &6731382025886186467
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 890731581663757891}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 534a39ef9514e3046b4820c1ce1e6034, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!61 &8260152579632037204
 BoxCollider2D:
   m_ObjectHideFlags: 0

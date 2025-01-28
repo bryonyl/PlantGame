@@ -9,6 +9,7 @@ public class PlantStatusIndicator : MonoBehaviour
     private void Start()
     {
         m_plantStatusIndicatorAnimator = gameObject.GetComponentInChildren<Animator>();
+        Debug.Log(gameObject.transform.childCount);
     }
     private void OnEnable()
     {
@@ -41,7 +42,7 @@ public class PlantStatusIndicator : MonoBehaviour
         m_plantStatusIndicatorAnimator.SetBool("isDying", false);
         m_plantStatusIndicatorAnimator.SetBool("isHappy", false);
 
-        IndicatorSpawner();
+        //IndicatorSpawner();
     }
     private void PlantDyingIndicator()
     {
@@ -49,7 +50,7 @@ public class PlantStatusIndicator : MonoBehaviour
         m_plantStatusIndicatorAnimator.SetBool("needsWater", true);
         m_plantStatusIndicatorAnimator.SetBool("isHappy", false);
 
-        IndicatorSpawner();
+        //IndicatorSpawner();
     }
     private void PlantHappyIndicator()
     {
@@ -57,6 +58,6 @@ public class PlantStatusIndicator : MonoBehaviour
         m_plantStatusIndicatorAnimator.SetBool("needsWater", false);
         m_plantStatusIndicatorAnimator.SetBool("isDying", false);
 
-        IndicatorSpawner();
+        //IndicatorSpawner();
     }
 }
