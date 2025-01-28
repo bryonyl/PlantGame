@@ -80169,9 +80169,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1618778962}
   - component: {fileID: 1618778967}
-  - component: {fileID: 1618778969}
-  - component: {fileID: 1618778968}
-  - component: {fileID: 1618778973}
   - component: {fileID: 1618778966}
   - component: {fileID: 1618778965}
   - component: {fileID: 1618778964}
@@ -80374,49 +80371,6 @@ MonoBehaviour:
   m_lastDirection: {x: 0, y: 0}
   m_playerSpeed: 200
   m_playerMaxSpeed: 1000
---- !u!114 &1618778968
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1618778961}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85b91a167e4aaa746883d16e4bf49278, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_playerMaxHealth: 100
-  m_playerCurrentHealth: 100
---- !u!114 &1618778969
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1618778961}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b02fcaa63e5a2a44f97686786ea98378, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TopDownCharacterController: {fileID: 0}
-  m_projectilePrefab: {fileID: 2859995017432351464, guid: 7825d6f5445df1f4b8397b58ac09c36e, type: 3}
-  m_firePoint: {fileID: 102537973}
-  m_projectileSpeed: 10
-  m_fireRate: 0.25
---- !u!114 &1618778973
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1618778961}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4341819d4e719c447a599fdfdf5e6770, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1761824723
 GameObject:
   m_ObjectHideFlags: 0
@@ -81090,14 +81044,6 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1390635428386989275, guid: 7d455574a0185164c9e1511ddb208edd, type: 3}
-      propertyPath: m_waterLevel
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1390635428386989275, guid: 7d455574a0185164c9e1511ddb208edd, type: 3}
-      propertyPath: m_growthStage
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1390635428386989275, guid: 7d455574a0185164c9e1511ddb208edd, type: 3}
       propertyPath: m_growthTimer
       value: 10
       objectReference: {fileID: 0}
@@ -81105,21 +81051,9 @@ PrefabInstance:
       propertyPath: m_wateringTimer
       value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 1390635428386989275, guid: 7d455574a0185164c9e1511ddb208edd, type: 3}
-      propertyPath: m_growthCheckTimer
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1390635428386989275, guid: 7d455574a0185164c9e1511ddb208edd, type: 3}
-      propertyPath: m_growthPointTimer
-      value: 2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1390635428386989275, guid: 7d455574a0185164c9e1511ddb208edd, type: 3}
-      propertyPath: m_wateringDecayTimer
-      value: 2.5
-      objectReference: {fileID: 0}
     - target: {fileID: 2369693984466821645, guid: 7d455574a0185164c9e1511ddb208edd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -17.58
+      value: -18.51
       objectReference: {fileID: 0}
     - target: {fileID: 2369693984466821645, guid: 7d455574a0185164c9e1511ddb208edd, type: 3}
       propertyPath: m_LocalPosition.y

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7991964369084910385}
   - component: {fileID: 6094060328971260212}
   - component: {fileID: 2960203917471184783}
+  - component: {fileID: 5136688382920307349}
   - component: {fileID: 4769185842524496665}
   - component: {fileID: 6731382025886186467}
   - component: {fileID: 8260152579632037204}
@@ -51,13 +52,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 855b878a04c6c754aad0a57363b4d55a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_waterLevel: 0
+  m_waterLevel: 10
   m_growthPoints: 0
   m_growthStage: 0
-  m_growthCheckTimer: 0
-  m_growthPointTimer: 0
-  m_wateringDecayTimer: 0
-  m_requiredGrowthPoints: 25
+  m_growthCheckTimer: 2.4
+  m_growthPointTimer: 2.5
+  m_wateringDecayTimer: 2.5
+  m_requiredGrowthPoints: 10
   m_needsWater: 0
   m_canGrow: 0
   m_isDying: 0
@@ -104,6 +105,18 @@ MonoBehaviour:
   m_plantGrowthStage2: {fileID: 934722249265953344, guid: 25f19729177374d47a4136b7b408b63d, type: 3}
   m_plantGrowthStage3: {fileID: 6330426110891526577, guid: 25f19729177374d47a4136b7b408b63d, type: 3}
   m_plantGrowthStage4: {fileID: -8046388129001153825, guid: 25f19729177374d47a4136b7b408b63d, type: 3}
+--- !u!114 &5136688382920307349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 890731581663757891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81f26f65d2ed04146916ddb70f134bdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &4769185842524496665
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -169,7 +182,7 @@ Animator:
   m_GameObject: {fileID: 890731581663757891}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 86915f4607dcc5240a50f52fad3e08b3, type: 2}
+  m_Controller: {fileID: 9100000, guid: 534a39ef9514e3046b4820c1ce1e6034, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -254,7 +267,7 @@ Transform:
   m_GameObject: {fileID: 7346490822554934270}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.500001, y: 1.73, z: 0}
+  m_LocalPosition: {x: 0, y: 0.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

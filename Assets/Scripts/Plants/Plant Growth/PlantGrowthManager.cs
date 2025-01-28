@@ -140,7 +140,7 @@ public class PlantGrowthManager : MonoBehaviour
                 Debug.Log($"canGrow = {data.m_canGrow}");
 
                 // Resets growth points
-                data.m_requiredGrowthPoints = 0;
+                data.m_growthPoints = 0;
 
                 // This method actually allows the plant to grow
                 PlantGrows(data, sprite);
@@ -184,6 +184,7 @@ public class PlantGrowthManager : MonoBehaviour
         {
             data.m_growthStage++;
             sprite.ChangeSprite(data.m_growthStage);
+            data.m_growthPoints = 0;
         }
         // If this criteria isn't met, do nothing
         else

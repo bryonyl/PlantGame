@@ -12,7 +12,6 @@ public class VFXManager : MonoBehaviour
 
     private void Awake()
     {
-        Debug.Log(s_instance);
         // Sets the instance to this if it's null
         if (s_instance == null)
             s_instance = this;

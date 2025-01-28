@@ -8,7 +8,7 @@ public class PlantStatusIndicator : MonoBehaviour
 
     private void Start()
     {
-        m_plantStatusIndicatorAnimator = GetComponent<Animator>();
+        m_plantStatusIndicatorAnimator = gameObject.GetComponentInChildren<Animator>();
     }
     private void OnEnable()
     {
@@ -28,7 +28,8 @@ public class PlantStatusIndicator : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
 
         // Finds the position to spawn the indicator at
-        Vector3 indicatorPos = (transform.position + (new Vector3(0f, 1f, 0f)));
+        Vector3 indicatorPos = (transform.position + (new Vector3(0f, 1000f, 0f)));
+        Debug.Log(indicatorPos);
 
         // Spawns indicator via VFXManager.cs
         VFXManager.CreateIndicator(indicatorPos);
