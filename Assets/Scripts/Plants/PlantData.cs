@@ -8,7 +8,6 @@ public class PlantData : MonoBehaviour
     public Guid m_uniquePlantId { get; } = Guid.NewGuid(); // Public property that holds a unique identifier for each instance of this class. Can only be read, not set anywhere else
 
     [Header("Selling")]
-    // Money related variables
     private float m_plantSellingValue = 0f;
 
     [Header("Plant Health")]
@@ -26,7 +25,6 @@ public class PlantData : MonoBehaviour
     public bool m_needsWater = false;
     public bool m_canGrow = false;
     public bool m_isDying = false;
-    public bool m_recentlyWatered = false;
 
     enum PlantDatabase
     {
@@ -37,6 +35,6 @@ public class PlantData : MonoBehaviour
     public void QueryPlant()
     {
         Debug.Log($"PLANT DEBUG\n\nPlant ID: {m_uniquePlantId}\n\nWater Level: {m_waterLevel}\nGrowth Stage: {m_growthStage}\n\nGrowth Timer: {m_growthCheckTimer}\nWatering Decay Timer: {m_wateringDecayTimer}" +
-            $"\n\nNeeds Water?: {m_needsWater}\nCan Grow?: {m_canGrow}\nIs Dying?: {m_isDying}\nRecently Watered?: {m_recentlyWatered}");
+            $"\n\nNeeds Water?: {m_needsWater}\nCan Grow?: {m_canGrow}\nIs Dying?: {m_isDying}");
     }
 }

@@ -20,6 +20,7 @@ public class PlantGrowthManager : MonoBehaviour
     List<PlantData> plantDatasInSceneList = new List<PlantData>();
     List<ChangePlantSprite> changePlantSpritesInSceneList = new List<ChangePlantSprite>();
 
+    // Conditions
     bool m_plantGrowthPointsTimerActive = true;
 
     // Subscribing to the OnPlantWatered event so that this script can react to the plant being watered
