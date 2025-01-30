@@ -61,7 +61,6 @@ MonoBehaviour:
   m_needsWater: 0
   m_canGrow: 0
   m_isDying: 0
-  m_recentlyWatered: 0
 --- !u!114 &7991964369084910385
 MonoBehaviour:
   m_ObjectHideFlags: 0

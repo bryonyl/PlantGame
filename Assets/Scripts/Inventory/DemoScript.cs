@@ -2,15 +2,45 @@ using UnityEngine;
 
 public class DemoScript : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public InventoryManager inventoryManager;
+    public Item[] itemsToPickup;
+
+    public void PickupItem(int id)
     {
-        
+        bool result = inventoryManager.AddItem(itemsToPickup[id]);
+        if (result == true)
+        {
+            Debug.Log("Item added");
+        }
+        else
+        {
+            Debug.Log("Item not added");
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void GetSelectedItem()
     {
-        
+        Item receivedItem = inventoryManager.GetSelectedItem(false);
+        if (receivedItem != null)
+        {
+            Debug.Log($"Received item: {receivedItem}");
+        }
+        else
+        {
+            Debug.Log("No item received");
+        }
+    }
+
+    public void UseSelectedItem()
+    {
+        Item receivedItem = inventoryManager.GetSelectedItem(true);
+        if (receivedItem != null)
+        {
+            Debug.Log($"Used item: {receivedItem}");
+        }
+        else
+        {
+            Debug.Log("No item used");
+        }
     }
 }
