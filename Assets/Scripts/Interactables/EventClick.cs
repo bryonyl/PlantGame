@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Events;
 
-public class EventClick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
+public class EventClick : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private GameObject thisGameObject;
     // Object clicked event
@@ -16,15 +16,7 @@ public class EventClick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
     public delegate void ObjectExited(GameObject exitedObject);
     public static event ObjectExited OnObjectExited;
 
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        Debug.Log("pointer down " + gameObject.name);
-    }
-
-    public void OnPointerUp(PointerEventData eventData)
-    {
-        Debug.Log("pointer up " + gameObject.name);
-    }
+    // These functions are overwritten in individual game objects' own EventClick scripts
 
     public void OnPointerClick(PointerEventData eventData)
     {

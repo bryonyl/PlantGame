@@ -2,13 +2,32 @@ using UnityEngine;
 
 public class PlayerActions : MonoBehaviour
 {
+    [Header("Script References")]
+    public PlantGrowthManager plantGrowthManager;
     public InventoryManager inventoryManager;
+    
+    [Header("Items Able to be Picked Up")]
     public Item[] itemsToPickup;
 
+    [Header("Actions Allowed")]
+    [HideInInspector] public bool wateringCanUsageAllowed;
+    [HideInInspector] public bool hoeUsageAllowed;
+    [HideInInspector] public bool plantSellingAllowed;
+    
+    private void OnEnable()
+    {
+        PlantHandleClick.OnPlantWatered += PlantIsWatered;
+    }
+    
+    private void OnDisable()
+    {
+        PlantHandleClick.OnPlantWatered -= PlantIsWatered;
+    }
+
     /// <summary>
-    /// Picks up an item via its ID via the AddItem method in InventoryManager.cs.
+    /// Picks up a specified item via the AddItem method in InventoryManager.cs.
     /// </summary>
-    /// <param name="id">The ID of the item to pick up.</param>
+    /// <param name="id">The ID of the item to pick up. All IDs are stored in itemsToPickup.</param>
     public void PickUpItem(int id)
     {
         bool result = inventoryManager.AddItem(itemsToPickup[id]);
@@ -21,36 +40,22 @@ public class PlayerActions : MonoBehaviour
             Debug.Log("Item not added");
         }
     }
-
+    
     /// <summary>
-    /// Accesses the player's selected item via the GetSelectedItem method in InventoryManager.cs.
+    /// The specified plant is watered. The player physically watering the plant is handled in the specified plant prefab's EventClick script.
     /// </summary>
-    public void GetSelectedItem()
+    /// <param name="data">The data for the specified plant.</param>
+    private void PlantIsWatered(PlantData data)
     {
-        Item receivedItem = inventoryManager.GetSelectedItem(false);
-        if (receivedItem != null)
-        {
-            Debug.Log($"Received item: {receivedItem}");
-        }
-        else
-        {
-            Debug.Log("No item received");
-        }
-    }
+        data.m_waterLevel = data.m_waterLevel + 50;
+        Debug.Log($"Plant watered! New water level: {data.m_waterLevel}");
 
-    /// <summary>
-    /// Expends the player's selected item via the GetSelectedItem method in InventoryManager.cs.
-    /// </summary>
-    public void UseSelectedItem()
-    {
-        Item receivedItem = inventoryManager.GetSelectedItem(true);
-        if (receivedItem != null)
+        if (plantGrowthManager.m_plantGrowthPointsTimerActive == false)
         {
-            Debug.Log($"Used item: {receivedItem}");
-        }
-        else
-        {
-            Debug.Log("No item used");
+            plantGrowthManager.m_plantGrowthPointsTimerActive = true;
+            plantGrowthManager.PlantHealthCheck(data);
+            StartCoroutine(plantGrowthManager.AddPlantGrowthPointsTimer(data));
+            Debug.Log("Restarted AddPlantGrowthPointsTimer coroutine");
         }
     }
 }

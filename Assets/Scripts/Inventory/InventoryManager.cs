@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 /// <summary>
 /// Handles finding sufficient inventory slots, adding items to them and creating and accessing items.
@@ -13,9 +14,23 @@ public class InventoryManager : MonoBehaviour
 
     private int m_selectedSlot = -1;
 
+   [SerializeField] public PlayerActions playerActions;
+    
+    [Header("Items")]
+    public Item wateringCanItem;
+    public Item hoeItem;
+    public Item beetrootItem;
+    public Item wheatItem;
+
     private void Start()
     {
         ChangeSelectedSlot(0);
+    }
+
+    private void Update()
+    {
+        // Checks if player can use the currently selected item
+        QuerySelectedItem();
     }
 
     /// <summary>
@@ -84,44 +99,35 @@ public class InventoryManager : MonoBehaviour
     /// <summary>
     /// Accesses the player's currently selected item in their hot bar.
     /// </summary>
-    /// <param name="use">Boolean that determines whether the item should be expended or not.</param>
-    /// <returns>If the player is trying to access nothing, then null is returned.</returns>
-    public Item GetSelectedItem(bool use)
+    public Item QuerySelectedItem()
     {
         InventorySlot slot = inventorySlots[m_selectedSlot];
         InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
+
         if (itemInSlot != null)
         {
             Item item = itemInSlot.item;
-            if (use == true)
+
+            if (itemInSlot.item == wateringCanItem)
             {
-                itemInSlot.count--;
-                if (itemInSlot.count <= 0)
-                {
-                    Destroy(itemInSlot.gameObject);
-                }
-                else
-                {
-                    itemInSlot.ResetItemQuantityText();
-                }
+                playerActions.wateringCanUsageAllowed = true;
+                Debug.Log($"Watering can usage allowed = {playerActions.wateringCanUsageAllowed}");
+            }
+            else if (itemInSlot.item == hoeItem)
+            {
+                playerActions.hoeUsageAllowed = true;
+                Debug.Log($"Hoe usage allowed = {playerActions.hoeUsageAllowed}");
+            }
+            else if (itemInSlot.item == beetrootItem || itemInSlot.item == wheatItem)
+            {
+                playerActions.plantSellingAllowed = true;
+                Debug.Log($"Plant selling allowed = {playerActions.plantSellingAllowed}");
+            }
+            else
+            {
+                Debug.Log("No item in slot that can be used");
             }
         }
-
         return null;
     }
-
-    // public Item QueryItemInSlot(InventorySlot slot, InventoryItem item)
-    // {
-    //     InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
-    //     if (itemInSlot == item)
-    //     {
-    //         Debug.Log($"{itemInSlot} is equal to {item}");
-    //
-    //         return 
-    //     }
-    //     else
-    //     {
-    //         Debug.Log($"{itemInSlot} is not equal to {item}");
-    //     }
-    // }
 }

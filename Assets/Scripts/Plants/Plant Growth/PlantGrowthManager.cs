@@ -21,19 +21,7 @@ public class PlantGrowthManager : MonoBehaviour
     List<ChangePlantSprite> changePlantSpritesInSceneList = new List<ChangePlantSprite>();
 
     // Conditions
-    bool m_plantGrowthPointsTimerActive = true;
-
-    // Subscribing to the OnPlantWatered event so that this script can react to the plant being watered
-    private void OnEnable()
-    {
-        PlantHandleClick.OnPlantWatered += WaterPlant;
-    }
-
-    // Unsubscribing from OnPlantWatered when PlantGrowthManager GameObject is disabled
-    private void OnDisable()
-    {
-        PlantHandleClick.OnPlantWatered -= WaterPlant;
-    }
+    public bool m_plantGrowthPointsTimerActive = true;
 
     void Start() 
     {
@@ -90,7 +78,7 @@ public class PlantGrowthManager : MonoBehaviour
     #region Plant Health Check Method
 
     // Checks if the plant needs water and whether it is dying
-    private bool PlantHealthCheck(PlantData data)
+    public bool PlantHealthCheck(PlantData data)
     {
         if (data.m_waterLevel <= 0)
         {
@@ -155,7 +143,7 @@ public class PlantGrowthManager : MonoBehaviour
         }
     }
 
-    private IEnumerator AddPlantGrowthPointsTimer(PlantData data)
+    public IEnumerator AddPlantGrowthPointsTimer(PlantData data)
     {
         while (m_plantGrowthPointsTimerActive == true)
         {
@@ -224,25 +212,6 @@ public class PlantGrowthManager : MonoBehaviour
         data.m_waterLevel--;
         Debug.Log($"ID: {data.m_uniquePlantId} Water Level: {data.m_waterLevel}");
         return data.m_waterLevel;
-    }
-
-    #endregion
-
-    #region Player Waters Plant Response Method
-
-    // Waters plant (the player actually physically watering the plant is handled in the plant prefab's EventClick script)
-    private void WaterPlant(PlantData data)
-    {
-        data.m_waterLevel = data.m_waterLevel + 50;
-        Debug.Log($"Plant watered! New water level: {data.m_waterLevel}");
-
-        if (m_plantGrowthPointsTimerActive == false)
-        {
-            m_plantGrowthPointsTimerActive = true;
-            PlantHealthCheck(data);
-            StartCoroutine(AddPlantGrowthPointsTimer(data));
-            Debug.Log("Restarted AddPlantGrowthPointsTimer coroutine");
-        }
     }
 
     #endregion
