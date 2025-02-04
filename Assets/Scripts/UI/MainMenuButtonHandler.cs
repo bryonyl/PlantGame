@@ -24,12 +24,12 @@ public class MainMenuButtonHandler : MonoBehaviour
     {
         try
         {
-            m_menuManager.m_currentPanelOpen.SetActive(false);
-            m_menuManager.m_exitPanelButton.SetActive(false);
+            m_menuManager.currentPanelOpen.SetActive(false);
+            m_menuManager.exitPanelButton.SetActive(false);
         }
         catch (System.Exception exNotFound)
         {
-            Debug.LogError("m_currentPanelOpen of m_menuManager not found!");
+            Debug.LogError("currentPanelOpen of m_menuManager not found!");
         }
     }
 }

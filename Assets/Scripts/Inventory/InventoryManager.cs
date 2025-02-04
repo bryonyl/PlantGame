@@ -11,10 +11,9 @@ public class InventoryManager : MonoBehaviour
     public int maxStackedItems = 10;
     public InventorySlot[] inventorySlots;
     public GameObject inventoryItemPrefab;
-
     private int m_selectedSlot = -1;
 
-   [SerializeField] public PlayerActions playerActions;
+   public PlayerActions playerActions;
     
     [Header("Items")]
     public Item wateringCanItem;
@@ -110,21 +109,31 @@ public class InventoryManager : MonoBehaviour
 
             if (itemInSlot.item == wateringCanItem)
             {
+                playerActions.hoeUsageAllowed = false;
+                playerActions.plantSellingAllowed = false;
                 playerActions.wateringCanUsageAllowed = true;
                 Debug.Log($"Watering can usage allowed = {playerActions.wateringCanUsageAllowed}");
             }
             else if (itemInSlot.item == hoeItem)
             {
+                playerActions.wateringCanUsageAllowed = false;
+                playerActions.plantSellingAllowed = false;
                 playerActions.hoeUsageAllowed = true;
                 Debug.Log($"Hoe usage allowed = {playerActions.hoeUsageAllowed}");
             }
             else if (itemInSlot.item == beetrootItem || itemInSlot.item == wheatItem)
             {
+                playerActions.wateringCanUsageAllowed = false;
+                playerActions.hoeUsageAllowed = false;
                 playerActions.plantSellingAllowed = true;
                 Debug.Log($"Plant selling allowed = {playerActions.plantSellingAllowed}");
             }
             else
             {
+                playerActions.wateringCanUsageAllowed = false;
+                playerActions.hoeUsageAllowed = false;
+                playerActions.plantSellingAllowed = false;
+                
                 Debug.Log("No item in slot that can be used");
             }
         }

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7c765e3bc2cea074ca90bfc5c8772da3
+guid: 4205a8a7dd36276438ef3be315e4c56e
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -54,7 +54,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -87,32 +87,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: Win64
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -126,7 +100,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: WebGL
+    buildTarget: WindowsStoreApps
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -142,7 +116,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: raindrop splash_0
+      name: raindrop splash animation-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -155,16 +129,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 61b5c7ab5ab3f664c9d24d631b54ef52
-      internalID: 1127594550
+      spriteID: 6f7f9337f7cfc9e20800000000000000
+      internalID: 3358837046435772406
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: raindrop splash_1
+      name: raindrop splash animation-Sheet_1
       rect:
         serializedVersion: 2
         x: 16
@@ -177,16 +151,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: ebf5477915d22854ea0af8479a38ed61
-      internalID: -841874104
+      spriteID: a2562b5e200c08f90800000000000000
+      internalID: -6953346705983904470
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: raindrop splash_2
+      name: raindrop splash animation-Sheet_2
       rect:
         serializedVersion: 2
         x: 32
@@ -201,8 +175,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 726b902679c472c48a81b30e1539f045
-      internalID: 628230677
+      spriteID: f9221596a629ba74ab7df9f8d5859274
+      internalID: -1765261874
       vertices: []
       indices: 
       edges: []
@@ -211,7 +185,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 69e83c7e42a84ab4f8df9abea3149f1b
+    spriteID: 4c7950322d8aee643b351199ea13aa36
     internalID: 0
     vertices: []
     indices: 
@@ -221,9 +195,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      raindrop splash_0: 1127594550
-      raindrop splash_1: -841874104
-      raindrop splash_2: 628230677
+      raindrop splash animation-Sheet_0: 3358837046435772406
+      raindrop splash animation-Sheet_1: -6953346705983904470
+      raindrop splash animation-Sheet_2: -1765261874
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

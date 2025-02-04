@@ -17,7 +17,6 @@ public class EventClick : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
     public static event ObjectExited OnObjectExited;
 
     // These functions are overwritten in individual game objects' own EventClick scripts
-
     public void OnPointerClick(PointerEventData eventData)
     {
         Debug.Log("clicked " + gameObject.name);

@@ -34,7 +34,7 @@ public class MovingCloud : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision) // Trigger/overlap check to see if cloud touches a collider
     {
-        if (collision.CompareTag("MovingObstacleWaypoint")) // If collider is MovingCloudWaypoint, then reset position
+        if (collision.CompareTag("MovingCloudWaypoint")) // If collider is MovingCloudWaypoint, then reset position
         {
             ResetPosition();
         }

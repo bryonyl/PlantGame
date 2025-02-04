@@ -47,15 +47,26 @@ public class PlayerActions : MonoBehaviour
     /// <param name="data">The data for the specified plant.</param>
     private void PlantIsWatered(PlantData data)
     {
-        data.m_waterLevel = data.m_waterLevel + 50;
-        Debug.Log($"Plant watered! New water level: {data.m_waterLevel}");
-
-        if (plantGrowthManager.m_plantGrowthPointsTimerActive == false)
+        if (wateringCanUsageAllowed == true)
         {
-            plantGrowthManager.m_plantGrowthPointsTimerActive = true;
-            plantGrowthManager.PlantHealthCheck(data);
-            StartCoroutine(plantGrowthManager.AddPlantGrowthPointsTimer(data));
-            Debug.Log("Restarted AddPlantGrowthPointsTimer coroutine");
+            data.m_waterLevel = data.m_waterLevel + 50;
+            Debug.Log($"Plant watered! New water level: {data.m_waterLevel}");
+
+            if (plantGrowthManager.plantGrowthPointsTimerActive == false)
+            {
+                plantGrowthManager.plantGrowthPointsTimerActive = true;
+                plantGrowthManager.PlantHealthCheck(data);
+                StartCoroutine(plantGrowthManager.AddPlantGrowthPointsTimer(data));
+                Debug.Log("Restarted AddPlantGrowthPointsTimer coroutine");
+            }
+        }
+    }
+
+    private void PlantIsSold(PlantData data, Item item)
+    {
+        if (plantSellingAllowed == true)
+        {
+            
         }
     }
 }

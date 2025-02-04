@@ -16,14 +16,11 @@ public class PlantHandleClick : MonoBehaviour
     private void OnEnable()
     {
         EventClick.OnObjectClicked += HandleClick;
-        EventClick.OnObjectEntered += HandleEnter;
     }
 
     private void OnDisable()
     {
         EventClick.OnObjectClicked -= HandleClick;
-        EventClick.OnObjectEntered -= HandleEnter;
-
     }
 
     private void HandleClick(GameObject clickedObject)
@@ -36,13 +33,5 @@ public class PlantHandleClick : MonoBehaviour
         // Plant is watered when clicked
         OnPlantWatered?.Invoke(m_thisPlantData);
         Debug.Log("OnPlantWatered invoked");
-    }
-
-    private void HandleEnter(GameObject enteredObject)
-    {
-        if (enteredObject != gameObject) return;
-
-
-
     }
 }
