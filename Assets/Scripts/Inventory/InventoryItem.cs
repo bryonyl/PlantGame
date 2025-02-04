@@ -1,47 +1,33 @@
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
 
-public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class InventoryItem : MonoBehaviour
 {
     [Header("UI")]
-    public Image image;
+    public Image itemImage;
     public TMPro.TextMeshProUGUI countText;
-
+    
     [HideInInspector] public Item item;
     [HideInInspector] public int count = 1;
-    [HideInInspector] public Transform parentAfterDrag;
 
+    /// <summary>
+    /// Initialises an item by allocating it default values, so item is set to newItem and the image of the item is set to the newItem's image. The item's quantity text is also reset.
+    /// </summary>
+    /// <param name="newItem">The item to be set up.</param>
     public void InitialiseItem(Item newItem)
     {
         item = newItem;
-        image.sprite = newItem.image;
-        RefreshCount();
+        itemImage.sprite = newItem.image;
+        ResetItemQuantityText();
     }
 
-    public void RefreshCount()
+    /// <summary>
+    /// Visually resets an item's quantity text if the item's quantity is over 1.
+    /// </summary>
+    public void ResetItemQuantityText()
     {
         countText.text = count.ToString();
         bool textActive = count > 1;
         countText.gameObject.SetActive(textActive);
-    }
-
-    // Drag and drop functionality
-    public void OnBeginDrag(PointerEventData eventData)
-    {
-        image.raycastTarget = false;
-        parentAfterDrag = transform.parent;
-        transform.SetParent(transform.root);
-    }
-    
-    public void OnDrag(PointerEventData eventData)
-    {
-        transform.position = Input.mousePosition;
-    }
-
-    public void OnEndDrag(PointerEventData eventData)
-    {
-        image.raycastTarget = true;
-        transform.SetParent(parentAfterDrag);
     }
 }

@@ -1,11 +1,15 @@
 using UnityEngine;
 
-public class DemoScript : MonoBehaviour
+public class PlayerActions : MonoBehaviour
 {
     public InventoryManager inventoryManager;
     public Item[] itemsToPickup;
 
-    public void PickupItem(int id)
+    /// <summary>
+    /// Picks up an item via its ID via the AddItem method in InventoryManager.cs.
+    /// </summary>
+    /// <param name="id">The ID of the item to pick up.</param>
+    public void PickUpItem(int id)
     {
         bool result = inventoryManager.AddItem(itemsToPickup[id]);
         if (result == true)
@@ -18,6 +22,9 @@ public class DemoScript : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Accesses the player's selected item via the GetSelectedItem method in InventoryManager.cs.
+    /// </summary>
     public void GetSelectedItem()
     {
         Item receivedItem = inventoryManager.GetSelectedItem(false);
@@ -31,6 +38,9 @@ public class DemoScript : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Expends the player's selected item via the GetSelectedItem method in InventoryManager.cs.
+    /// </summary>
     public void UseSelectedItem()
     {
         Item receivedItem = inventoryManager.GetSelectedItem(true);

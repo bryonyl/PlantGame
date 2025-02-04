@@ -1,37 +1,31 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-public class InventorySlot : MonoBehaviour, IDropHandler
+public class InventorySlot : MonoBehaviour
 {
-    public Image image;
-    public Color selectedColor, notSelectedColor;
+    public Image inventorySlotImage;
+    public Color selectedColour;
+    public Color notSelectedColour;
 
     public void Awake()
     {
         Deselect();
     }
 
+    /// <summary>
+    /// Visually selects the inventory slot by changing its image's colour to be the selectedColour.
+    /// </summary>
     public void Select()
     {
-        image.color = selectedColor;
+        inventorySlotImage.color = selectedColour;
     }
 
+    /// <summary>
+    /// Visually deselects the inventory slot by resetting its image's colour to be the notSelectedColour.
+    /// </summary>
     public void Deselect()
     {
-        image.color = notSelectedColor;
+        inventorySlotImage.color = notSelectedColour;
     }
-
-    // Drag and drop functionality
-    public void OnDrop(PointerEventData eventData)
-    {
-        if (transform.childCount == 0)
-        {
-            InventoryItem inventoryItem = eventData.pointerDrag.GetComponent<InventoryItem>();
-            inventoryItem.parentAfterDrag = transform;
-        }
-    }
-
 }
