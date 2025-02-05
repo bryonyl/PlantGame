@@ -24,6 +24,7 @@ public class InventoryManager : MonoBehaviour
     private void Start()
     {
         ChangeSelectedSlot(0);
+        //GameObject.DontDestroyOnLoad(this);
     }
 
     private void Update()
@@ -88,7 +89,7 @@ public class InventoryManager : MonoBehaviour
     /// </summary>
     /// <param name="item">Item to be spawned.</param>
     /// <param name="slot">Inventory slot for item to be placed in.</param>
-    void SpawnNewItem(Item item, InventorySlot slot)
+    private void SpawnNewItem(Item item, InventorySlot slot)
     {
         GameObject newItem = Instantiate(inventoryItemPrefab, slot.transform);
         InventoryItem inventoryItem = newItem.GetComponent<InventoryItem>();
@@ -110,33 +111,60 @@ public class InventoryManager : MonoBehaviour
             if (itemInSlot.item == wateringCanItem)
             {
                 playerActions.hoeUsageAllowed = false;
-                playerActions.plantSellingAllowed = false;
+                playerActions.itemSellingAllowed = false;
                 playerActions.wateringCanUsageAllowed = true;
                 Debug.Log($"Watering can usage allowed = {playerActions.wateringCanUsageAllowed}");
+                
+                return itemInSlot.item;
             }
             else if (itemInSlot.item == hoeItem)
             {
                 playerActions.wateringCanUsageAllowed = false;
-                playerActions.plantSellingAllowed = false;
+                playerActions.itemSellingAllowed = false;
                 playerActions.hoeUsageAllowed = true;
                 Debug.Log($"Hoe usage allowed = {playerActions.hoeUsageAllowed}");
+                
+                return itemInSlot.item;
             }
             else if (itemInSlot.item == beetrootItem || itemInSlot.item == wheatItem)
             {
                 playerActions.wateringCanUsageAllowed = false;
                 playerActions.hoeUsageAllowed = false;
-                playerActions.plantSellingAllowed = true;
-                Debug.Log($"Plant selling allowed = {playerActions.plantSellingAllowed}");
+                playerActions.itemSellingAllowed = true;
+                Debug.Log($"Plant selling allowed = {playerActions.itemSellingAllowed}");
+                
+                return itemInSlot.item;
             }
             else
             {
                 playerActions.wateringCanUsageAllowed = false;
                 playerActions.hoeUsageAllowed = false;
-                playerActions.plantSellingAllowed = false;
+                playerActions.itemSellingAllowed = false;
                 
                 Debug.Log("No item in slot that can be used");
             }
         }
+        return null;
+    }
+
+    public Item UseItem()
+    {
+        InventorySlot slot = inventorySlots[m_selectedSlot];
+        InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
+        
+        if (playerActions.itemSellingAllowed)
+        {
+            itemInSlot.count--;
+            if (itemInSlot.count <= 0)
+            {
+                Destroy(itemInSlot.gameObject);
+            }
+            else
+            {
+                itemInSlot.ResetItemQuantityText();
+            }
+        }
+
         return null;
     }
 }

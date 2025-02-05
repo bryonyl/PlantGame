@@ -51,16 +51,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 855b878a04c6c754aad0a57363b4d55a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_waterLevel: 10
-  m_growthPoints: 0
-  m_growthStage: 0
-  m_growthCheckTimer: 2.4
-  m_growthPointTimer: 2.5
-  m_wateringDecayTimer: 2.5
-  m_requiredGrowthPoints: 10
-  m_needsWater: 0
-  m_canGrow: 0
-  m_isDying: 0
+  waterLevel: 0
+  growthPoints: 0
+  growthStage: 0
+  growthCheckTimer: 2.5
+  growthPointTimer: 2.5
+  wateringDecayTimer: 2.5
+  requiredGrowthPoints: 20
+  needsWater: 0
+  canGrow: 0
+  isDying: 0
 --- !u!114 &7991964369084910385
 MonoBehaviour:
   m_ObjectHideFlags: 0

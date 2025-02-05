@@ -1,10 +1,12 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PlayerActions : MonoBehaviour
 {
     [Header("Script References")]
     public PlantGrowthManager plantGrowthManager;
     public InventoryManager inventoryManager;
+    public MoneyManager moneyManager;
     
     [Header("Items Able to be Picked Up")]
     public Item[] itemsToPickup;
@@ -12,7 +14,10 @@ public class PlayerActions : MonoBehaviour
     [Header("Actions Allowed")]
     [HideInInspector] public bool wateringCanUsageAllowed;
     [HideInInspector] public bool hoeUsageAllowed;
-    [HideInInspector] public bool plantSellingAllowed;
+    [FormerlySerializedAs("plantSellingAllowed")] [HideInInspector] public bool itemSellingAllowed;
+
+    [Header("Tool Options")]
+    [SerializeField] private int wateringCanCapacity;
     
     private void OnEnable()
     {
@@ -42,15 +47,15 @@ public class PlayerActions : MonoBehaviour
     }
     
     /// <summary>
-    /// The specified plant is watered. The player physically watering the plant is handled in the specified plant prefab's EventClick script.
+    /// The specified plant is watered. The player physically watering the plant is handled in the specified plant prefab's PlantEventClick script.
     /// </summary>
     /// <param name="data">The data for the specified plant.</param>
     private void PlantIsWatered(PlantData data)
     {
         if (wateringCanUsageAllowed == true)
         {
-            data.m_waterLevel = data.m_waterLevel + 50;
-            Debug.Log($"Plant watered! New water level: {data.m_waterLevel}");
+            data.waterLevel = data.waterLevel + wateringCanCapacity;
+            Debug.Log($"Plant watered! New water level: {data.waterLevel}");
 
             if (plantGrowthManager.plantGrowthPointsTimerActive == false)
             {
@@ -62,11 +67,19 @@ public class PlayerActions : MonoBehaviour
         }
     }
 
-    private void PlantIsSold(PlantData data, Item item)
+    /// <summary>
+    /// The specified item is sold. The player physically selling the item is handled in ShippingBox.cs.
+    /// </summary>
+    /// <param name="item">The item to be sold.</param>
+    public void ItemIsSold(Item item)
     {
-        if (plantSellingAllowed == true)
+        if (itemSellingAllowed == true)
         {
+            // Take 1 plant away from the user's inventory
+            inventoryManager.UseItem();
             
+            // Adds the plant's monetary value to their balance
+            moneyManager.AddMoney(item.sellingValue);
         }
     }
 }

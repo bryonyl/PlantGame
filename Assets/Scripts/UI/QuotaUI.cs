@@ -1,9 +1,10 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class QuotaUI : MonoBehaviour
 {
-    [SerializeField] private MoneySystem m_moneySystem; // Reference to the money system
-    public TMPro.TextMeshProUGUI m_quotaText;
+    [SerializeField] private MoneyManager moneyManager; // Reference to the money manager
+    public TMPro.TextMeshProUGUI quotaText;
 
     private void Start()
     {
@@ -12,16 +13,16 @@ public class QuotaUI : MonoBehaviour
 
     private void OnEnable()
     {
-        MoneySystem.OnMoneyChanged += UpdateUI;
+        MoneyManager.OnMoneyChanged += UpdateUI;
     }
 
     private void OnDisable()
     {
-        MoneySystem.OnMoneyChanged -= UpdateUI;
+        MoneyManager.OnMoneyChanged -= UpdateUI;
     }
 
     private void UpdateUI()
     {
-        m_quotaText.text = $"Quota: ${m_moneySystem.m_playerCurrentMoney}/${m_moneySystem.m_playerCurrentQuotaGoal}";
+        quotaText.text = $"Quota: ${moneyManager.playerCurrentMoney}/${moneyManager.playerCurrentQuotaGoal}";
     }
 }

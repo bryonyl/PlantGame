@@ -1,22 +1,23 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class MoneyUI : MonoBehaviour
 {
-    [SerializeField] private MoneySystem m_moneySystem; // Reference to the money system
-    public TMPro.TextMeshProUGUI m_moneyText; // Reference to the label
+    [SerializeField] private MoneyManager moneyManager; // Reference to the money system
+    public TMPro.TextMeshProUGUI moneyText; // Reference to the label
 
     private void OnEnable()
     {
-        MoneySystem.OnMoneyChanged += UpdateUI;
+        MoneyManager.OnMoneyChanged += UpdateUI;
     }
 
     private void OnDisable()
     {
-        MoneySystem.OnMoneyChanged -= UpdateUI;
+        MoneyManager.OnMoneyChanged -= UpdateUI;
     }
 
-    public void UpdateUI()
+    private void UpdateUI()
     {
-        m_moneyText.text = $"Money: ${m_moneySystem.m_playerCurrentMoney}";
+        moneyText.text = $"Money: ${moneyManager.playerCurrentMoney}";
     }
 }

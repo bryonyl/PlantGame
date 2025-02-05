@@ -3,7 +3,9 @@ using UnityEngine.Serialization;
 
 public class ShippingBox : MonoBehaviour
 {
-    [SerializeField] private MoneySystem moneySystem;
+    [SerializeField] private MoneyManager moneyManager;
+    [SerializeField] private PlayerActions playerActions;
+    [SerializeField] private InventoryManager inventoryManager;
 
     private void OnEnable()
     {
@@ -18,8 +20,7 @@ public class ShippingBox : MonoBehaviour
     private void HandleClick(GameObject clickedObject)
     {
         if (clickedObject != gameObject) return;
-        
-        // TODO - access currently selected slot here. access item within slot. add money depending on how much that item is worth via its plant data.
-        // moneySystem.AddMoney(15);
+
+        playerActions.ItemIsSold(inventoryManager.QuerySelectedItem());
     }
 }
