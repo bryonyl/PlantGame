@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuButtonHandler : MonoBehaviour
 {
-    [SerializeField] private MenuManager m_menuManager;
+    [SerializeField] private MainMenuManager m_menuManager;
 
     public void OpenLevel(int levelNumber)
     {

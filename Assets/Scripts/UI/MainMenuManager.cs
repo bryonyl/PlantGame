@@ -2,7 +2,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class MenuManager : MonoBehaviour
+public class MainMenuManager : MonoBehaviour
 {
     [SerializeField] private GameObject howToPlayPanel;
     [SerializeField] private GameObject controlsPanel;

@@ -1,10 +1,11 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [CreateAssetMenu(menuName = "Scriptable Object/Item")]
 public class Item : ScriptableObject
 {
     [Header("Only Gameplay")]
-    public ItemType type; // Define if an item is a plant or a tool
+    public ItemType itemType; // Define if an item is a plant or a tool
     public ActionType actionType; // What action this item does
     public float sellingValue;
 
@@ -23,6 +24,7 @@ public enum ItemType
 
 public enum ActionType
 {
+    None,
     Dig,
     Water,
 }

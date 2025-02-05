@@ -51,11 +51,11 @@ TagManager:
   - name: Indoors
     uniqueID: 2911344991
     locked: 0
-  - name: Character
-    uniqueID: 2050408103
-    locked: 0
   - name: Foliage
     uniqueID: 3381031973
+    locked: 0
+  - name: Character
+    uniqueID: 2050408103
     locked: 0
   - name: Rain
     uniqueID: 3674604993

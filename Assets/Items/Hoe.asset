@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d206ae272c66884b84772fd58705164, type: 3}
   m_Name: Hoe
   m_EditorClassIdentifier: 
-  tile: {fileID: 0}
-  type: 1
-  actionType: 0
-  range: {x: 5, y: 4}
+  itemType: 0
+  actionType: 1
+  sellingValue: 0
   stackable: 0
   image: {fileID: 5827638716017627413, guid: 108222de2a02dd94ab69042486eda2fa, type: 3}

@@ -14,7 +14,7 @@ public class PlayerActions : MonoBehaviour
     [Header("Actions Allowed")]
     [HideInInspector] public bool wateringCanUsageAllowed;
     [HideInInspector] public bool hoeUsageAllowed;
-    [FormerlySerializedAs("plantSellingAllowed")] [HideInInspector] public bool itemSellingAllowed;
+    [HideInInspector] public bool itemSellingAllowed;
 
     [Header("Tool Options")]
     [SerializeField] private int wateringCanCapacity;
@@ -35,15 +35,7 @@ public class PlayerActions : MonoBehaviour
     /// <param name="id">The ID of the item to pick up. All IDs are stored in itemsToPickup.</param>
     public void PickUpItem(int id)
     {
-        bool result = inventoryManager.AddItem(itemsToPickup[id]);
-        if (result == true)
-        {
-            Debug.Log("Item added");
-        }
-        else
-        {
-            Debug.Log("Item not added");
-        }
+        inventoryManager.AddItem(itemsToPickup[id]);
     }
     
     /// <summary>
