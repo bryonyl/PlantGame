@@ -6086,7 +6086,7 @@ MonoBehaviour:
   m_IsGlobal: 1
   priority: 0
   blendDistance: 0
-  weight: 1
+  weight: 0
   sharedProfile: {fileID: 11400000, guid: f0fd3046f1974b344bb00e0cdec36597, type: 2}
 --- !u!4 &1173718154
 Transform:
@@ -8419,7 +8419,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 16
-      m_TileSpriteIndex: 34
+      m_TileSpriteIndex: 35
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -10630,10 +10630,10 @@ Tilemap:
     m_Data: {fileID: -1394513869, guid: 6779d3beac81dfd41b0423333c918140, type: 3}
   - m_RefCount: 6
     m_Data: {fileID: -1347532211411968617, guid: 6779d3beac81dfd41b0423333c918140, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: -41710503, guid: 6779d3beac81dfd41b0423333c918140, type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: -41710503, guid: 6779d3beac81dfd41b0423333c918140, type: 3}
   - m_RefCount: 8
     m_Data: {fileID: 1156863608, guid: 6779d3beac81dfd41b0423333c918140, type: 3}
   m_TileMatrixArray:
@@ -72418,6 +72418,7 @@ GameObject:
   - component: {fileID: 1607762412}
   - component: {fileID: 1607762411}
   - component: {fileID: 1607762413}
+  - component: {fileID: 1607762414}
   m_Layer: 0
   m_Name: TimeManager
   m_TagString: Manager
@@ -72437,6 +72438,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5b8d8a47bbe65644a3f69436e23eba1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  postProcessingVolume: {fileID: 1173718153}
 --- !u!4 &1607762412
 Transform:
   m_ObjectHideFlags: 0
@@ -72462,6 +72464,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2a3104da2d38c7b45ad377eaaceb2977, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1607762414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1607762409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fccbfe14d189c1408e1ac16dbf52519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1618778961
@@ -73780,7 +73794,7 @@ GameObject:
   - component: {fileID: 2138376152}
   m_Layer: 0
   m_Name: LampLight
-  m_TagString: Untagged
+  m_TagString: Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -73817,7 +73831,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.477
   m_Color: {r: 0.84276724, g: 0.67626, b: 0.3948815, a: 1}
-  m_Intensity: 10
+  m_Intensity: 8
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
   m_ApplyToSortingLayers: 00000000711f40735f9987ad257486c9a7be367aa56e2424c10506dbf36580ff
