@@ -12,7 +12,7 @@ public class TimeManager : MonoBehaviour
     public static int m_hour { get; private set; }
     public static int m_day { get; private set; }
 
-    private float m_minuteToRealTime = 0.5f; // 0.5 seconds in real time represents 1 minute in game
+    private float m_minuteToRealTime = 0.1f; // 0.5 seconds in real time represents 1 minute in game
     private float m_timer; // Localised timer
 
     public static int m_dayStartTime = 14; // 8AM
@@ -70,18 +70,27 @@ public class TimeManager : MonoBehaviour
 
             m_timer = m_minuteToRealTime; // Timer is reset to minuteToRealTime
         }
-        // TODO - this is not in the right place. needs to be somewhere else, but not sure where
-        ControlPostProcessingVolume();
+
+        GraduallyGetDarker();
     }
     
-    private void ControlPostProcessingVolume()
+    private void GraduallyGetDarker()
     {
-        if (m_hour >= 15 && m_hour <= m_dayEndTime)
+        int totalHours = m_dayEndTime - m_dayStartTime;
+        
+        if (m_hour >= 16 && m_hour <= m_dayEndTime)
         {
-            postProcessingVolume.weight = (float)m_minute/60;
+            float rateOfChange = 1.0f / totalHours;
+            float lightLevel = rateOfChange * (m_hour - m_dayStartTime);
+            postProcessingVolume.weight = lightLevel;
         }
 
-        if (m_hour == 20)
+        
+    }
+
+    private void ActivateLightsCheck()
+    {
+        if (m_hour >= 20 && m_hour <= m_dayEndTime)
         {
             activateLights = true;
         }
