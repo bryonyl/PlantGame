@@ -18,8 +18,8 @@ public class PlantGrowthManager : MonoBehaviour
     private ChangePlantSprite m_changePlantSprite;
 
     // An expandable list of all plants' plantData in the scene
-    List<PlantData> m_plantDatasInSceneList = new List<PlantData>();
-    List<ChangePlantSprite> m_changePlantSpritesInSceneList = new List<ChangePlantSprite>();
+    List<PlantData> m_plantDatasInSceneList = new();
+    List<ChangePlantSprite> m_changePlantSpritesInSceneList = new();
 
     // Conditions
     public bool plantGrowthPointsTimerActive = true;

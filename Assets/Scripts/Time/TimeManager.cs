@@ -1,9 +1,9 @@
 using UnityEngine;
-using System; // Need this namespace to access Action type
+using System;
+using UnityEngine.Rendering;
 
 public class TimeManager : MonoBehaviour
 {
-    // Apparently Actions are slightly faster than Unity Events for this?
     public static event Action OnMinuteChanged;
     public static event Action OnHourChanged;
 
@@ -15,8 +15,12 @@ public class TimeManager : MonoBehaviour
     private float m_minuteToRealTime = 0.5f; // 0.5 seconds in real time represents 1 minute in game
     private float m_timer; // Localised timer
 
-    [SerializeField] public static int m_dayStartTime = 8; // 8AM
-    [SerializeField] public static int m_dayEndTime = 22; // 10PM
+    public static int m_dayStartTime = 14; // 8AM
+    public static int m_dayEndTime = 22; // 10PM
+    
+    public Volume postProcessingVolume;
+    private TimeManager timeManager;
+    private bool activateLights = false;
 
     private void OnEnable()
     {
@@ -30,18 +34,23 @@ public class TimeManager : MonoBehaviour
 
     private void ChangeDay()
     {
+        postProcessingVolume.weight = 0;
+        activateLights = false;
         m_day++;
         m_hour = m_dayStartTime;
         m_minute = 0;
     }
 
-    void Start()
+    private void Start()
     {
+        timeManager = GetComponent<TimeManager>();
+        postProcessingVolume.weight = 0;
+        
         ChangeDay();
         m_timer = m_minuteToRealTime;
     }
 
-    void Update()
+    private void Update()
     {
         // Creates timer
         m_timer -= Time.deltaTime;
@@ -60,6 +69,21 @@ public class TimeManager : MonoBehaviour
             }
 
             m_timer = m_minuteToRealTime; // Timer is reset to minuteToRealTime
+        }
+        // TODO - this is not in the right place. needs to be somewhere else, but not sure where
+        ControlPostProcessingVolume();
+    }
+    
+    private void ControlPostProcessingVolume()
+    {
+        if (m_hour >= 15 && m_hour <= m_dayEndTime)
+        {
+            postProcessingVolume.weight = (float)m_minute/60;
+        }
+
+        if (m_hour == 20)
+        {
+            activateLights = true;
         }
     }
 }

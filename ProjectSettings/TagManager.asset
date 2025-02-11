@@ -8,6 +8,7 @@ TagManager:
   - ShippingBox
   - Plant
   - Manager
+  - Light
   layers:
   - Default
   - TransparentFX

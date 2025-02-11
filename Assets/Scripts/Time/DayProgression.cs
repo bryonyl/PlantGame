@@ -1,9 +1,5 @@
 using System;
-using System.Collections;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.Rendering;
-using static EventClick;
 
 public class DayProgression : MonoBehaviour
 {
