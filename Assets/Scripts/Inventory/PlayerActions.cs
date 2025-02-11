@@ -21,14 +21,14 @@ public class PlayerActions : MonoBehaviour
     
     private void OnEnable()
     {
-        PlantHandleClick.OnPlantWatered += PlantIsWatered;
-        PlantHandleClick.OnPlantHarvested += PlantIsHarvested;
+        PlantClickHandler.OnPlantWatered += PlantIsWatered;
+        PlantClickHandler.OnPlantHarvested += PlantIsHarvested;
     }
     
     private void OnDisable()
     {
-        PlantHandleClick.OnPlantWatered -= PlantIsWatered;
-        PlantHandleClick.OnPlantHarvested -= PlantIsHarvested;
+        PlantClickHandler.OnPlantWatered -= PlantIsWatered;
+        PlantClickHandler.OnPlantHarvested -= PlantIsHarvested;
     }
 
     /// <summary>
