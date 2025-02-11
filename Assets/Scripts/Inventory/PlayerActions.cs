@@ -22,11 +22,13 @@ public class PlayerActions : MonoBehaviour
     private void OnEnable()
     {
         PlantHandleClick.OnPlantWatered += PlantIsWatered;
+        PlantHandleClick.OnPlantHarvested += PlantIsHarvested;
     }
     
     private void OnDisable()
     {
         PlantHandleClick.OnPlantWatered -= PlantIsWatered;
+        PlantHandleClick.OnPlantHarvested -= PlantIsHarvested;
     }
 
     /// <summary>
@@ -46,9 +48,17 @@ public class PlayerActions : MonoBehaviour
     {
         if (wateringCanUsageAllowed == true)
         {
-            data.waterLevel = data.waterLevel + wateringCanCapacity;
-            Debug.Log($"Plant watered! New water level: {data.waterLevel}");
-
+            if (data.waterLevel > data.waterCapacityCap)
+            {
+                Debug.Log("Water Capacity Reached");
+            }
+            else
+            {
+                data.waterLevel = data.waterLevel + wateringCanCapacity;
+                Debug.Log($"Plant watered! New water level: {data.waterLevel}");
+            }
+            
+            // Resets plant growth points timer if it was deactivated due to insufficient water
             if (plantGrowthManager.plantGrowthPointsTimerActive == false)
             {
                 plantGrowthManager.plantGrowthPointsTimerActive = true;
@@ -56,6 +66,18 @@ public class PlayerActions : MonoBehaviour
                 StartCoroutine(plantGrowthManager.AddPlantGrowthPointsTimer(data));
                 Debug.Log("Restarted AddPlantGrowthPointsTimer coroutine");
             }
+        }
+    }
+
+    private void PlantIsHarvested(PlantData data)
+    {
+        if (hoeUsageAllowed == true && data.readyToHarvest == true)
+        {
+            Debug.Log("Player can harvest plant!");
+        }
+        else
+        {
+            Debug.Log("Plant does not meet the criteria to be harvested.");
         }
     }
 

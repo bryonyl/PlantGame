@@ -5,6 +5,9 @@ public class PlantHandleClick : MonoBehaviour
 {
     public delegate void PlantWatered(PlantData data);
     public static event PlantWatered OnPlantWatered;
+    
+    public delegate void PlantHarvested(PlantData data);
+    public static event PlantHarvested OnPlantHarvested;
 
     private PlantData m_thisPlantData;
 
@@ -29,9 +32,8 @@ public class PlantHandleClick : MonoBehaviour
 
         // Prints plant debug info
         m_thisPlantData.QueryPlant();
-
-        // Plant is watered when clicked
+        
         OnPlantWatered?.Invoke(m_thisPlantData);
-        Debug.Log("OnPlantWatered invoked");
+        OnPlantHarvested?.Invoke(m_thisPlantData);
     }
 }

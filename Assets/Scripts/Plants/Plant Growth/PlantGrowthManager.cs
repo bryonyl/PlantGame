@@ -12,6 +12,7 @@ public class PlantGrowthManager : MonoBehaviour
     public static event Action OnPlantDying;
     public static event Action OnPlantIsDead;
     public static event Action OnPlantHappy;
+    public static event Action OnPlantCanBeHarvested;
 
     // Script references
     private PlantData m_plantData;
@@ -170,13 +171,20 @@ public class PlantGrowthManager : MonoBehaviour
         data.canGrow = false;
 
         // If plant isn't fully grown, then add a growth stage and change the sprite
-        if (data.growthStage <= 3)
+        if (data.growthStage <= 2)
         {
             data.growthStage++;
             sprite.ChangeSprite(data.growthStage);
             data.growthPoints = 0;
         }
-        // If this criteria isn't met, do nothing
+        else if (data.growthStage == 3)
+        {
+            Debug.Log("Plant has finished growing!");
+            StopCoroutine(AddPlantGrowthPointsTimer(data));
+            StopCoroutine(PlantGrowthTimer(data, sprite));
+            StopCoroutine(WaterLevelDecayTimer(data));
+            data.readyToHarvest = true;
+        }
     }
 
     // Adds plant growth point to specific plant

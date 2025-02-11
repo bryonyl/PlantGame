@@ -8,8 +8,10 @@ public class PlantData : MonoBehaviour
 
     [Header("Plant Health")]
     public int waterLevel;
+    public int waterCapacityCap;
     public int growthPoints;
-    public int growthStage;
+    public int growthStage; // Maximum is 3
+    public bool readyToHarvest = false;
 
     [Header("Timers")]
     public float growthCheckTimer;

@@ -52,6 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waterLevel: 0
+  waterCapacityCap: 10
   growthPoints: 0
   growthStage: 0
   growthCheckTimer: 2.5

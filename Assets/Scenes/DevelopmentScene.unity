@@ -9192,6 +9192,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Plant
       objectReference: {fileID: 0}
+    - target: {fileID: 1390635428386989275, guid: 7d455574a0185164c9e1511ddb208edd, type: 3}
+      propertyPath: requiredGrowthPoints
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2369693984466821645, guid: 7d455574a0185164c9e1511ddb208edd, type: 3}
       propertyPath: m_LocalPosition.x
       value: -19.003607
@@ -81964,7 +81968,7 @@ MonoBehaviour:
   wateringCanUsageAllowed: 0
   hoeUsageAllowed: 0
   itemSellingAllowed: 0
-  wateringCanCapacity: 10
+  wateringCanCapacity: 9
 --- !u!1001 &1720871741
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -82956,7 +82960,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2942083250385895670, guid: f9bbbb4aa341c5545878e3f1fd4ce12c, type: 3}
       propertyPath: m_SortingLayer
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5665892625785497146, guid: f9bbbb4aa341c5545878e3f1fd4ce12c, type: 3}
       propertyPath: m_Name

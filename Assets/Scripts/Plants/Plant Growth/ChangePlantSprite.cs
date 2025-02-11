@@ -15,6 +15,9 @@ public class ChangePlantSprite : MonoBehaviour
     }
     public void ChangeSprite(int plantGrowthStage)
     {
-        m_plantSpriteRenderer.sprite = m_allPlantGrowthSprites[plantGrowthStage];
+        if (plantGrowthStage <= 3)
+        {
+            m_plantSpriteRenderer.sprite = m_allPlantGrowthSprites[plantGrowthStage];
+        }
     }
 }
