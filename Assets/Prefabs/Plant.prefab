@@ -32,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 890731581663757891}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -17.53, y: -4.25, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -59,7 +59,7 @@ MonoBehaviour:
   growthCheckTimer: 2.5
   growthPointTimer: 2.5
   wateringDecayTimer: 2.5
-  requiredGrowthPoints: 20
+  requiredGrowthPoints: 5
   needsWater: 0
   canGrow: 0
   isDying: 0
@@ -116,6 +116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81f26f65d2ed04146916ddb70f134bdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_plantStatusIndicatorPrefab: {fileID: 7846978829052642807, guid: 1be66984ba3e37b499451182b8751174, type: 3}
 --- !u!212 &4769185842524496665
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -159,7 +160,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -913935323
   m_SortingLayer: 3
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -1044968166336746788, guid: 25f19729177374d47a4136b7b408b63d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

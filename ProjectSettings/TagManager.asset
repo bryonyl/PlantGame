@@ -9,6 +9,7 @@ TagManager:
   - Plant
   - Manager
   - Light
+  - MovingSeaWaypoint
   layers:
   - Default
   - TransparentFX

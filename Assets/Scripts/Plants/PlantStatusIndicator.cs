@@ -5,11 +5,12 @@ using UnityEngine;
 public class PlantStatusIndicator : MonoBehaviour
 {
     private Animator m_plantStatusIndicatorAnimator;
+    [SerializeField] GameObject m_plantStatusIndicatorPrefab;
 
     private void Start()
     {
-        m_plantStatusIndicatorAnimator = gameObject.GetComponentInChildren<Animator>();
-        Debug.Log(gameObject.transform.childCount);
+        Instantiate(m_plantStatusIndicatorPrefab);
+        m_plantStatusIndicatorAnimator = m_plantStatusIndicatorPrefab.GetComponent<Animator>();
     }
     private void OnEnable()
     {

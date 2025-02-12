@@ -16,73 +16,88 @@ public class PlantGrowthManager : MonoBehaviour
     // Script references
     private PlantData m_plantData;
     private ChangePlantSprite m_changePlantSprite;
+    private PlantingAreaClickHandler m_plantingAreaClickHandler;
 
-    // An expandable list of all plants' plantData in the scene
-    List<PlantData> m_plantDatasInSceneList = new();
-    List<ChangePlantSprite> m_changePlantSpritesInSceneList = new();
+    private List<GameObject> m_plantsInSceneList = new();
 
     // Conditions
-    public bool plantGrowthPointsTimerActive = true;
+    public bool m_plantGrowthPointsTimerActive = true;
 
     private void OnEnable()
     {
-        
+        m_plantingAreaClickHandler = GameObject.Find("PlantingArea").GetComponent<PlantingAreaClickHandler>();
+        GameObject plant = m_plantingAreaClickHandler.m_plantToSpawn;
+        PlantingAreaClickHandler.OnPlantPlanted += SetUpIndividualPlant;
     }
-    
+
     void Start() 
     {
-        SetUp();
+        SetUpManager();
     }
     
-    private void SetUp()
+    private void SetUpManager()
     {
         // Identifies number of plants in scene
-        GameObject[] plantsInSceneArr = GameObject.FindGameObjectsWithTag("Plant");
+        IdentifyPlantsInScene();
 
-        // For all plants in scene, grab PlantData and ChangePlantSprite component from each of them
-        for (int i = 0; i < plantsInSceneArr.Count(); i++)
+        // Sets up each individual plant with their own coroutines
+        for (int i = 0; i < m_plantsInSceneList.Count(); i++)
         {
-            // Grab PlantData and ChangePlantSprite component from each individual plant
-            m_plantData = plantsInSceneArr[i].GetComponent<PlantData>();
-            m_changePlantSprite = plantsInSceneArr[i].GetComponent<ChangePlantSprite>();
+            SetUpIndividualPlant(m_plantsInSceneList[i]);
+        }
+    }
 
-            // Add the individual components to two lists
-            m_plantDatasInSceneList.Add(m_plantData);
-            m_changePlantSpritesInSceneList.Add(m_changePlantSprite);
+    private void SetUpIndividualPlant(GameObject newPlant)
+    {
+        if (newPlant == null)
+        {
+            return;
+        }
+        // Grab PlantData and ChangePlantSprite component from individual plant
+        m_plantData = newPlant.GetComponent<PlantData>();
 
-            // Properties of plant are printed to console
-            Debug.Log($"Plant created with the values:\nPlant ID: {m_plantDatasInSceneList[i].UniquePlantId}\nWater Level: {m_plantDatasInSceneList[i].waterLevel}\nPlant Growth Stage: {m_plantDatasInSceneList[i].growthStage}\nNeeds Water?: {m_plantDatasInSceneList[i].needsWater}\nIs Dying?: {m_plantDatasInSceneList[i].isDying}\nCan Grow?: {m_plantDatasInSceneList[i].canGrow}");
+        if (m_plantData == null)
+        {
+            Debug.LogError($"{newPlant}'s Plant Data component is null!");
         }
         
-        // For all plants in scene, start each plants' coroutines
-        for (int j = 0; j < m_plantDatasInSceneList.Count; j++)
+        m_changePlantSprite = newPlant.GetComponent<ChangePlantSprite>();
+
+        if (m_changePlantSprite == null)
         {
-            Debug.Log($"Starting coroutines for {m_plantDatasInSceneList[j].UniquePlantId}");
-            
-            // Checking if lists are within bounds of index (j)
-            if (j < m_plantDatasInSceneList.Count && j < m_changePlantSpritesInSceneList.Count)
-            {
-                // Checking if an individual plants' script components are not null, so that coroutines can run
-                if (m_plantDatasInSceneList[j] != null && m_changePlantSpritesInSceneList[j] != null)
-                {
-                    // Water level of individual plant starts decaying
-                    StartCoroutine(WaterLevelDecayTimer(m_plantDatasInSceneList[j]));
+            Debug.LogError($"{newPlant}'s Change Plant Sprite component is null!");
+        }
+        
+        Debug.Log($"Plant created with the ID {m_plantData.UniquePlantId}");
+        Debug.Log($"Starting coroutines for {m_plantData.UniquePlantId}");
 
-                    // Individual plant's growth starts to be monitored
-                    StartCoroutine(PlantGrowthTimer(m_plantDatasInSceneList[j], m_changePlantSpritesInSceneList[j]));
+        if (m_plantData != null && m_changePlantSprite != null)
+        {
+            // Water level of individual plant starts decaying
+            StartCoroutine(WaterLevelDecayTimer(m_plantData));
 
-                    // Growth points start being added to specific plant
-                    StartCoroutine(AddPlantGrowthPointsTimer(m_plantDatasInSceneList[j]));
-                }
-                else
-                {
-                    Debug.LogError("One of the script components is null!");
-                }
-            }
-            else
-            {
-                Debug.LogError("Index out of bounds!");
-            }
+            // Individual plant's growth starts to be monitored
+            StartCoroutine(PlantGrowthTimer(m_plantData, m_changePlantSprite));
+
+            // Growth points start being added to specific plant
+            StartCoroutine(AddPlantGrowthPointsTimer(m_plantData));
+        }
+        else
+        {
+            Debug.LogError("Plant Data and/or Change Plant Sprite components are null!");
+        }
+    }
+
+    private void IdentifyPlantsInScene()
+    {
+        // Identifies number of plants in scene via array
+        GameObject[] plantsInSceneArr = GameObject.FindGameObjectsWithTag("Plant");
+        
+        // Adds plants found in scene to plants in scene list (a list so that more plants can be added later)
+        foreach (GameObject plant in plantsInSceneArr)
+        {
+            Debug.Log($"Plant found: {plant}");
+            m_plantsInSceneList.Add(plant);
         }
     }
 
@@ -156,7 +171,7 @@ public class PlantGrowthManager : MonoBehaviour
 
     public IEnumerator AddPlantGrowthPointsTimer(PlantData data)
     {
-        while (plantGrowthPointsTimerActive == true)
+        while (m_plantGrowthPointsTimerActive == true)
         {
             // If plant does not need water
             if (data.needsWater != true)
@@ -168,7 +183,7 @@ public class PlantGrowthManager : MonoBehaviour
             else
             {
                 // Timer stops
-                plantGrowthPointsTimerActive = false;
+                m_plantGrowthPointsTimerActive = false;
                 yield break;
             }
         }

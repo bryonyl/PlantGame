@@ -59,9 +59,9 @@ public class PlayerActions : MonoBehaviour
             }
             
             // Resets plant growth points timer if it was deactivated due to insufficient water
-            if (plantGrowthManager.plantGrowthPointsTimerActive == false)
+            if (plantGrowthManager.m_plantGrowthPointsTimerActive == false)
             {
-                plantGrowthManager.plantGrowthPointsTimerActive = true;
+                plantGrowthManager.m_plantGrowthPointsTimerActive = true;
                 plantGrowthManager.PlantHealthCheck(data);
                 StartCoroutine(plantGrowthManager.AddPlantGrowthPointsTimer(data));
                 Debug.Log("Restarted AddPlantGrowthPointsTimer coroutine");

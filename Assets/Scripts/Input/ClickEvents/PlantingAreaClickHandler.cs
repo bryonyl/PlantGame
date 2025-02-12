@@ -4,10 +4,12 @@ using UnityEngine.Serialization;
 
 public class PlantingAreaClickHandler : MonoBehaviour
 {
-    public static event Action OnPlantPlanted;
+    public delegate void PlantPlanted(GameObject plant);
+    public static event PlantPlanted OnPlantPlanted;
     
     private GameObject m_plantingArea;
-    [SerializeField] private GameObject plantToSpawn;
+    public GameObject m_plantToSpawn;
+    private bool m_clickingAllowed = true;
 
     private void Start()
     {
@@ -24,18 +26,29 @@ public class PlantingAreaClickHandler : MonoBehaviour
         EventClick.OnObjectClicked -= HandleClick;
     }
 
+    // public void ObjectEntered(GameObject enteredObject)
+    // {
+    //
+    // }
+    //
+    // public void ObjectExited(GameObject exitedObject);
+    // {
+    //
+    // }
+    
     private void HandleClick(GameObject clickedObject)
     {
-        if (clickedObject != gameObject) return;
-        Debug.Log("Clicking the planting area");
-
-        SpawnPlant();
+        if (m_clickingAllowed == true)
+        {
+            if (clickedObject != gameObject) return;
+            SpawnPlant();
+            m_clickingAllowed = false;
+        }
     }
 
     private void SpawnPlant()
     {
-        Instantiate(plantToSpawn, m_plantingArea.transform);
-        Debug.Log("Plant spawned");
-        OnPlantPlanted?.Invoke();
+        GameObject spawnedPlant = Instantiate(m_plantToSpawn, m_plantingArea.transform);
+        OnPlantPlanted?.Invoke(spawnedPlant);
     }
 }
