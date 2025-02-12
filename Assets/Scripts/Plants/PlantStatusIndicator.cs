@@ -9,8 +9,12 @@ public class PlantStatusIndicator : MonoBehaviour
 
     private void Start()
     {
-        Instantiate(m_plantStatusIndicatorPrefab);
-        m_plantStatusIndicatorAnimator = m_plantStatusIndicatorPrefab.GetComponent<Animator>();
+        GameObject spawnedPlantStatusIndicator = Instantiate(m_plantStatusIndicatorPrefab);
+        m_plantStatusIndicatorAnimator = spawnedPlantStatusIndicator.GetComponent<Animator>();
+        if (m_plantStatusIndicatorAnimator == null)
+        {
+            Debug.LogError($"{m_plantStatusIndicatorAnimator} is null!");
+        }
     }
     private void OnEnable()
     {

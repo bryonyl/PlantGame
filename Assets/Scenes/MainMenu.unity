@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 59728539}
   - component: {fileID: 59728538}
   m_Layer: 5
-  m_Name: GameTitle
+  m_Name: Text_GameTitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -503,8 +503,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1169166465}
-        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+      - m_Target: {fileID: 1169166467}
+        m_TargetAssemblyTypeName: MainMenuButtonHandler, Assembly-CSharp
         m_MethodName: ToggleControlsPanel
         m_Mode: 1
         m_Arguments:
@@ -2557,7 +2557,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 16
-      m_TileSpriteIndex: 16
+      m_TileSpriteIndex: 34
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -4922,8 +4922,8 @@ Tilemap:
     m_Data: {fileID: 407609829}
   - m_RefCount: 15
     m_Data: {fileID: 106717579, guid: 63ce65f3c18e2db4ebcbae5c6773a808, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: -41710503, guid: 6779d3beac81dfd41b0423333c918140, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 6
     m_Data: {fileID: -292357142, guid: 6779d3beac81dfd41b0423333c918140, type: 3}
   - m_RefCount: 4
@@ -4958,8 +4958,8 @@ Tilemap:
     m_Data: {fileID: -1394513869, guid: 6779d3beac81dfd41b0423333c918140, type: 3}
   - m_RefCount: 6
     m_Data: {fileID: -1347532211411968617, guid: 6779d3beac81dfd41b0423333c918140, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: -41710503, guid: 6779d3beac81dfd41b0423333c918140, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 2045359127}
   - m_RefCount: 8
@@ -5919,7 +5919,7 @@ Sprite:
         format: 0
         dimension: 0
       m_DataSize: 80
-      _typelessdata: 000000bf0000003f000000000000003f0000003f00000000000000bf000000bf000000000000003f000000bf000000000000000000000000000000000000000000000000000000000000000000000000
+      _typelessdata: 000000bf0000003f000000000000003f0000003f00000000000000bf000000bf000000000000003f000000bf00000000000000000000803f0000803f0000803f00000000000000000000803f00000000
     m_Bindpose: []
     textureRect:
       serializedVersion: 2
@@ -6033,7 +6033,6 @@ RectTransform:
   - {fileID: 2017137387}
   - {fileID: 2046532015}
   - {fileID: 1635982718}
-  - {fileID: 1558400587}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -6662,7 +6661,7 @@ Sprite:
         format: 0
         dimension: 0
       m_DataSize: 80
-      _typelessdata: 000000bf0000003f000000000000003f0000003f00000000000000bf000000bf000000000000003f000000bf000000000000000000000000000000000000000000000000000000000000000000000000
+      _typelessdata: 000000bf0000003f000000000000003f0000003f00000000000000bf000000bf000000000000003f000000bf00000000000000000000803f0000803f0000803f00000000000000000000803f00000000
     m_Bindpose: []
     textureRect:
       serializedVersion: 2
@@ -7229,7 +7228,7 @@ Sprite:
         format: 0
         dimension: 0
       m_DataSize: 80
-      _typelessdata: 000000bf0000003f000000000000003f0000003f00000000000000bf000000bf000000000000003f000000bf000000000000000000000000000000000000000000000000000000000000000000000000
+      _typelessdata: 000000bf0000003f000000000000003f0000003f00000000000000bf000000bf000000000000003f000000bf00000000000000000000803f0000803f0000803f00000000000000000000803f00000000
     m_Bindpose: []
     textureRect:
       serializedVersion: 2
@@ -7440,7 +7439,7 @@ Sprite:
         format: 0
         dimension: 0
       m_DataSize: 80
-      _typelessdata: 000000bf0000003f000000000000003f0000003f00000000000000bf000000bf000000000000003f000000bf000000000000000000000000000000000000000000000000000000000000000000000000
+      _typelessdata: 000000bf0000003f000000000000003f0000003f00000000000000bf000000bf000000000000003f000000bf00000000000000000000803f0000803f0000803f00000000000000000000803f00000000
     m_Bindpose: []
     textureRect:
       serializedVersion: 2
@@ -7542,7 +7541,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1169166467}
         m_TargetAssemblyTypeName: MainMenuButtonHandler, Assembly-CSharp
-        m_MethodName: QuitButton
+        m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7718,7 +7717,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 30
-      m_TileSpriteIndex: 30
+      m_TileSpriteIndex: 35
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -7738,7 +7737,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 29
-      m_TileSpriteIndex: 29
+      m_TileSpriteIndex: 30
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -7748,7 +7747,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 21
-      m_TileSpriteIndex: 21
+      m_TileSpriteIndex: 29
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -7768,7 +7767,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 27
-      m_TileSpriteIndex: 19
+      m_TileSpriteIndex: 21
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -7908,7 +7907,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 19
-      m_TileSpriteIndex: 18
+      m_TileSpriteIndex: 19
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -8008,7 +8007,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 14
-      m_TileSpriteIndex: 14
+      m_TileSpriteIndex: 18
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -8229,8 +8228,8 @@ Tilemap:
     m_Data: {fileID: 1065013951}
   - m_RefCount: 5
     m_Data: {fileID: -426125295, guid: 6779d3beac81dfd41b0423333c918140, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: -395250896, guid: dedab84405bb7ee43a45c9392eb49e47, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 3
     m_Data: {fileID: -481791489, guid: dedab84405bb7ee43a45c9392eb49e47, type: 3}
   - m_RefCount: 0
@@ -8238,13 +8237,13 @@ Tilemap:
   - m_RefCount: 2
     m_Data: {fileID: -1979610644, guid: 21ffc2c206fd0174d8fc5c80e6304d4b, type: 3}
   - m_RefCount: 1
-    m_Data: {fileID: -288534912, guid: 21ffc2c206fd0174d8fc5c80e6304d4b, type: 3}
+    m_Data: {fileID: -395250896, guid: dedab84405bb7ee43a45c9392eb49e47, type: 3}
   - m_RefCount: 1
-    m_Data: {fileID: -1734807668, guid: 21ffc2c206fd0174d8fc5c80e6304d4b, type: 3}
+    m_Data: {fileID: -288534912, guid: 21ffc2c206fd0174d8fc5c80e6304d4b, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 1825947687, guid: 21ffc2c206fd0174d8fc5c80e6304d4b, type: 3}
   - m_RefCount: 1
-    m_Data: {fileID: -66594034, guid: 21ffc2c206fd0174d8fc5c80e6304d4b, type: 3}
+    m_Data: {fileID: -1734807668, guid: 21ffc2c206fd0174d8fc5c80e6304d4b, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 1471850373, guid: 21ffc2c206fd0174d8fc5c80e6304d4b, type: 3}
   - m_RefCount: 1
@@ -8260,9 +8259,9 @@ Tilemap:
   - m_RefCount: 1
     m_Data: {fileID: -6401986886371797740, guid: 21ffc2c206fd0174d8fc5c80e6304d4b, type: 3}
   - m_RefCount: 1
-    m_Data: {fileID: -935251065, guid: 21ffc2c206fd0174d8fc5c80e6304d4b, type: 3}
+    m_Data: {fileID: -66594034, guid: 21ffc2c206fd0174d8fc5c80e6304d4b, type: 3}
   - m_RefCount: 1
-    m_Data: {fileID: -205805724, guid: 21ffc2c206fd0174d8fc5c80e6304d4b, type: 3}
+    m_Data: {fileID: -935251065, guid: 21ffc2c206fd0174d8fc5c80e6304d4b, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 762398707, guid: 21ffc2c206fd0174d8fc5c80e6304d4b, type: 3}
   - m_RefCount: 1
@@ -8271,8 +8270,8 @@ Tilemap:
     m_Data: {fileID: -1312093543, guid: 21ffc2c206fd0174d8fc5c80e6304d4b, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 515030209, guid: dedab84405bb7ee43a45c9392eb49e47, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: -205805724, guid: 21ffc2c206fd0174d8fc5c80e6304d4b, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: -4738042437726281635, guid: 21ffc2c206fd0174d8fc5c80e6304d4b, type: 3}
   m_TileMatrixArray:
@@ -8334,7 +8333,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1169166466}
-  - component: {fileID: 1169166465}
   - component: {fileID: 1169166467}
   m_Layer: 0
   m_Name: MenuManager
@@ -8343,22 +8341,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1169166465
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1169166464}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 347e6a8b953c64347adf2f3122fc0f15, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  howToPlayPanel: {fileID: 0}
-  controlsPanel: {fileID: 0}
-  exitPanelButton: {fileID: 0}
-  currentPanelOpen: {fileID: 0}
 --- !u!4 &1169166466
 Transform:
   m_ObjectHideFlags: 0
@@ -8386,7 +8368,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66cf094151414594689bfb73d24b1c06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_menuManager: {fileID: 1169166465}
+  m_howToPlayPanel: {fileID: 1635982717}
+  m_controlsPanel: {fileID: 2046532011}
+  m_howToPlayPanelExitButton: {fileID: 1791084934}
+  m_controlsPanelExitButton: {fileID: 1558400586}
 --- !u!1 &1169167763
 GameObject:
   m_ObjectHideFlags: 0
@@ -69563,8 +69548,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1169166465}
-        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+      - m_Target: {fileID: 1169166467}
+        m_TargetAssemblyTypeName: MainMenuButtonHandler, Assembly-CSharp
         m_MethodName: ToggleHowToPlayPanel
         m_Mode: 1
         m_Arguments:
@@ -69937,12 +69922,12 @@ GameObject:
   - component: {fileID: 1558400589}
   - component: {fileID: 1558400588}
   m_Layer: 5
-  m_Name: Button_ExitPanel
+  m_Name: Button_ExitControlsPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1558400587
 RectTransform:
   m_ObjectHideFlags: 0
@@ -69950,16 +69935,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1558400586}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 473956007}
+  m_Father: {fileID: 2046532015}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 765.6, y: 289.3}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 550, y: -25}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1558400588
@@ -70006,21 +69991,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1169166465}
-        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
-        m_MethodName: ToggleExitPanelButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 1
       - m_Target: {fileID: 1169166467}
         m_TargetAssemblyTypeName: MainMenuButtonHandler, Assembly-CSharp
-        m_MethodName: ExitPanel
+        m_MethodName: ControlsPanelExitButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -70406,6 +70379,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1791084935}
   - {fileID: 1808058849}
   - {fileID: 1874013103}
   m_Father: {fileID: 473956007}
@@ -70432,8 +70406,8 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 4
-  m_Spacing: 473.3
+  m_ChildAlignment: 2
+  m_Spacing: 0
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
@@ -70687,8 +70661,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 300, y: -88.35}
-  m_SizeDelta: {x: 800, y: 60.01}
+  m_AnchoredPosition: {x: 300.00003, y: -80.005}
+  m_SizeDelta: {x: 600, y: 60.01}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1672432360
 MonoBehaviour:
@@ -70775,7 +70749,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 3.2041626, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -72117,6 +72091,138 @@ Transform:
   m_Children: []
   m_Father: {fileID: 819410127}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1791084934
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1791084935}
+  - component: {fileID: 1791084938}
+  - component: {fileID: 1791084937}
+  - component: {fileID: 1791084936}
+  m_Layer: 5
+  m_Name: Button_ExitHowToPlayPanel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1791084935
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1791084934}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1635982718}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 550, y: -25}
+  m_SizeDelta: {x: 50, y: 50}
+  m_Pivot: {x: 0, y: 0.5}
+--- !u!114 &1791084936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1791084934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.68235296, g: 0.83137256, b: 0.6, a: 1}
+    m_PressedColor: {r: 0.50980395, g: 0.65882355, b: 0.5176471, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1791084937}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1169166467}
+        m_TargetAssemblyTypeName: MainMenuButtonHandler, Assembly-CSharp
+        m_MethodName: HowToPlayPanelExitButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+--- !u!114 &1791084937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1791084934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: -3140306434105344677, guid: 22d95a94fdca6db4bb680696bf1b166e, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1791084938
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1791084934}
+  m_CullTransparentMesh: 1
 --- !u!1 &1808058848
 GameObject:
   m_ObjectHideFlags: 0
@@ -72151,8 +72257,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 300, y: -88.350006}
-  m_SizeDelta: {x: 800, y: 50}
+  m_AnchoredPosition: {x: 300, y: -121.20239}
+  m_SizeDelta: {x: 600, y: 142.4048}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1808058850
 MonoBehaviour:
@@ -72321,8 +72427,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 300, y: -611.65}
-  m_SizeDelta: {x: 800, y: 50}
+  m_AnchoredPosition: {x: 300, y: -459.01978}
+  m_SizeDelta: {x: 600, y: 533.23}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1874013104
 MonoBehaviour:
@@ -72410,7 +72516,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 138.87299, y: -459.09778, z: 132.3377, w: 0}
+  m_margin: {x: 50, y: 0, z: 50, w: 83.74124}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -72436,7 +72542,7 @@ GameObject:
   - component: {fileID: 1900902268}
   - component: {fileID: 1900902267}
   m_Layer: 5
-  m_Name: Text_HowToPlayBody
+  m_Name: Text_ControlsBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72458,8 +72564,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 300, y: -616.65497}
-  m_SizeDelta: {x: 800, y: 50}
+  m_AnchoredPosition: {x: 300, y: -396.96002}
+  m_SizeDelta: {x: 600, y: 573.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1900902267
 MonoBehaviour:
@@ -72554,7 +72660,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 138.87299, y: -459.09778, z: 132.3377, w: 0}
+  m_margin: {x: 50, y: 0, z: 50, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -72664,6 +72770,7 @@ GameObject:
   - component: {fileID: 2017137390}
   - component: {fileID: 2017137389}
   - component: {fileID: 2017137388}
+  - component: {fileID: 2017137391}
   m_Layer: 5
   m_Name: Panel_MainMenu
   m_TagString: Untagged
@@ -72759,6 +72866,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2017137386}
   m_CullTransparentMesh: 1
+--- !u!114 &2017137391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2017137386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66cf094151414594689bfb73d24b1c06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_howToPlayPanel: {fileID: 1635982717}
+  m_controlsPanel: {fileID: 2046532011}
+  m_howToPlayPanelExitButton: {fileID: 1791084934}
+  m_controlsPanelExitButton: {fileID: 1558400586}
 --- !u!213 &2045359127
 Sprite:
   m_ObjectHideFlags: 0
@@ -72953,7 +73076,7 @@ Sprite:
         format: 0
         dimension: 0
       m_DataSize: 80
-      _typelessdata: 000000bf0000003f000000000000003f0000003f00000000000000bf000000bf000000000000003f000000bf000000000000000000000000000000000000000000000000000000000000000000000000
+      _typelessdata: 000000bf0000003f000000000000003f0000003f00000000000000bf000000bf000000000000003f000000bf00000000000000000000803f0000803f0000803f00000000000000000000803f00000000
     m_Bindpose: []
     textureRect:
       serializedVersion: 2
@@ -72981,7 +73104,7 @@ GameObject:
   - component: {fileID: 2046532015}
   - component: {fileID: 2046532014}
   - component: {fileID: 2046532013}
-  - component: {fileID: 2046532012}
+  - component: {fileID: 2046532016}
   m_Layer: 5
   m_Name: Panel_Controls
   m_TagString: Untagged
@@ -72989,32 +73112,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &2046532012
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2046532011}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
-  m_ChildAlignment: 4
-  m_Spacing: 473.3
-  m_ChildForceExpandWidth: 0
-  m_ChildForceExpandHeight: 0
-  m_ChildControlWidth: 0
-  m_ChildControlHeight: 0
-  m_ChildScaleWidth: 0
-  m_ChildScaleHeight: 0
-  m_ReverseArrangement: 0
 --- !u!114 &2046532013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73065,6 +73162,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1558400587}
   - {fileID: 1672432359}
   - {fileID: 1900902266}
   m_Father: {fileID: 473956007}
@@ -73074,6 +73172,32 @@ RectTransform:
   m_AnchoredPosition: {x: 250, y: 0}
   m_SizeDelta: {x: 600, y: 700}
   m_Pivot: {x: 0, y: 0.5}
+--- !u!114 &2046532016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2046532011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 2
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 0
+  m_ChildForceExpandHeight: 0
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
 --- !u!1 &2124318688
 GameObject:
   m_ObjectHideFlags: 0
