@@ -12,10 +12,10 @@ public class TimeManager : MonoBehaviour
     public static int m_hour { get; private set; }
     public static int m_day { get; private set; }
 
-    private float m_minuteToRealTime = 0.1f; // 0.5 seconds in real time represents 1 minute in game
+    private float m_minuteToRealTime = 0.5f; // 0.5 seconds in real time represents 1 minute in game
     private float m_timer; // Localised timer
 
-    public static int m_dayStartTime = 14; // 8AM
+    public static int m_dayStartTime = 8; // 8AM
     public static int m_dayEndTime = 22; // 10PM
     
     public Volume postProcessingVolume;
