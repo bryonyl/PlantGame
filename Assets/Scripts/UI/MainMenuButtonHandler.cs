@@ -9,8 +9,8 @@ public class MainMenuButtonHandler : MonoBehaviour
     [SerializeField] private GameObject m_howToPlayPanelExitButton;
     [SerializeField] private GameObject m_controlsPanelExitButton;
 
-    private bool m_howToPlayPanelOpen = true;
-    private bool m_controlsPanelOpen = true;
+    private bool m_howToPlayPanelOpen = false;
+    private bool m_controlsPanelOpen = false;
 
     public void OpenLevel(int levelNumber)
     {

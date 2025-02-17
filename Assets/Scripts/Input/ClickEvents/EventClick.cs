@@ -21,6 +21,9 @@ public class EventClick : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
     private Color m_hoveredColour = Color.grey;
     private Color m_normalColour;
     
+    // Conditions
+    public bool m_clickingAllowed = true;
+    
     private void Start()
     {
         m_spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
@@ -30,18 +33,36 @@ public class EventClick : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
     // These functions are overwritten in individual game objects' own EventClick scripts
     public void OnPointerClick(PointerEventData eventData)
     {
-        OnObjectClicked?.Invoke(gameObject);
+        if (m_clickingAllowed)
+        {
+            OnObjectClicked?.Invoke(gameObject);
+        }
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        m_spriteRenderer.color = m_hoveredColour;
-        OnObjectEntered?.Invoke(gameObject);
+        if (m_clickingAllowed)
+        {
+            m_spriteRenderer.color = m_hoveredColour;
+            OnObjectEntered?.Invoke(gameObject);
+        }
+        else
+        {
+            m_spriteRenderer.color = m_normalColour;
+        }
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        m_spriteRenderer.color = m_normalColour;
-        OnObjectExited?.Invoke(gameObject);
+        if (m_clickingAllowed)
+        {
+            m_spriteRenderer.color = m_normalColour;
+            OnObjectExited?.Invoke(gameObject);
+        }
+        else
+        {
+            m_spriteRenderer.color = m_normalColour;
+        }
+        
     }
 }

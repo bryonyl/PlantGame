@@ -25,6 +25,8 @@ public class InputManager : MonoBehaviour
     [SerializeField] private float m_playerMaxSpeed = 1000f;
     private Vector2 m_playerDirection;
     private Vector2 m_lastDirection;
+
+    [SerializeField] private GameObject m_pauseMenu;
     
     // Pause menu variables
     public static bool m_gameIsPaused = false;

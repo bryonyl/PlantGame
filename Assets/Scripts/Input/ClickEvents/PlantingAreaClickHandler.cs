@@ -6,11 +6,12 @@ public class PlantingAreaClickHandler : MonoBehaviour
 {
     public delegate void PlantPlanted(GameObject plant);
     public static event PlantPlanted OnPlantPlanted;
+
+    [SerializeField] private MoneyManager m_moneyManager;
     
     private GameObject m_plantingArea;
     public GameObject m_plantToSpawn;
-    private bool m_clickingAllowed = true;
-
+    
     private void Start()
     {
         m_plantingArea = gameObject;
@@ -25,24 +26,19 @@ public class PlantingAreaClickHandler : MonoBehaviour
     {
         EventClick.OnObjectClicked -= HandleClick;
     }
-
-    // public void ObjectEntered(GameObject enteredObject)
-    // {
-    //
-    // }
-    //
-    // public void ObjectExited(GameObject exitedObject);
-    // {
-    //
-    // }
     
     private void HandleClick(GameObject clickedObject)
     {
-        if (m_clickingAllowed == true)
+        if (clickedObject != gameObject) return;
+
+        if (m_moneyManager.m_playerCurrentMoney >= 25) // 25 = price of a seed
         {
-            if (clickedObject != gameObject) return;
+            m_moneyManager.RemoveMoney(25); // 25 is deducted from player's money
             SpawnPlant();
-            m_clickingAllowed = false;
+        }
+        else
+        {
+            Debug.Log("You do not have enough money to plant this plant!");
         }
     }
 

@@ -23,6 +23,6 @@ public class QuotaUI : MonoBehaviour
 
     private void UpdateUI()
     {
-        quotaText.text = $"Quota: ${moneyManager.playerCurrentMoney}/${moneyManager.playerCurrentQuotaGoal}";
+        quotaText.text = $"Quota: ${moneyManager.m_playerCurrentMoney}/${moneyManager.m_playerCurrentQuotaGoal}";
     }
 }

@@ -3,8 +3,8 @@ using UnityEngine.Serialization;
 
 public class MoneyUI : MonoBehaviour
 {
-    [SerializeField] private MoneyManager moneyManager; // Reference to the money system
-    public TMPro.TextMeshProUGUI moneyText; // Reference to the label
+    [SerializeField] private MoneyManager moneyManager;
+    public TMPro.TextMeshProUGUI moneyText;
 
     private void OnEnable()
     {
@@ -18,6 +18,6 @@ public class MoneyUI : MonoBehaviour
 
     private void UpdateUI()
     {
-        moneyText.text = $"Money: ${moneyManager.playerCurrentMoney}";
+        moneyText.text = $"Money: ${moneyManager.m_playerCurrentMoney}";
     }
 }
