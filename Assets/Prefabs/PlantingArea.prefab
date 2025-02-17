@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07211146c8b0f2648a78530bea3647e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_clickingAllowed: 1
 --- !u!114 &7203444462557340189
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59,6 +60,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c23c4f8a8500afa4bb23496ed73fa493, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_moneyManager: {fileID: 0}
   m_plantToSpawn: {fileID: 890731581663757891, guid: 7d455574a0185164c9e1511ddb208edd, type: 3}
 --- !u!212 &2620479544451882444
 SpriteRenderer:

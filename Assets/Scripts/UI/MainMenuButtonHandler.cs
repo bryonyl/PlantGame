@@ -12,9 +12,9 @@ public class MainMenuButtonHandler : MonoBehaviour
     private bool m_howToPlayPanelOpen = false;
     private bool m_controlsPanelOpen = false;
 
-    public void OpenLevel(int levelNumber)
+    public void OpenMainLevel()
     {
-        SceneManager.LoadScene(levelNumber);
+        SceneManager.LoadScene(1);
     }
     
     public void ToggleHowToPlayPanel()

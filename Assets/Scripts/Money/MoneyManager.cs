@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 
 public class MoneyManager : MonoBehaviour
@@ -29,5 +30,20 @@ public class MoneyManager : MonoBehaviour
         OnMoneyChanged?.Invoke();
         Debug.Log($"Money removed (${moneyToRemove})");
         Debug.Log($"New money = {m_playerCurrentMoney}");
+    }
+
+    public bool CheckQuota()
+    {
+        if (m_playerCurrentMoney < m_playerCurrentQuotaGoal)
+        {
+            Debug.Log("Quota has not been met! Game over!");
+            SceneManager.LoadScene(2);
+            return false;
+        }
+        else
+        {
+            Debug.Log("Quota has been met! Continuing game!");
+            return true;
+        }
     }
 }

@@ -3,8 +3,8 @@ using UnityEngine.Serialization;
 
 public class QuotaUI : MonoBehaviour
 {
-    [SerializeField] private MoneyManager moneyManager; // Reference to the money manager
-    public TMPro.TextMeshProUGUI quotaText;
+    [SerializeField] private MoneyManager m_moneyManager;
+    public TMPro.TextMeshProUGUI m_quotaText;
 
     private void Start()
     {
@@ -23,6 +23,6 @@ public class QuotaUI : MonoBehaviour
 
     private void UpdateUI()
     {
-        quotaText.text = $"Quota: ${moneyManager.m_playerCurrentMoney}/${moneyManager.m_playerCurrentQuotaGoal}";
+        m_quotaText.text = $"Quota: ${m_moneyManager.m_playerCurrentMoney}/${m_moneyManager.m_playerCurrentQuotaGoal}";
     }
 }

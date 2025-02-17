@@ -84,8 +84,6 @@ public class TimeManager : MonoBehaviour
             float lightLevel = rateOfChange * (m_hour - m_dayStartTime);
             postProcessingVolume.weight = lightLevel;
         }
-
-        
     }
 
     private void ActivateLightsCheck()

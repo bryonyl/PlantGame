@@ -4,13 +4,12 @@ public class DayUI : MonoBehaviour
 {
     public TMPro.TextMeshProUGUI m_dayText;
 
-    private void OnEnable() // Subscribe UpdateTime to OnDayChanged event
+    private void OnEnable()
     {
-        // Time is updated when the day changes
         DayProgression.OnDayChanged += UpdateTime;
     }
 
-    private void OnDisable() // Unsubscribe UpdateTime from OnDayChanged event
+    private void OnDisable()
     {
         DayProgression.OnDayChanged -= UpdateTime;
     }
