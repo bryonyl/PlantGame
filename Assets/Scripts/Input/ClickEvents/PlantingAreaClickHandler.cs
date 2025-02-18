@@ -30,7 +30,7 @@ public class PlantingAreaClickHandler : MonoBehaviour
         {
             m_moneyManager.RemoveMoney(25); // 25 is deducted from player's money
             SpawnPlant();
-            m_plantingArea.GetComponent<EventClick>().m_clickingAllowed = false;
+            //m_plantingArea.GetComponent<EventClick>().m_clickingAllowed = false;
         }
         else
         {

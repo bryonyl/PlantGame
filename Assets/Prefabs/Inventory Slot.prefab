@@ -113,6 +113,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5f6aefea4385494c80facb9a95c9b2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventorySlotImage: {fileID: 3775969146581702788}
-  selectedColour: {r: 0.15566039, g: 1, b: 0.23850214, a: 1}
-  notSelectedColour: {r: 1, g: 1, b: 1, a: 1}
+  m_inventorySlotImage: {fileID: 0}
+  m_selectedColour: {r: 0, g: 0, b: 0, a: 0}
+  m_notSelectedColour: {r: 0, g: 0, b: 0, a: 0}

@@ -19,7 +19,6 @@ public class InventoryManager : MonoBehaviour
     public Item wateringCanItem;
     public Item hoeItem;
     public Item beetrootItem;
-    public Item wheatItem;
 
     private void Start()
     {
@@ -126,7 +125,7 @@ public class InventoryManager : MonoBehaviour
                 
                 return itemInSlot.item;
             }
-            else if (itemInSlot.item == beetrootItem || itemInSlot.item == wheatItem)
+            else if (itemInSlot.item == beetrootItem)
             {
                 playerActions.wateringCanUsageAllowed = false;
                 playerActions.hoeUsageAllowed = false;
