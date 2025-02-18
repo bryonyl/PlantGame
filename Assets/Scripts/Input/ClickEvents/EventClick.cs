@@ -17,9 +17,9 @@ public class EventClick : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
     public static event ObjectExited OnObjectExited;
     
     // Hover colour related variables
-    private SpriteRenderer m_spriteRenderer;
-    private Color m_hoveredColour = Color.grey;
-    private Color m_normalColour;
+    public SpriteRenderer m_spriteRenderer;
+    public Color m_hoveredColour = Color.grey;
+    public Color m_normalColour;
     
     // Conditions
     public bool m_clickingAllowed = true;

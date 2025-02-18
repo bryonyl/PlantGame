@@ -18,9 +18,9 @@ public class TimeManager : MonoBehaviour
     public static int m_dayStartTime = 8; // 8AM
     public static int m_dayEndTime = 22; // 10PM
     
-    public Volume postProcessingVolume;
-    private TimeManager timeManager;
-    private bool activateLights = false;
+    public Volume m_postProcessingVolume;
+    private TimeManager m_timeManager;
+    private bool m_activateLights = false;
 
     private void OnEnable()
     {
@@ -34,8 +34,8 @@ public class TimeManager : MonoBehaviour
 
     private void ChangeDay()
     {
-        postProcessingVolume.weight = 0;
-        activateLights = false;
+        m_postProcessingVolume.weight = 0;
+        m_activateLights = false;
         m_day++;
         m_hour = m_dayStartTime;
         m_minute = 0;
@@ -43,8 +43,8 @@ public class TimeManager : MonoBehaviour
 
     private void Start()
     {
-        timeManager = GetComponent<TimeManager>();
-        postProcessingVolume.weight = 0;
+        m_timeManager = GetComponent<TimeManager>();
+        m_postProcessingVolume.weight = 0;
         
         ChangeDay();
         m_timer = m_minuteToRealTime;
@@ -82,7 +82,7 @@ public class TimeManager : MonoBehaviour
         {
             float rateOfChange = 1.0f / totalHours;
             float lightLevel = rateOfChange * (m_hour - m_dayStartTime);
-            postProcessingVolume.weight = lightLevel;
+            m_postProcessingVolume.weight = lightLevel;
         }
     }
 
@@ -90,7 +90,7 @@ public class TimeManager : MonoBehaviour
     {
         if (m_hour >= 20 && m_hour <= m_dayEndTime)
         {
-            activateLights = true;
+            m_activateLights = true;
         }
     }
 }

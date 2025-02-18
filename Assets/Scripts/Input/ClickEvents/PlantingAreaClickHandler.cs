@@ -52,7 +52,7 @@ public class PlantingAreaClickHandler : MonoBehaviour
         OnPlantPlanted?.Invoke(spawnedPlant);
     }
 
-    private void ReactivatePlantingArea(PlantData data)
+    public void ReactivatePlantingArea(PlantData data)
     {
         if (data.m_readyToHarvest)
         {

@@ -30,4 +30,9 @@ public class ChangePlantSprite : MonoBehaviour
             m_plantSpriteRenderer.sprite = m_allPlantGrowthSprites[plantGrowthStage];
         }
     }
+
+    public void ChangeSpriteToDead()
+    {
+        m_plantSpriteRenderer.color = Color.black;
+    }
 }

@@ -17,7 +17,7 @@ public class InventoryItem : MonoBehaviour
     public void InitialiseItem(Item newItem)
     {
         item = newItem;
-        itemImage.sprite = newItem.image;
+        itemImage.sprite = newItem.m_image;
         ResetItemQuantityText();
     }
 

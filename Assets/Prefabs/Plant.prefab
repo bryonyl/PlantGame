@@ -52,14 +52,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_waterLevel: 0
-  m_waterCapacityCap: 10
+  m_waterCapacityCap: 7
   m_growthPoints: 0
   m_growthStage: 0
   m_readyToHarvest: 0
-  m_growthCheckTimer: 3
-  m_growthPointTimer: 3
-  m_wateringDecayTimer: 3
-  m_requiredGrowthPoints: 20
+  m_growthCheckTimer: 1
+  m_growthPointTimer: 1
+  m_wateringDecayTimer: 1
+  m_requiredGrowthPoints: 14
   m_needsWater: 0
   m_canGrow: 0
   m_isDead: 0
@@ -172,6 +172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbf061f473e23744b8020fb4a54e0ba1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_plantGrowthPointsTimerActive: 1
 --- !u!61 &8260152579632037204
 BoxCollider2D:
   m_ObjectHideFlags: 0

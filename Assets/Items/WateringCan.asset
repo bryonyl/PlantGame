@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d206ae272c66884b84772fd58705164, type: 3}
   m_Name: WateringCan
   m_EditorClassIdentifier: 
-  itemType: 0
-  actionType: 2
-  sellingValue: 0
-  stackable: 0
-  image: {fileID: -6987332668960274312, guid: 108222de2a02dd94ab69042486eda2fa, type: 3}
+  m_itemType: 1
+  m_actionType: 2
+  m_sellingValue: 0
+  m_stackable: 0
+  m_image: {fileID: -6987332668960274312, guid: 108222de2a02dd94ab69042486eda2fa, type: 3}

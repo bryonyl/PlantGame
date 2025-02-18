@@ -5,30 +5,26 @@ using UnityEngine;
 /// </summary>
 public class InventoryManager : MonoBehaviour
 {
-    /// <summary>
-    /// The maximum size of a stack of stackable items.
-    /// </summary>
-    public int maxStackedItems = 10;
-    public InventorySlot[] inventorySlots;
-    public GameObject inventoryItemPrefab;
+    public int m_maxStackedItems = 10;
+    public InventorySlot[] m_inventorySlots;
+    public GameObject m_inventoryItemPrefab;
     private int m_selectedSlot = -1;
 
-   public PlayerActions playerActions;
+    public PlayerActions m_playerActions;
     
     [Header("Items")]
-    public Item wateringCanItem;
-    public Item hoeItem;
-    public Item beetrootItem;
+    public Item m_wateringCanItem;
+    public Item m_hoeItem;
+    public Item m_beetrootItem;
 
     private void Start()
     {
         ChangeSelectedSlot(0);
-        //GameObject.DontDestroyOnLoad(this);
     }
 
     private void Update()
     {
-        // Checks if player can use the currently selected item
+        // Checks if player can use the currently selected item constantly
         QuerySelectedItem();
     }
 
@@ -40,10 +36,10 @@ public class InventoryManager : MonoBehaviour
     {
         if (m_selectedSlot >= 0)
         {
-            inventorySlots[m_selectedSlot].Deselect();
+            m_inventorySlots[m_selectedSlot].Deselect();
         }
 
-        inventorySlots[newSlotValue].Select();
+        m_inventorySlots[newSlotValue].Select();
         m_selectedSlot = newSlotValue;
     }
     
@@ -56,11 +52,11 @@ public class InventoryManager : MonoBehaviour
     public bool AddItem(Item item)
     {
         // Checks if any slot has the same item with count lower than maximum
-        for (int i = 0; i < inventorySlots.Length; i++)
+        for (int i = 0; i < m_inventorySlots.Length; i++)
         {
-            InventorySlot slot = inventorySlots[i];
+            InventorySlot slot = m_inventorySlots[i];
             InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
-            if (itemInSlot != null && itemInSlot.item == item && itemInSlot.count < maxStackedItems && itemInSlot.item.stackable == true)
+            if (itemInSlot != null && itemInSlot.item == item && itemInSlot.count < m_maxStackedItems && itemInSlot.item.m_stackable == true)
             {
                 itemInSlot.count++;
                 itemInSlot.ResetItemQuantityText();
@@ -69,9 +65,9 @@ public class InventoryManager : MonoBehaviour
         }
 
         // Find any empty slot
-        for (int i = 0; i < inventorySlots.Length; i++)
+        for (int i = 0; i < m_inventorySlots.Length; i++)
         {
-            InventorySlot slot = inventorySlots[i];
+            InventorySlot slot = m_inventorySlots[i];
             InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
             if (itemInSlot == null)
             {
@@ -90,7 +86,7 @@ public class InventoryManager : MonoBehaviour
     /// <param name="slot">Inventory slot for item to be placed in.</param>
     private void SpawnNewItem(Item item, InventorySlot slot)
     {
-        GameObject newItem = Instantiate(inventoryItemPrefab, slot.transform);
+        GameObject newItem = Instantiate(m_inventoryItemPrefab, slot.transform);
         InventoryItem inventoryItem = newItem.GetComponent<InventoryItem>();
         inventoryItem.InitialiseItem(item);
     }
@@ -100,45 +96,45 @@ public class InventoryManager : MonoBehaviour
     /// </summary>
     public Item QuerySelectedItem()
     {
-        InventorySlot slot = inventorySlots[m_selectedSlot];
+        InventorySlot slot = m_inventorySlots[m_selectedSlot];
         InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
 
         if (itemInSlot != null)
         {
             Item item = itemInSlot.item;
 
-            if (itemInSlot.item == wateringCanItem)
+            if (itemInSlot.item == m_wateringCanItem)
             {
-                playerActions.m_hoeUsageAllowed = false;
-                playerActions.m_itemSellingAllowed = false;
-                playerActions.m_wateringCanUsageAllowed = true;
-                Debug.Log($"Watering can usage allowed = {playerActions.m_wateringCanUsageAllowed}");
+                m_playerActions.m_hoeUsageAllowed = false;
+                m_playerActions.m_itemSellingAllowed = false;
+                m_playerActions.m_wateringCanUsageAllowed = true;
+                Debug.Log($"Watering can usage allowed = {m_playerActions.m_wateringCanUsageAllowed}");
                 
                 return itemInSlot.item;
             }
-            else if (itemInSlot.item == hoeItem)
+            else if (itemInSlot.item == m_hoeItem)
             {
-                playerActions.m_wateringCanUsageAllowed = false;
-                playerActions.m_itemSellingAllowed = false;
-                playerActions.m_hoeUsageAllowed = true;
-                Debug.Log($"Hoe usage allowed = {playerActions.m_hoeUsageAllowed}");
+                m_playerActions.m_wateringCanUsageAllowed = false;
+                m_playerActions.m_itemSellingAllowed = false;
+                m_playerActions.m_hoeUsageAllowed = true;
+                Debug.Log($"Hoe usage allowed = {m_playerActions.m_hoeUsageAllowed}");
                 
                 return itemInSlot.item;
             }
-            else if (itemInSlot.item == beetrootItem)
+            else if (itemInSlot.item == m_beetrootItem)
             {
-                playerActions.m_wateringCanUsageAllowed = false;
-                playerActions.m_hoeUsageAllowed = false;
-                playerActions.m_itemSellingAllowed = true;
-                Debug.Log($"Plant selling allowed = {playerActions.m_itemSellingAllowed}");
+                m_playerActions.m_wateringCanUsageAllowed = false;
+                m_playerActions.m_hoeUsageAllowed = false;
+                m_playerActions.m_itemSellingAllowed = true;
+                Debug.Log($"Plant selling allowed = {m_playerActions.m_itemSellingAllowed}");
                 
                 return itemInSlot.item;
             }
             else
             {
-                playerActions.m_wateringCanUsageAllowed = false;
-                playerActions.m_hoeUsageAllowed = false;
-                playerActions.m_itemSellingAllowed = false;
+                m_playerActions.m_wateringCanUsageAllowed = false;
+                m_playerActions.m_hoeUsageAllowed = false;
+                m_playerActions.m_itemSellingAllowed = false;
                 
                 Debug.Log("No item in slot that can be used");
             }
@@ -146,12 +142,16 @@ public class InventoryManager : MonoBehaviour
         return null;
     }
 
+    /// <summary>
+    /// Expends the "used" item (so it is destroyed and removed from the inventory).
+    /// </summary>
+    /// <returns></returns>
     public Item UseItem()
     {
-        InventorySlot slot = inventorySlots[m_selectedSlot];
+        InventorySlot slot = m_inventorySlots[m_selectedSlot];
         InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
         
-        if (playerActions.m_itemSellingAllowed)
+        if (m_playerActions.m_itemSellingAllowed)
         {
             itemInSlot.count--;
             if (itemInSlot.count <= 0)

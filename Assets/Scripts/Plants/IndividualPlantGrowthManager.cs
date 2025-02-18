@@ -1,11 +1,10 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.TextCore.Text;
 
+/// <summary>
+/// This script manages plants on an individual scale, not globally, so this script should only be attached to individual plants. It is responsible for the plant's needs, like watering, and its growth and death. It also triggers the appropriate plant status indicator
+/// </summary>
 public class IndividualPlantGrowthManager : MonoBehaviour
 {
     // Events
@@ -16,13 +15,15 @@ public class IndividualPlantGrowthManager : MonoBehaviour
     // Script references
     private PlantData m_plantData;
     private ChangePlantSprite m_changePlantSprite;
-    private PlantingAreaClickHandler m_plantingAreaClickHandler;
+    public PlantingAreaClickHandler m_plantingAreaClickHandler;
+    
+    // Game object references
+    private GameObject m_plantStatusIndicator;
     
     // Conditions
-    private bool m_plantGrowthPointsTimerActive = true;
+    public bool m_plantGrowthPointsTimerActive = true;
     private bool m_waterLevelDecayTimerActive = true;
-    private bool m_PlantGrowthTimerActive = true;
-
+    private bool m_plantGrowthTimerActive = true;
 
     private void OnEnable()
     {
@@ -42,16 +43,17 @@ public class IndividualPlantGrowthManager : MonoBehaviour
     {
         m_plantData = GetComponent<PlantData>();
         m_changePlantSprite = GetComponent<ChangePlantSprite>();
+        m_plantStatusIndicator = plant.transform.Find("PlantStatusIndicator").gameObject;
 
         Debug.Log($"Plant created with the ID {m_plantData.UniquePlantId}. Starting coroutines");
         
-        // Water level of individual plant starts decaying
+        // Water level of plant starts decaying
         StartCoroutine(WaterLevelDecayTimer());
 
-        // Individual plant's growth starts to be monitored
+        // Plant's growth starts to be monitored
         StartCoroutine(PlantGrowthTimer());
 
-        // Growth points start being added to specific plant
+        // Growth points start being added to plant
         StartCoroutine(AddPlantGrowthPointsTimer());
     }
 
@@ -59,9 +61,9 @@ public class IndividualPlantGrowthManager : MonoBehaviour
     /// Checks if the plant needs water and/or if it is dying
     /// </summary>
     /// <returns>Returns false if plant is dying and needs care. Returns true if plant is healthy</returns>
-    private bool PlantHealthCheck()
+    public bool PlantHealthCheck()
     {
-        if (m_plantData.m_waterLevel <= 0 && m_plantData.m_waterLevel >= -10)
+        if (m_plantData.m_waterLevel <= 0 && m_plantData.m_waterLevel >= -15)
         {
             m_plantData.m_needsWater = true;
             Debug.Log("Plant need water");
@@ -71,7 +73,7 @@ public class IndividualPlantGrowthManager : MonoBehaviour
 
             return false; // Plant needs care, so false is returned (health check came back unsuccessful)
         }
-        if (m_plantData.m_waterLevel < -10) // Plant dies if water level falls below -10
+        if (m_plantData.m_waterLevel < -15) // Plant dies if water level falls below -15
         {
             PlantDies();
 
@@ -91,7 +93,7 @@ public class IndividualPlantGrowthManager : MonoBehaviour
     /// <returns></returns>
     private IEnumerator PlantGrowthTimer()
     {
-        while (m_plantGrowthPointsTimerActive)
+        while (m_plantGrowthTimerActive)
         {
             // Starts specific plant's growth timer
             yield return new WaitForSeconds(m_plantData.m_growthCheckTimer);
@@ -121,7 +123,7 @@ public class IndividualPlantGrowthManager : MonoBehaviour
     /// Timer that allows growth points to be added each time it is called
     /// </summary>
     /// <returns></returns>
-    private IEnumerator AddPlantGrowthPointsTimer()
+    public IEnumerator AddPlantGrowthPointsTimer()
     {
         while (m_plantGrowthPointsTimerActive == true)
         {
@@ -146,22 +148,26 @@ public class IndividualPlantGrowthManager : MonoBehaviour
     /// </summary>
     private void PlantGrows()
     {
-        // Resets m_canGrow after plant has grown
+        // Resets m_canGrow after plant has grown a stage
         m_plantData.m_canGrow = false;
 
         // If plant isn't fully grown, then add a growth stage and change the sprite
-        if (m_plantData.m_growthStage <= 2)
+        if (m_plantData.m_growthStage <= 1)
         {
             m_plantData.m_growthStage++;
             m_changePlantSprite.ChangeSprite(m_plantData.m_growthStage);
             m_plantData.m_growthPoints = 0;
         }
         // Plant has finished growing. All timers are stopped
-        else if (m_plantData.m_growthStage == 3)
+        else if (m_plantData.m_growthStage == 2)
         {
+            m_plantData.m_growthStage++;
+            m_changePlantSprite.ChangeSprite(m_plantData.m_growthStage);
+            m_plantData.m_growthPoints = 0;
+            StopAllCoroutines();
+            Destroy(m_plantStatusIndicator);
             Debug.Log("Plant has finished growing!");
             m_plantData.m_readyToHarvest = true;
-            StopAllCoroutines();
         }
     }
 
@@ -180,6 +186,8 @@ public class IndividualPlantGrowthManager : MonoBehaviour
     private void PlantDies()
     {
         m_plantData.m_isDead = true;
+        Destroy(m_plantStatusIndicator);
+        m_changePlantSprite.ChangeSpriteToDead();
         StopAllCoroutines();
         OnPlantDead?.Invoke();
     }
