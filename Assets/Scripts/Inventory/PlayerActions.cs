@@ -45,11 +45,11 @@ public class PlayerActions : MonoBehaviour
     /// <param name="data">The data for the specified plant.</param>
     private void PlantIsWatered(PlantData data, ChangePlantSprite sprite)
     {
-        if (m_wateringCanUsageAllowed == true)
+        if (m_wateringCanUsageAllowed == true && data.m_isDead == false)
         {
             if (data.m_waterLevel > data.m_waterCapacityCap)
             {
-                Debug.Log("Water Capacity Reached");
+                Debug.Log("Plant can't take anymore water for now!");
             }
             else
             {
@@ -58,13 +58,17 @@ public class PlayerActions : MonoBehaviour
             }
             
             // Resets plant growth points timer if it was deactivated due to insufficient water
-            if (m_plantGrowthManager.m_plantGrowthPointsTimerActive == false)
+            if (m_plantGrowthManager.m_plantGrowthPointsTimerActive == false && data.m_isDead == false)
             {
                 m_plantGrowthManager.m_plantGrowthPointsTimerActive = true;
                 m_plantGrowthManager.PlantHealthCheck(data, sprite);
                 StartCoroutine(m_plantGrowthManager.AddPlantGrowthPointsTimer(data));
                 Debug.Log("Restarted AddPlantGrowthPointsTimer coroutine");
             }
+        }
+        else
+        {
+            Debug.Log("Watering can usage is not allowed, or the plant is dead!");
         }
     }
 
