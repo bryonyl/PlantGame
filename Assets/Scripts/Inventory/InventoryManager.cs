@@ -109,36 +109,36 @@ public class InventoryManager : MonoBehaviour
 
             if (itemInSlot.item == wateringCanItem)
             {
-                playerActions.hoeUsageAllowed = false;
-                playerActions.itemSellingAllowed = false;
-                playerActions.wateringCanUsageAllowed = true;
-                Debug.Log($"Watering can usage allowed = {playerActions.wateringCanUsageAllowed}");
+                playerActions.m_hoeUsageAllowed = false;
+                playerActions.m_itemSellingAllowed = false;
+                playerActions.m_wateringCanUsageAllowed = true;
+                Debug.Log($"Watering can usage allowed = {playerActions.m_wateringCanUsageAllowed}");
                 
                 return itemInSlot.item;
             }
             else if (itemInSlot.item == hoeItem)
             {
-                playerActions.wateringCanUsageAllowed = false;
-                playerActions.itemSellingAllowed = false;
-                playerActions.hoeUsageAllowed = true;
-                Debug.Log($"Hoe usage allowed = {playerActions.hoeUsageAllowed}");
+                playerActions.m_wateringCanUsageAllowed = false;
+                playerActions.m_itemSellingAllowed = false;
+                playerActions.m_hoeUsageAllowed = true;
+                Debug.Log($"Hoe usage allowed = {playerActions.m_hoeUsageAllowed}");
                 
                 return itemInSlot.item;
             }
             else if (itemInSlot.item == beetrootItem)
             {
-                playerActions.wateringCanUsageAllowed = false;
-                playerActions.hoeUsageAllowed = false;
-                playerActions.itemSellingAllowed = true;
-                Debug.Log($"Plant selling allowed = {playerActions.itemSellingAllowed}");
+                playerActions.m_wateringCanUsageAllowed = false;
+                playerActions.m_hoeUsageAllowed = false;
+                playerActions.m_itemSellingAllowed = true;
+                Debug.Log($"Plant selling allowed = {playerActions.m_itemSellingAllowed}");
                 
                 return itemInSlot.item;
             }
             else
             {
-                playerActions.wateringCanUsageAllowed = false;
-                playerActions.hoeUsageAllowed = false;
-                playerActions.itemSellingAllowed = false;
+                playerActions.m_wateringCanUsageAllowed = false;
+                playerActions.m_hoeUsageAllowed = false;
+                playerActions.m_itemSellingAllowed = false;
                 
                 Debug.Log("No item in slot that can be used");
             }
@@ -151,7 +151,7 @@ public class InventoryManager : MonoBehaviour
         InventorySlot slot = inventorySlots[m_selectedSlot];
         InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
         
-        if (playerActions.itemSellingAllowed)
+        if (playerActions.m_itemSellingAllowed)
         {
             itemInSlot.count--;
             if (itemInSlot.count <= 0)

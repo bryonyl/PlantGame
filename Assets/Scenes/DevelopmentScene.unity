@@ -293,11 +293,11 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
 --- !u!114 &17408879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -955,7 +955,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
 --- !u!114 &336118754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1002,10 +1002,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1417138269}
     m_Modifications:
-    - target: {fileID: 1973115434893882182, guid: cf4fcf31d16e6ee41804fb3f9949385a, type: 3}
-      propertyPath: m_inventorySlotImage
-      value: 
-      objectReference: {fileID: 2091087214}
     - target: {fileID: 2812015328995638531, guid: cf4fcf31d16e6ee41804fb3f9949385a, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1608,10 +1604,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1417138269}
     m_Modifications:
-    - target: {fileID: 1973115434893882182, guid: cf4fcf31d16e6ee41804fb3f9949385a, type: 3}
-      propertyPath: m_inventorySlotImage
-      value: 
-      objectReference: {fileID: 1611034000}
     - target: {fileID: 2812015328995638531, guid: cf4fcf31d16e6ee41804fb3f9949385a, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3383,17 +3375,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5f6aefea4385494c80facb9a95c9b2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &713852210 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3775969146581702788, guid: cf4fcf31d16e6ee41804fb3f9949385a, type: 3}
-  m_PrefabInstance: {fileID: 724388219}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &718703303
 GameObject:
   m_ObjectHideFlags: 0
@@ -3509,10 +3490,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1417138269}
     m_Modifications:
-    - target: {fileID: 1973115434893882182, guid: cf4fcf31d16e6ee41804fb3f9949385a, type: 3}
-      propertyPath: m_inventorySlotImage
-      value: 
-      objectReference: {fileID: 713852210}
     - target: {fileID: 2812015328995638531, guid: cf4fcf31d16e6ee41804fb3f9949385a, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -4433,17 +4410,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf64ef39425e5d748a34699d3f637c1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  plantGrowthManager: {fileID: 0}
-  inventoryManager: {fileID: 166840845}
-  moneyManager: {fileID: 0}
-  itemsToPickup:
-  - {fileID: 11400000, guid: ef0534f9144060242a65a2be069293c3, type: 2}
-  - {fileID: 11400000, guid: 986ee798fbcb66442b9e10c81d6cceb6, type: 2}
+  m_plantGrowthManager: {fileID: 1471398771}
+  m_inventoryManager: {fileID: 166840845}
+  m_moneyManager: {fileID: 2000239412}
+  m_itemsToPickup:
   - {fileID: 11400000, guid: eeb35a2bdec7a4945a8ae271dc717cf2, type: 2}
-  wateringCanUsageAllowed: 0
-  hoeUsageAllowed: 0
-  itemSellingAllowed: 0
-  wateringCanCapacity: 0
+  - {fileID: 11400000, guid: 986ee798fbcb66442b9e10c81d6cceb6, type: 2}
+  - {fileID: 11400000, guid: ef0534f9144060242a65a2be069293c3, type: 2}
+  m_wateringCanUsageAllowed: 0
+  m_hoeUsageAllowed: 0
+  m_itemSellingAllowed: 0
+  m_wateringCanCapacity: 10
 --- !u!1 &778809820
 GameObject:
   m_ObjectHideFlags: 0
@@ -4737,17 +4714,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b5f6aefea4385494c80facb9a95c9b2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &851978811 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3775969146581702788, guid: cf4fcf31d16e6ee41804fb3f9949385a, type: 3}
-  m_PrefabInstance: {fileID: 1412194644}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &874743621
@@ -5111,11 +5077,11 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
 --- !u!114 &895003246
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8389,7 +8355,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
 --- !u!114 &1325039579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12040,10 +12006,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1417138269}
     m_Modifications:
-    - target: {fileID: 1973115434893882182, guid: cf4fcf31d16e6ee41804fb3f9949385a, type: 3}
-      propertyPath: m_inventorySlotImage
-      value: 
-      objectReference: {fileID: 851978811}
     - target: {fileID: 2812015328995638531, guid: cf4fcf31d16e6ee41804fb3f9949385a, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -12253,17 +12215,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b5f6aefea4385494c80facb9a95c9b2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1420595822 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3775969146581702788, guid: cf4fcf31d16e6ee41804fb3f9949385a, type: 3}
-  m_PrefabInstance: {fileID: 1720871741}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1425327341
@@ -73399,10 +73350,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1417138269}
     m_Modifications:
-    - target: {fileID: 1973115434893882182, guid: cf4fcf31d16e6ee41804fb3f9949385a, type: 3}
-      propertyPath: m_inventorySlotImage
-      value: 
-      objectReference: {fileID: 2036222091}
     - target: {fileID: 2812015328995638531, guid: cf4fcf31d16e6ee41804fb3f9949385a, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -73959,6 +73906,7 @@ GameObject:
   - component: {fileID: 1607762411}
   - component: {fileID: 1607762413}
   - component: {fileID: 1607762414}
+  - component: {fileID: 1607762415}
   m_Layer: 0
   m_Name: TimeManager
   m_TagString: Manager
@@ -74020,15 +73968,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fccbfe14d189c1408e1ac16dbf52519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1611034000 stripped
+--- !u!114 &1607762415
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3775969146581702788, guid: cf4fcf31d16e6ee41804fb3f9949385a, type: 3}
-  m_PrefabInstance: {fileID: 524338574}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1607762409}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Script: {fileID: 11500000, guid: d6c260a7ff6c9ec4caa3730c20a9544a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1618778961
@@ -74250,17 +74199,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf64ef39425e5d748a34699d3f637c1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  plantGrowthManager: {fileID: 1471398771}
-  inventoryManager: {fileID: 166840845}
-  moneyManager: {fileID: 2000239412}
-  itemsToPickup:
+  m_plantGrowthManager: {fileID: 1471398771}
+  m_inventoryManager: {fileID: 166840845}
+  m_moneyManager: {fileID: 2000239412}
+  m_itemsToPickup:
   - {fileID: 11400000, guid: eeb35a2bdec7a4945a8ae271dc717cf2, type: 2}
   - {fileID: 11400000, guid: 986ee798fbcb66442b9e10c81d6cceb6, type: 2}
   - {fileID: 11400000, guid: ef0534f9144060242a65a2be069293c3, type: 2}
-  wateringCanUsageAllowed: 0
-  hoeUsageAllowed: 0
-  itemSellingAllowed: 0
-  wateringCanCapacity: 9
+  m_wateringCanUsageAllowed: 0
+  m_hoeUsageAllowed: 0
+  m_itemSellingAllowed: 0
+  m_wateringCanCapacity: 10
 --- !u!114 &1618778970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74550,10 +74499,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1417138269}
     m_Modifications:
-    - target: {fileID: 1973115434893882182, guid: cf4fcf31d16e6ee41804fb3f9949385a, type: 3}
-      propertyPath: m_inventorySlotImage
-      value: 
-      objectReference: {fileID: 1420595822}
     - target: {fileID: 2812015328995638531, guid: cf4fcf31d16e6ee41804fb3f9949385a, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -75697,17 +75642,6 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
---- !u!114 &2036222091 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3775969146581702788, guid: cf4fcf31d16e6ee41804fb3f9949385a, type: 3}
-  m_PrefabInstance: {fileID: 1482310506}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &2091087209 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2812015328995638531, guid: cf4fcf31d16e6ee41804fb3f9949385a, type: 3}
@@ -75722,17 +75656,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b5f6aefea4385494c80facb9a95c9b2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &2091087214 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3775969146581702788, guid: cf4fcf31d16e6ee41804fb3f9949385a, type: 3}
-  m_PrefabInstance: {fileID: 353076255}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2111262508

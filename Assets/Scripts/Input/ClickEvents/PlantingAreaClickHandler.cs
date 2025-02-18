@@ -12,14 +12,21 @@ public class PlantingAreaClickHandler : MonoBehaviour
     private GameObject m_plantingArea;
     public GameObject m_plantToSpawn;
 
+    private void Start()
+    {
+        m_plantingArea = gameObject;
+    }
+
     private void OnEnable()
     {
         EventClick.OnObjectClicked += HandleClick;
+        PlantClickHandler.OnPlantHarvested += ReactivatePlantingArea;
     }
 
     private void OnDisable()
     {
         EventClick.OnObjectClicked -= HandleClick;
+        PlantClickHandler.OnPlantHarvested -= ReactivatePlantingArea;
     }
     
     private void HandleClick(GameObject clickedObject)
@@ -30,7 +37,8 @@ public class PlantingAreaClickHandler : MonoBehaviour
         {
             m_moneyManager.RemoveMoney(25); // 25 is deducted from player's money
             SpawnPlant();
-            //m_plantingArea.GetComponent<EventClick>().m_clickingAllowed = false;
+            
+            m_plantingArea.GetComponent<EventClick>().m_clickingAllowed = false;
         }
         else
         {
@@ -42,5 +50,13 @@ public class PlantingAreaClickHandler : MonoBehaviour
     {
         GameObject spawnedPlant = Instantiate(m_plantToSpawn, m_plantingArea.transform);
         OnPlantPlanted?.Invoke(spawnedPlant);
+    }
+
+    private void ReactivatePlantingArea(PlantData data)
+    {
+        if (data.m_readyToHarvest)
+        {
+            m_plantingArea.GetComponent<EventClick>().m_clickingAllowed = true;
+        }
     }
 }

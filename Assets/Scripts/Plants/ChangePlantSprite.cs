@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class ChangePlantSprite : MonoBehaviour
@@ -8,6 +9,11 @@ public class ChangePlantSprite : MonoBehaviour
     public Sprite m_plantGrowthStage3;
     public Sprite m_plantGrowthStage4;
     Sprite[] m_allPlantGrowthSprites;
+
+    private void OnEnable()
+    {
+        PlantGrowthManager.OnPlantIsDead += ChangeSpriteToDead;
+    }
 
     private void Start()
     {
@@ -21,7 +27,7 @@ public class ChangePlantSprite : MonoBehaviour
         }
     }
 
-    public void ChangeSpriteToDead()
+    private void ChangeSpriteToDead()
     {
         m_plantSpriteRenderer.color = Color.black;
     }

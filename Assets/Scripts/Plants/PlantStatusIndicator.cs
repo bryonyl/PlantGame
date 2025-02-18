@@ -15,19 +15,14 @@ public class PlantStatusIndicator : MonoBehaviour
         PlantGrowthManager.OnPlantNeedsWater += PlantNeedsWaterIndicator;
         PlantGrowthManager.OnPlantDying += PlantDyingIndicator;
         PlantGrowthManager.OnPlantHappy += PlantHappyIndicator;
+        PlantGrowthManager.OnPlantFinishedGrowing += PlantHasGrownIndicator;
     }
     private void OnDisable()
     {
         PlantGrowthManager.OnPlantNeedsWater -= PlantNeedsWaterIndicator;
         PlantGrowthManager.OnPlantDying -= PlantDyingIndicator;
         PlantGrowthManager.OnPlantHappy -= PlantHappyIndicator;
-    }
-
-    private void Update()
-    {
-        Debug.Log("Needs water = " + m_plantStatusIndicatorAnimator.GetBool("needsWater"));
-        Debug.Log("Is dying = " + m_plantStatusIndicatorAnimator.GetBool("isDying"));
-        Debug.Log("Is happy = " + m_plantStatusIndicatorAnimator.GetBool("isHappy"));
+        PlantGrowthManager.OnPlantFinishedGrowing -= PlantHasGrownIndicator;
     }
 
     private void PlantNeedsWaterIndicator()
@@ -35,17 +30,28 @@ public class PlantStatusIndicator : MonoBehaviour
         m_plantStatusIndicatorAnimator.SetBool("needsWater", true);
         m_plantStatusIndicatorAnimator.SetBool("isDying", false);
         m_plantStatusIndicatorAnimator.SetBool("isHappy", false);
+        m_plantStatusIndicatorAnimator.SetBool("hasGrown", false);
     }
     private void PlantDyingIndicator()
     {
         m_plantStatusIndicatorAnimator.SetBool("isDying", true);
         m_plantStatusIndicatorAnimator.SetBool("needsWater", true);
         m_plantStatusIndicatorAnimator.SetBool("isHappy", false);
+        m_plantStatusIndicatorAnimator.SetBool("hasGrown", false);
     }
     private void PlantHappyIndicator()
     {
         m_plantStatusIndicatorAnimator.SetBool("isHappy", true);
         m_plantStatusIndicatorAnimator.SetBool("needsWater", false);
         m_plantStatusIndicatorAnimator.SetBool("isDying", false);
+        m_plantStatusIndicatorAnimator.SetBool("hasGrown", false);
+    }
+
+    private void PlantHasGrownIndicator()
+    {
+        m_plantStatusIndicatorAnimator.SetBool("hasGrown", true);
+        m_plantStatusIndicatorAnimator.SetBool("needsWater", false);
+        m_plantStatusIndicatorAnimator.SetBool("isDying", false);
+        m_plantStatusIndicatorAnimator.SetBool("isHappy", false);
     }
 }

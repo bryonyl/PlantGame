@@ -3,17 +3,19 @@ using UnityEngine;
 
 public class PlantClickHandler : MonoBehaviour
 {
-    public delegate void PlantWatered(PlantData data);
+    public delegate void PlantWatered(PlantData data, ChangePlantSprite sprite);
     public static event PlantWatered OnPlantWatered;
     
     public delegate void PlantHarvested(PlantData data);
     public static event PlantHarvested OnPlantHarvested;
 
-    private PlantData m_thisPlantData;
+    private PlantData m_plantData;
+    private ChangePlantSprite m_changePlantSprite;
 
     private void Start()
     {
-        m_thisPlantData = gameObject.GetComponent<PlantData>();
+        m_plantData = gameObject.GetComponent<PlantData>();
+        m_changePlantSprite = gameObject.GetComponent<ChangePlantSprite>();
     }
 
     private void OnEnable()
@@ -29,11 +31,8 @@ public class PlantClickHandler : MonoBehaviour
     private void HandleClick(GameObject clickedObject)
     {
         if (clickedObject != gameObject) return;
-
-        // Prints plant debug info
-        m_thisPlantData.QueryPlant();
         
-        OnPlantWatered?.Invoke(m_thisPlantData);
-        OnPlantHarvested?.Invoke(m_thisPlantData);
+        OnPlantWatered?.Invoke(m_plantData, m_changePlantSprite);
+        OnPlantHarvested?.Invoke(m_plantData);
     }
 }
