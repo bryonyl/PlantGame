@@ -27,7 +27,7 @@ public class LightActivator : MonoBehaviour
 
     private void LightActivationCheck()
     {
-        if (TimeManager.m_hour == 20)
+        if (TimeManager.m_hour >= 20 && TimeManager.m_hour <= 22)
         {
             SwitchAllLights(true);
         }

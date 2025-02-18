@@ -114,5 +114,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_inventorySlotImage: {fileID: 3775969146581702788}
-  m_selectedColour: {r: 0.19892012, g: 0.8773585, b: 0.1448469, a: 1}
+  m_selectedColour: {r: 0.19063722, g: 0.7924528, b: 0.68574315, a: 1}
   m_notSelectedColour: {r: 1, g: 1, b: 1, a: 1}

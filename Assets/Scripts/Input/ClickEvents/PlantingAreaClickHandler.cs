@@ -33,9 +33,9 @@ public class PlantingAreaClickHandler : MonoBehaviour
     {
         if (clickedObject != gameObject) return;
 
-        if (m_moneyManager.m_playerCurrentMoney >= 25) // 25 = price of a seed
+        if (m_moneyManager.m_playerCurrentMoney >= 10) // 10 = price of a seed
         {
-            m_moneyManager.RemoveMoney(25); // 25 is deducted from player's money
+            m_moneyManager.RemoveMoney(10); // 10 is deducted from player's money
             SpawnPlant();
             
             m_plantingArea.GetComponent<EventClick>().m_clickingAllowed = false;
