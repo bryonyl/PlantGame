@@ -23,6 +23,10 @@ public class ChangePlantSprite : MonoBehaviour
     {
         m_allPlantGrowthSprites = new Sprite[] { m_plantGrowthStage1, m_plantGrowthStage2, m_plantGrowthStage3, m_plantGrowthStage4 };
     }
+    /// <summary>
+    /// Changes plant sprite into the specified plant growth stage
+    /// </summary>
+    /// <param name="plantGrowthStage">The specified plant growth stage (max = 3)</param>
     public void ChangeSprite(int plantGrowthStage)
     {
         if (plantGrowthStage <= 3)
@@ -31,6 +35,9 @@ public class ChangePlantSprite : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Changes the plant's sprite renderer to black
+    /// </summary>
     public void ChangeSpriteToDead()
     {
         m_plantSpriteRenderer.color = Color.black;

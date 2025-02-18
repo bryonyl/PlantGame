@@ -7,10 +7,12 @@ public class PlantingAreaClickHandler : MonoBehaviour
     public delegate void PlantPlanted(GameObject plant);
     public static event PlantPlanted OnPlantPlanted;
 
-    [SerializeField] private MoneyManager m_moneyManager;
+    [SerializeField] private MoneyManager m_moneyManager; 
     
     private GameObject m_plantingArea;
     public GameObject m_plantToSpawn;
+
+    private bool m_hasSubscribedToOnPlantHarvested = false;
 
     private void Start()
     {
@@ -21,12 +23,14 @@ public class PlantingAreaClickHandler : MonoBehaviour
     {
         EventClick.OnObjectClicked += HandleClick;
         PlantClickHandler.OnPlantHarvested += ReactivatePlantingArea;
+        IndividualPlantGrowthManager.OnPlantDead += ReactivatePlantingArea;
     }
 
     private void OnDisable()
     {
         EventClick.OnObjectClicked -= HandleClick;
         PlantClickHandler.OnPlantHarvested -= ReactivatePlantingArea;
+        IndividualPlantGrowthManager.OnPlantDead -= ReactivatePlantingArea;
     }
     
     private void HandleClick(GameObject clickedObject)
@@ -37,7 +41,6 @@ public class PlantingAreaClickHandler : MonoBehaviour
         {
             m_moneyManager.RemoveMoney(10); // 10 is deducted from player's money
             SpawnPlant();
-            
             m_plantingArea.GetComponent<EventClick>().m_clickingAllowed = false;
         }
         else
@@ -46,15 +49,23 @@ public class PlantingAreaClickHandler : MonoBehaviour
         }
     }
 
-    private void SpawnPlant()
+    /// <summary>
+    /// Instantiates the newly created plant into a planting area space and passes spawned plant GameObject to listener scripts
+    /// </summary>
+    private GameObject SpawnPlant()
     {
         GameObject spawnedPlant = Instantiate(m_plantToSpawn, m_plantingArea.transform);
         OnPlantPlanted?.Invoke(spawnedPlant);
+        return spawnedPlant;
     }
 
-    public void ReactivatePlantingArea(PlantData data)
+    /// <summary>
+    /// Reactivates the planting area if the plant has been harvested or if the plant is dead
+    /// </summary>
+    /// <param name="data">The specific plant's Plant Data component</param>
+    private void ReactivatePlantingArea(PlantData data)
     {
-        if (data.m_readyToHarvest)
+        if (data.m_readyToHarvest || data.m_isDead)
         {
             m_plantingArea.GetComponent<EventClick>().m_clickingAllowed = true;
         }

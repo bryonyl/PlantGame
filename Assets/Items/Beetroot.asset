@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_itemType: 0
   m_actionType: 0
-  m_sellingValue: 20
+  m_sellingValue: 30
   m_stackable: 1
   m_image: {fileID: 2018227706277626003, guid: 25f19729177374d47a4136b7b408b63d, type: 3}

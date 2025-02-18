@@ -1,10 +1,21 @@
+using System;
 using UnityEngine;
 
 public class GameOverUI : MonoBehaviour
 {
     [SerializeField] private TMPro.TextMeshProUGUI m_quotaProgressText;
     [SerializeField] private TMPro.TextMeshProUGUI m_dayReachedText;
-    
+
+    private void OnEnable()
+    {
+        DayProgression.OnGameOver += UpdateUI;
+    }
+
+    private void OnDisable()
+    {
+        DayProgression.OnGameOver -= UpdateUI;
+    }
+
     private void Start()
     {
         UpdateUI();
@@ -12,7 +23,7 @@ public class GameOverUI : MonoBehaviour
 
     private void UpdateUI()
     {
-        m_quotaProgressText.text = $"Quota Progress: ${PlayerPrefs.GetFloat("FinalMoney", 0)}/${PlayerPrefs.GetFloat("FinalQuotaGoal", 0)}";
-        m_dayReachedText.text = $"Day Reached: {PlayerPrefs.GetInt("FinalDay", 0)}";
+        m_quotaProgressText.text = $"Quota Progress: ${PlayerPrefs.GetFloat("FinalMoney")}/${PlayerPrefs.GetFloat("FinalQuotaGoal")}";
+        m_dayReachedText.text = $"Day Reached: {PlayerPrefs.GetInt("FinalDay")}";
     }
 }

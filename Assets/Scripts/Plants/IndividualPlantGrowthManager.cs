@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 /// <summary>
 /// This script manages plants on an individual scale, not globally, so this script should only be attached to individual plants. It is responsible for the plant's needs, like watering, and its growth and death. It also triggers the appropriate plant status indicator
@@ -10,7 +11,9 @@ public class IndividualPlantGrowthManager : MonoBehaviour
     // Events
     public event Action OnPlantHappy;
     public event Action OnPlantNeedsWater;
-    public event Action OnPlantDead;
+    public delegate void PlantDead(PlantData data);
+    public static event PlantDead OnPlantDead;
+    public event Action OnPlantDead_SpecificToIndicator; // Needed to make a new event specifically for indicators to react to because the event above is static, but changing it to not static breaks a lot of things. This is not the best approach I think but unfortunately I don't have a lot of time left to figure out a better way
     
     // Script references
     private PlantData m_plantData;
@@ -66,7 +69,6 @@ public class IndividualPlantGrowthManager : MonoBehaviour
         if (m_plantData.m_waterLevel <= 0 && m_plantData.m_waterLevel >= -15)
         {
             m_plantData.m_needsWater = true;
-            Debug.Log("Plant need water");
 
             // Event is invoked so that needs water status indicator can react and display itself
             OnPlantNeedsWater?.Invoke();
@@ -186,10 +188,10 @@ public class IndividualPlantGrowthManager : MonoBehaviour
     private void PlantDies()
     {
         m_plantData.m_isDead = true;
-        Destroy(m_plantStatusIndicator);
         m_changePlantSprite.ChangeSpriteToDead();
         StopAllCoroutines();
-        OnPlantDead?.Invoke();
+        OnPlantDead?.Invoke(m_plantData);
+        OnPlantDead_SpecificToIndicator?.Invoke();
     }
     
     /// <summary>

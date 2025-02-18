@@ -12439,19 +12439,25 @@ MonoBehaviour:
     Hotbar - Keys 1 to 6
 
 
-    Water Plant - Equip Watering Can and left click
+    Plant Plant - Left Click Space On Farming Plot
 
 
-    Harvest
-    Ready Crop/Remove dead crop - Equip Hoe and Left Click
+    Water
+    Plant - Equip Watering Can and left click
 
 
-    Sell Crop - Equip
-    Crop and Left Click Shipping Box
+    Harvest Ready Crop/Remove dead
+    crop - Equip Hoe and Left Click
 
 
-    Progress To Next Day - Left Click Bed
-    (you will automatically pass out at 10pm)'
+    Sell Crop - Equip Crop and Left Click Shipping
+    Box
+
+
+    Progress To Next Day - Left Click Bed (you will automatically pass
+    out at 10pm)
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c646d8345f2edba4388fda7f0fe56e41, type: 2}
   m_sharedMaterial: {fileID: 4222333502224400099, guid: c646d8345f2edba4388fda7f0fe56e41, type: 2}
@@ -12478,8 +12484,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 26
+  m_fontSizeBase: 26
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

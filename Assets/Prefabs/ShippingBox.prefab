@@ -102,6 +102,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07211146c8b0f2648a78530bea3647e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_spriteRenderer: {fileID: 0}
+  m_hoveredColour: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_normalColour: {r: 0, g: 0, b: 0, a: 0}
   m_clickingAllowed: 1
 --- !u!114 &7718111526304223083
 MonoBehaviour:

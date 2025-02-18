@@ -10,12 +10,6 @@ public class MoneyManager : MonoBehaviour
     public float m_playerCurrentMoney;
     public float m_playerCurrentQuotaGoal;
 
-    private void Awake()
-    {
-        m_playerCurrentMoney = 100;
-        m_playerCurrentQuotaGoal = 250;
-    }
-
     public void AddMoney(float moneyToAdd)
     {
         m_playerCurrentMoney += moneyToAdd;
@@ -32,6 +26,12 @@ public class MoneyManager : MonoBehaviour
         Debug.Log($"New money = {m_playerCurrentMoney}");
     }
 
+    private void IncreaseQuotaGoal()
+    {
+        m_playerCurrentQuotaGoal = m_playerCurrentQuotaGoal + 20;
+        OnMoneyChanged?.Invoke();
+    }
+
     public bool CheckQuota()
     {
         if (m_playerCurrentMoney < m_playerCurrentQuotaGoal)
@@ -42,6 +42,7 @@ public class MoneyManager : MonoBehaviour
         else
         {
             Debug.Log("Quota has been met! Continuing game!");
+            IncreaseQuotaGoal();
             return true;
         }
     }

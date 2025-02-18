@@ -21,13 +21,13 @@ public class PlantStatusIndicator : MonoBehaviour
     private void OnEnable()
     {
         m_individualPlantGrowthManager.OnPlantNeedsWater += PlantNeedsWaterIndicator;
-        m_individualPlantGrowthManager.OnPlantDead += PlantDeadIndicator;
+        m_individualPlantGrowthManager.OnPlantDead_SpecificToIndicator += PlantDeadIndicator;
         m_individualPlantGrowthManager.OnPlantHappy += PlantHappyIndicator;
     }
     private void OnDisable()
     {
         m_individualPlantGrowthManager.OnPlantNeedsWater -= PlantNeedsWaterIndicator;
-        m_individualPlantGrowthManager.OnPlantDead -= PlantDeadIndicator;
+        m_individualPlantGrowthManager.OnPlantDead_SpecificToIndicator -= PlantDeadIndicator;
         m_individualPlantGrowthManager.OnPlantHappy -= PlantHappyIndicator;
     }
 
