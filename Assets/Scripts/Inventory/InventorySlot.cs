@@ -4,9 +4,9 @@ using UnityEngine.UI;
 
 public class InventorySlot : MonoBehaviour
 {
-    public Image inventorySlotImage;
-    public Color selectedColour;
-    public Color notSelectedColour;
+    public Image m_inventorySlotImage;
+    public Color m_selectedColour;
+    public Color m_notSelectedColour;
 
     public void Awake()
     {
@@ -14,18 +14,18 @@ public class InventorySlot : MonoBehaviour
     }
 
     /// <summary>
-    /// Visually selects the inventory slot by changing its image's colour to be the selectedColour.
+    /// Visually selects the inventory slot by changing its image's colour to be the m_selectedColour.
     /// </summary>
     public void Select()
     {
-        inventorySlotImage.color = selectedColour;
+        m_inventorySlotImage.color = m_selectedColour;
     }
 
     /// <summary>
-    /// Visually deselects the inventory slot by resetting its image's colour to be the notSelectedColour.
+    /// Visually deselects the inventory slot by resetting its image's colour to be the m_notSelectedColour.
     /// </summary>
     public void Deselect()
     {
-        inventorySlotImage.color = notSelectedColour;
+        m_inventorySlotImage.color = m_notSelectedColour;
     }
 }

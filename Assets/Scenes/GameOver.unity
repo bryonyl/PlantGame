@@ -232,7 +232,6 @@ GameObject:
   - component: {fileID: 151475277}
   - component: {fileID: 151475280}
   - component: {fileID: 151475279}
-  - component: {fileID: 151475278}
   m_Layer: 5
   m_Name: Text_DayReached
   m_TagString: Untagged
@@ -259,20 +258,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 788.02, y: 59.3}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &151475278
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 151475276}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2dd2ba081ff22949a3a36f62e299822, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_moneyManager: {fileID: 0}
-  m_quotaText: {fileID: 0}
 --- !u!114 &151475279
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -293,7 +278,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Day Reached: Day'
+  m_text: 'Day Reached: 0'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c8263869355f02140970b760662028c3, type: 2}
   m_sharedMaterial: {fileID: 2358008143010929059, guid: c8263869355f02140970b760662028c3, type: 2}
@@ -1629,7 +1614,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Quota Progress: Quota/GoalQuota'
+  m_text: 'Quota Progress: $0/$0'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c8263869355f02140970b760662028c3, type: 2}
   m_sharedMaterial: {fileID: 2358008143010929059, guid: c8263869355f02140970b760662028c3, type: 2}
@@ -1887,8 +1872,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 800, y: 800}
+  m_AnchoredPosition: {x: 0, y: -0.000011444092}
+  m_SizeDelta: {x: 800, y: 900}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2106343848
 MonoBehaviour:
@@ -1983,7 +1968,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_quotaProgressText: {fileID: 2028339159}
   m_dayReachedText: {fileID: 151475279}
-  m_endOfGameResults: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

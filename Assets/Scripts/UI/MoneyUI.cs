@@ -3,9 +3,9 @@ using UnityEngine.Serialization;
 
 public class MoneyUI : MonoBehaviour
 {
-    [SerializeField] private MoneyManager moneyManager;
-    public TMPro.TextMeshProUGUI moneyText;
-
+    [SerializeField] private MoneyManager m_moneyManager;
+    public TMPro.TextMeshProUGUI m_moneyText;
+    
     private void OnEnable()
     {
         MoneyManager.OnMoneyChanged += UpdateUI;
@@ -15,9 +15,14 @@ public class MoneyUI : MonoBehaviour
     {
         MoneyManager.OnMoneyChanged -= UpdateUI;
     }
+    
+    private void Start()
+    {
+        UpdateUI();
+    }
 
     private void UpdateUI()
     {
-        moneyText.text = $"Money: ${moneyManager.m_playerCurrentMoney}";
+        m_moneyText.text = $"Money: ${m_moneyManager.m_playerCurrentMoney}";
     }
 }

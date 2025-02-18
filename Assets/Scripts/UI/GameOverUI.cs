@@ -4,8 +4,6 @@ public class GameOverUI : MonoBehaviour
 {
     [SerializeField] private TMPro.TextMeshProUGUI m_quotaProgressText;
     [SerializeField] private TMPro.TextMeshProUGUI m_dayReachedText;
-
-    [SerializeField] private EndOfGameResults m_endOfGameResults;
     
     private void Start()
     {
@@ -14,7 +12,7 @@ public class GameOverUI : MonoBehaviour
 
     private void UpdateUI()
     {
-        m_quotaProgressText.text = $"Quota Progress: ${m_endOfGameResults.FinalMoney}/${m_endOfGameResults.FinalQuota}";
-        m_dayReachedText.text = $"Day Reached: ${m_endOfGameResults.FinalDay}";
+        m_quotaProgressText.text = $"Quota Progress: ${PlayerPrefs.GetFloat("FinalMoney", 0)}/${PlayerPrefs.GetFloat("FinalQuotaGoal", 0)}";
+        m_dayReachedText.text = $"Day Reached: {PlayerPrefs.GetInt("FinalDay", 0)}";
     }
 }

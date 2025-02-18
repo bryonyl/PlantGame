@@ -6,11 +6,14 @@ public class MainMenuButtonHandler : MonoBehaviour
 {
     [SerializeField] private GameObject m_howToPlayPanel;
     [SerializeField] private GameObject m_controlsPanel;
+    [SerializeField] private GameObject m_leaderboardPanel;
     [SerializeField] private GameObject m_howToPlayPanelExitButton;
     [SerializeField] private GameObject m_controlsPanelExitButton;
+    [SerializeField] private GameObject m_leaderboardPanelExitButton;
 
     private bool m_howToPlayPanelOpen = false;
     private bool m_controlsPanelOpen = false;
+    private bool m_leaderboardPanelOpen = false;
 
     public void OpenMainLevel()
     {
@@ -54,12 +57,26 @@ public class MainMenuButtonHandler : MonoBehaviour
             m_controlsPanel.SetActive(false);
         }
     }
-    
-    public void QuitGame()
-    {
-        Application.Quit();
-    }
 
+    public void ToggleLeaderboardPanel()
+    {
+        m_leaderboardPanelOpen = !m_leaderboardPanelOpen;
+
+        if (m_leaderboardPanelOpen)
+        {
+            m_leaderboardPanel.SetActive(true);
+            m_leaderboardPanelExitButton.SetActive(true);
+            
+            m_howToPlayPanel.SetActive(false);
+            m_howToPlayPanelOpen = false;
+        }
+        else
+        {
+            m_leaderboardPanelExitButton.SetActive(false);
+            m_leaderboardPanel.SetActive(false);
+        }
+    }
+    
     public void ControlsPanelExitButton()
     {
         m_controlsPanelExitButton.SetActive(false);
@@ -70,5 +87,16 @@ public class MainMenuButtonHandler : MonoBehaviour
     {
         m_howToPlayPanelExitButton.SetActive(false);
         m_howToPlayPanel.SetActive(false);
+    }
+
+    public void LeaderboardExitButton()
+    {
+        m_leaderboardPanelExitButton.SetActive(false);
+        m_leaderboardPanel.SetActive(false);
+    }
+    
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }

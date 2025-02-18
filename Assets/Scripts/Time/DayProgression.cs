@@ -50,6 +50,7 @@ public class DayProgression : MonoBehaviour
     public void ChangeDay()
     {
         OnDayChanged?.Invoke();
+        m_moneyManager.m_playerCurrentMoney = 0;
         m_sleepingPanel.SetActive(false);
     }
 }
