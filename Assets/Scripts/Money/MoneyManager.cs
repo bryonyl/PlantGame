@@ -37,7 +37,6 @@ public class MoneyManager : MonoBehaviour
         if (m_playerCurrentMoney < m_playerCurrentQuotaGoal)
         {
             Debug.Log("Quota has not been met! Game over!");
-            SceneManager.LoadScene(2);
             return false;
         }
         else
