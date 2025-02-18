@@ -22,6 +22,5 @@ public class PlantData : MonoBehaviour
     public float m_requiredGrowthPoints;
     [HideInInspector] public bool m_needsWater = false;
     [HideInInspector] public bool m_canGrow = false;
-    [HideInInspector] public bool m_isDying = false;
     [HideInInspector] public bool m_isDead = false;
 }

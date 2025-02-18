@@ -9,10 +9,14 @@ public class ChangePlantSprite : MonoBehaviour
     public Sprite m_plantGrowthStage3;
     public Sprite m_plantGrowthStage4;
     Sprite[] m_allPlantGrowthSprites;
+    
+    private PlantData m_plantData;
+    private ChangePlantSprite m_changePlantSprite;
 
     private void OnEnable()
     {
-        PlantGrowthManager.OnPlantIsDead += ChangeSpriteToDead;
+        m_plantData = gameObject.GetComponent<PlantData>();
+        m_changePlantSprite = gameObject.GetComponent<ChangePlantSprite>();
     }
 
     private void Start()
@@ -25,10 +29,5 @@ public class ChangePlantSprite : MonoBehaviour
         {
             m_plantSpriteRenderer.sprite = m_allPlantGrowthSprites[plantGrowthStage];
         }
-    }
-
-    private void ChangeSpriteToDead()
-    {
-        m_plantSpriteRenderer.color = Color.black;
     }
 }

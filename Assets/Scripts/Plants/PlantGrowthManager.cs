@@ -3,15 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 public class PlantGrowthManager : MonoBehaviour
 {
     // Events
     public static event Action OnPlantHappy;
-    public static event Action OnPlantFinishedGrowing;
     public static event Action OnPlantNeedsWater;
-    public static event Action OnPlantDying;
-    public static event Action OnPlantIsDead;
+
+    public static event Action OnPlantDead;
     
     // Script references
     private PlantData m_plantData;
@@ -118,8 +118,6 @@ public class PlantGrowthManager : MonoBehaviour
         }
     }
 
-    #region Plant Health Check Method
-
     /// <summary>
     /// Checks if the plant needs water and/or if it is dying
     /// </summary>
@@ -135,44 +133,23 @@ public class PlantGrowthManager : MonoBehaviour
             // Event is invoked so that needs water status indicator can react and display itself
             OnPlantNeedsWater?.Invoke();
 
-            // Plant is also set to dying if water level is too far into the negatives
-            if (data.m_waterLevel <= -10)
-            {
-                data.m_isDying = true;
-                OnPlantDying?.Invoke();
-            }
-            // Plant dies at a water level of -20
-            else if (data.m_waterLevel <= -20)
-            {
-                data.m_isDead = true;
-                data.m_isDying = false;
-                OnPlantIsDead?.Invoke();
-                StopCoroutine(AddPlantGrowthPointsTimer(data));
-                StopCoroutine(PlantGrowthTimer(data, sprite));
-                StopCoroutine(WaterLevelDecayTimer(data));
-            }
+            return false; // Plant needs care, so false is returned (health check came back unsuccessful)
+        }
+        if (data.m_waterLevel <= -10) // Plant dies if water level falls below -10
+        {
+            PlantDies(data, sprite);
 
-            return false; // Plant is dying and needs care
+            return false;
         }
         else
         {
             data.m_needsWater = false;
-            data.m_isDying = false;
-
-            // Event is invoked so that happy status indicator can react and display itself
+            data.m_isDead = false;
             OnPlantHappy?.Invoke();
 
-            return true; // Plant is healthy
+            return true; // Plant is healthy, so true is returned (health check came back successful)
         }
     }
-
-    #endregion
-
-    #region Plant Growth Methods
-
-    // Plant grows, so its m_growthStage increments by 1 and its sprite changes
-
-    // Checks if the conditions have been met for the plant to be able to grow
     
     /// <summary>
     /// Checks if conditions have been met for the plant to be able to grow, and makes plant grow
@@ -218,7 +195,7 @@ public class PlantGrowthManager : MonoBehaviour
         while (m_plantGrowthPointsTimerActive == true)
         {
             // If plant does not need water
-            if (data.m_needsWater != true)
+            if (data.m_needsWater == false)
             {
                 // Allow growth points to be added to plant's growth points
                 yield return new WaitForSeconds(data.m_growthPointTimer);
@@ -233,6 +210,11 @@ public class PlantGrowthManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Grows plant by 1 stage each time, up until the 3rd stage, when it is fully grown and all growth related timers are stopped
+    /// </summary>
+    /// <param name="data">Specific plant's PlantData component</param>
+    /// <param name="sprite">Specific plant's ChangePlantSprite component</param>
     private void PlantGrows(PlantData data, ChangePlantSprite sprite)
     {
         // Resets m_canGrow after plant has grown
@@ -245,29 +227,46 @@ public class PlantGrowthManager : MonoBehaviour
             sprite.ChangeSprite(data.m_growthStage);
             data.m_growthPoints = 0;
         }
+        // Plant has finished growing. All timers are stopped
         else if (data.m_growthStage == 3)
         {
             Debug.Log("Plant has finished growing!");
-            OnPlantFinishedGrowing?.Invoke();
+            data.m_readyToHarvest = true;
             StopCoroutine(AddPlantGrowthPointsTimer(data));
             StopCoroutine(PlantGrowthTimer(data, sprite));
             StopCoroutine(WaterLevelDecayTimer(data));
-            data.m_readyToHarvest = true;
         }
     }
 
-    // Adds plant growth point to specific plant
+    /// <summary>
+    /// Adds plant growth points to a plant
+    /// </summary>
+    /// <param name="data">Specific plant's PlantData component</param>
     private void AddPlantGrowthPoints(PlantData data)
     {
         Debug.Log($"New growth points: {data.m_growthPoints}");
         data.m_growthPoints++;
     }
 
-    #endregion
-
-    #region Water Level Decay Methods
-
-    // Decays specific plant's water level over time
+    /// <summary>
+    /// Plant dies and all timers are stopped
+    /// </summary>
+    /// <param name="data">Specific plant's PlantData component</param>
+    /// <param name="sprite">Specific plant's ChangePlantSprite component</param>
+    private void PlantDies(PlantData data, ChangePlantSprite sprite)
+    {
+        data.m_isDead = true;
+        StopCoroutine(AddPlantGrowthPointsTimer(data));
+        StopCoroutine(PlantGrowthTimer(data, sprite));
+        StopCoroutine(WaterLevelDecayTimer(data));
+        OnPlantDead?.Invoke();
+    }
+    
+    /// <summary>
+    /// Timer determining how frequently the water level of a plant should be decayed
+    /// </summary>
+    /// <param name="data">Specific plant's PlantData component</param>
+    /// <returns></returns>
     private IEnumerator WaterLevelDecayTimer(PlantData data)
     {
         while (true)
@@ -280,13 +279,15 @@ public class PlantGrowthManager : MonoBehaviour
         }
     }
 
-    // Actually decays plant's water level
+    /// <summary>
+    /// Decays the water level of a plant
+    /// </summary>
+    /// <param name="data">Specific plant's PlantData component</param>
+    /// <returns></returns>
     private int WaterLevelDecay(PlantData data)
     {
         data.m_waterLevel--;
         Debug.Log($"ID: {data.UniquePlantId} Water Level: {data.m_waterLevel}");
         return data.m_waterLevel;
     }
-
-    #endregion
 }
