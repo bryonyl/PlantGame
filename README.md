@@ -1,1 +1,3 @@
-Starting project for GDEV40008 C# for Game Engines and GDEV50034 C# for Games Designers.
+2D top-down farming simulator, where the player grows and sells crops to meet a daily quota. With the time in each day being limited, efficiency and speed is crucial!
+
+Created for C# Scripting for Games university module. The brief was to create a 2D top-down game using Unity with a simple, working gameplay loop.
